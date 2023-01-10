@@ -1,0 +1,182 @@
+/* General all */
+
+/* PROMO */
+
+.promo .box {
+  height: 565px;
+  padding: 50px 25px 0px 25px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  transition: all ease-in-out 0.3s;
+  background: #1a1814;
+  cursor: pointer;
+}
+
+.promo .box span {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  color: #cda45e;
+}
+
+.promo .box h4 {
+  font-size: 24px;
+  font-weight: 600;
+  padding: 0;
+  margin: 20px 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.promo .box p {
+  height: 50px;
+  color: #aaaaaa;
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.promo .box img {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.promo .box:hover {
+  background: #cda45e;
+  padding: 30px 30px 70px 30px;
+  box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.18);
+}
+
+.promo .box:hover span,
+.promo .box:hover h4,
+.promo .box:hover p {
+  color: #fff;
+}
+
+/* Custom Modal */
+.modal-bg {
+  background-color: rgb(242, 242, 242, 0.9);
+}
+
+.box-modal {
+  height: 550px;
+  width: 100%;
+  padding: 10px 0 10px 0;
+}
+
+.detail-promo {
+  height: 450px;
+  width: 100%;
+  overflow: auto;
+}
+
+.tgl-promo {
+  width: 100%;
+  padding: 10px;
+  border: dashed 1px black;
+  color: black;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.box-modal img {
+  object-fit: contain;
+  width: 100%;
+  height: 500px;
+}
+
+/* Special menu */
+.img-special-menu {
+  width: auto;
+  height: 250px;
+  background-size: cover;
+}
+
+.container {
+  height: auto;
+
+}
+
+.auth-wrapper {
+  min-height: 100vh;
+  position: relative;
+}
+
+.auth-wrapper .auth-box {
+  background: #fff;
+  padding: 20px;
+  -webkit-box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+  max-width: 400px;
+  width: 90%;
+  margin: 10% 0;
+}
+
+.auth-wrapper .auth-box .logo {
+  text-align: center;
+}
+
+.auth-wrapper .auth-box.on-sidebar {
+  top: 0px;
+  right: 0px;
+  height: 100%;
+  margin: 0px;
+  position: absolute;
+}
+
+.auth-wrapper #recoverform {
+  display: none;
+}
+
+.auth-wrapper .auth-sidebar {
+  position: fixed;
+  height: 100%;
+  right: 0px;
+  overflow: auto;
+  margin: 0px;
+  top: 0px;
+}
+
+.input {
+
+  width: 500px;
+  height: 100px;
+}
+
+@media (max-width: 767px) {
+  .auth-wrapper .auth-sidebar {
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    margin: 40px 0 60px;
+  }
+
+  .auth-wrapper .demo-text {
+    margin-top: 30px;
+  }
+}
+
+/* Media Responsive */
+
+@media (max-height: 500px) {
+  .detail-promo {
+    height: 100% !important;
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {}
+
+@media screen and (max-width: 768px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 992px) {}
+
+@media (min-width: 992px) {}
+
+@media (min-width: 1024px) {}
+
+@media (max-width: 1366px) {}
