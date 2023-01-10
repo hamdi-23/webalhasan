@@ -133,7 +133,7 @@ https://www.tooplate.com/view/2117-infinite-loop
           <div class="tm-intro-text-container">
             <h2 class="tm-text-primary mb-4">Market Analysis</h2>
             <p class="mb-4 tm-intro-text">
-              Praesent sed pharetra lorem, blandit convallis mi. Aenean ornare elit ac metus lacinia, sed iaculis nibh semper. Pellentesque est urna.</p>
+              lorem, blandit convallis mi. Aenean ornare elit ac metus lacinia, sed iaculis nibh semper. Pellentesque est urna.</p>
           </div>
         </div>
 
