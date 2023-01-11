@@ -137,7 +137,7 @@ $title = "Dunia Kita Resto Admin Panel";
 									</div>
 									<div>
 										<label for="foto_profil" class="mt-3 ">Foto Profil</label>
-										<input type="file" id="foto_profil" name="foto_profil" class="form-control mb-2 " onchange="loadFile(event1)" />
+										<input type="file" id="foto_profil" name="foto_profil" class="form-control mb-2 " onchange="loadFile1(event)" />
 										<img align="right" alt="" width="450" height="220" id="output1">
 									</div>
 									<div>
@@ -211,11 +211,11 @@ $title = "Dunia Kita Resto Admin Panel";
 		};
 	</script>
 	<script>
-		var loadFile = function(event) {
+		var loadFile1 = function(event) {
 			var reader = new FileReader();
 			reader.onload = function() {
-				var output = document.getElementById('output1');
-				output.src = reader.result;
+				var output1 = document.getElementById('output1');
+				output1.src = reader.result;
 			};
 			reader.readAsDataURL(event.target.files[0]);
 		};
