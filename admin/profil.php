@@ -109,10 +109,10 @@ $title = "Dunia Kita Resto Admin Panel";
 										<label for="hp" class="mt-3">hp</label>
 										<input type="text" id="hp" name="hp" class="form-control" value="<?= $data['hp']; ?> " />
 									</div>
-									<div>
+									<!-- <div>
 										<label for="tagline" class="mt-3">tagline</label>
 										<input type="text" id="tagline" name="tagline" class="form-control" value="<?= $data['tagline']; ?> " />
-									</div>
+									</div> -->
 									<div>
 										<label for="link_video" class="mt-3">Link Video</label>
 										<input type="text" id="link_video" name="link_video" class="form-control" value="<?= $data['link_video']; ?> " />
@@ -124,9 +124,11 @@ $title = "Dunia Kita Resto Admin Panel";
 									<div>
 										<label for="google_map" class="mt-3">google map</label>
 										<input type="text" id="google_map" name="google_map" class="form-control" value="<?= $data['google_map']; ?> " />
-
 									</div>
-
+									<div>
+										<label for="foto_profil" class="mt-3">Sejarah Singkat</label>
+										<textarea class="form-control" name="deskripsi" id="deskripsi" class="form-control" style="height: 160px;"><?= $data['deskripsi']; ?></textarea>
+									</div>
 								</div>
 
 								<div class="col-md-6">
@@ -136,14 +138,11 @@ $title = "Dunia Kita Resto Admin Panel";
 										<img align="right" alt="" width="450" height="220" id="output">
 									</div>
 									<div>
-										<label for="foto_profil" class="mt-3 ">Foto Profil</label>
+										<label for="foto_profil" class="mt-3 ">Gambar logo</label>
 										<input type="file" id="foto_profil" name="foto_profil" class="form-control mb-2 " onchange="loadFile1(event)" />
-										<img align="right" alt="" width="450" height="220" id="output1">
+										<img align="right" alt="" width="150px" height="150px" id="output1">
 									</div>
-									<div>
-										<label for="foto_profil" class="mt-3">Deskipsi</label>
-										<textarea class="form-control" name="deskripsi" id="deskripsi" class="form-control" style="height: 160px;"><?= $data['deskripsi']; ?></textarea>
-									</div>
+
 								</div>
 							</div>
 							<hr>
