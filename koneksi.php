@@ -1,6 +1,6 @@
 <?php
 // koneksi ke database
-$con = mysqli_connect("localhost", "root", "", "resto_dk_db");
+$con = mysqli_connect("localhost", "root", "", "alhasan_db");
 function query($query)
 {
   global $con;
@@ -117,42 +117,6 @@ function upload()
   return ['foto_bg' => $nama_bg, 'foto_profil' => $nama_profil];
 }
 
-
-
-// tambah operasional
-function tambah_operasional($data)
-{
-  global $con;
-  $id_resto = $data["id_resto"];
-  $hari = $data["hari"];
-  $jam_buka = $data["jam_buka"];
-  $jam_tutup = $data["jam_tutup"];
-
-  mysqli_query($con, "INSERT INTO operasional VALUES ('','$id_resto', '$hari', '$jam_buka', '$jam_tutup')");
-  return mysqli_affected_rows($con);
-}
-
-// hapus data operasional
-function hapusOperasional()
-{
-  global $con;
-  mysqli_query($con, "DELETE FROM operasional WHERE id='$_GET[id]'");
-  return mysqli_affected_rows($con);
-}
-
-// edit data operasional 
-function edit_operasional()
-{
-  global $con;
-  $id = $_POST['id'];
-  $id_resto = $_POST["id_resto"];
-  $hari = htmlspecialchars($_POST["hari"]);
-  $jam_buka = htmlspecialchars($_POST["jam_buka"]);
-  $jam_tutup = htmlspecialchars($_POST["jam_tutup"]);
-
-  mysqli_query($con, "UPDATE operasional SET id_resto='$id_resto', hari ='$hari', jam_buka='$jam_buka', jam_tutup='$jam_tutup' WHERE id='$id'");
-  return mysqli_affected_rows($con);
-}
 
 // tambah data promo/pengumuman
 function tambah_promo()
@@ -289,33 +253,34 @@ function edit_jenisMenu()
   mysqli_query($con, "UPDATE jenis_menu SET jenis='$jenis_menu' WHERE id='$id'");
   return mysqli_affected_rows($con);
 }
-function tambah_menu()
+function tambah_kegiatan()
 {
 
   global $con;
-  $id_jenis_menu = $_POST['jenis_menu'];
-  $id_tag = $_POST['tag_menu'];
-  $nama = $_POST['nama'];
-  $deskripsi = $_POST['deskripsi'];
-  $harga = $_POST['harga'];
 
-  $foto_menu = upload_foto_menu();
-  if (!$foto_menu) {
+  $nama = $_POST['nama'];
+  $lokasi = $_POST['lokasi'];
+  $deskripsi = $_POST['deskripsi'];
+  $tanggal = $_POST['tanggal'];
+
+
+  $foto_kegiatan = upload_foto_kegiatan();
+  if (!$foto_kegiatan) {
     return false;
   }
 
-  mysqli_query($con, "INSERT INTO menu VALUES ('','$id_jenis_menu','$id_tag','$nama','$deskripsi','$foto_menu','$harga')");
+  mysqli_query($con, "INSERT INTO kegiatan VALUES ('','$nama','$deskripsi','$lokasi','$foto_kegiatan','$tanggal')");
   return mysqli_affected_rows($con);
 }
 
 
 // fungsi utuk upload foto
-function upload_foto_menu()
+function upload_foto_kegiatan()
 {
-  $namaFoto = $_FILES['foto_menu']['name'];
-  $ukuranFoto = $_FILES['foto_menu']['size'];
-  $error = $_FILES['foto_menu']['error'];
-  $tmpFoto = $_FILES['foto_menu']['tmp_name'];
+  $namaFoto = $_FILES['foto_kegiatan']['name'];
+  $ukuranFoto = $_FILES['foto_kegiatan']['size'];
+  $error = $_FILES['foto_kegiatan']['error'];
+  $tmpFoto = $_FILES['foto_kegiatan']['tmp_name'];
 
   if ($error === 4) {
     echo "
@@ -335,7 +300,7 @@ function upload_foto_menu()
     echo "
     <script>
     alert('gambar yang diupload tidak sesuai'); 
-    document.location.href = 'promo.php';  
+    document.location.href = 'menu.php';  
     </script>
     ";
     return false;
@@ -344,7 +309,7 @@ function upload_foto_menu()
   if ($ukuranFoto > 1000000) {
     echo " <script>
     alert('gambar yang diupload terlalu besar'); 
-    document.location.href = 'promo.php';  
+    document.location.href = 'menu.php';  
     </script>
     ";
     return false;
@@ -362,36 +327,35 @@ function upload_foto_menu()
 
 // hapus data menu
 
-function hapusMenu()
+function hapus_kegiatan()
 {
   global $con;
-  mysqli_query($con, "DELETE FROM menu WHERE id='$_GET[id]'");
+  mysqli_query($con, "DELETE FROM kegiatan WHERE id='$_GET[id]'");
   return mysqli_affected_rows($con);
 }
 
 // edit data menu
-function edit_menu($dataMenu)
+function edit_kegiatan($dataKegiatan)
 {
   global $con;
   $id = $_POST['id'];
 
-  $id_jenis_menu = $dataMenu['jenis_menu'];
-  $id_tag = $dataMenu['tag_menu'];
-  $nama = htmlspecialchars($dataMenu['nama']);
-  $deskripsi = htmlspecialchars($dataMenu['deskripsi']);
-  $harga = htmlspecialchars($dataMenu['harga']);
-  $foto_lama = $dataMenu['foto_lama'];
+  $nama = htmlspecialchars($dataKegiatan['nama']);
+  $deskripsi = htmlspecialchars($dataKegiatan['deskripsi']);
+  $lokasi = $dataKegiatan['lokasi'];
+  $tanggal = $dataKegiatan['tanggal'];
+  $foto_lama = $dataKegiatan['foto_lama'];
 
 
   // cek gambar apakah upload atau tidak
-  if ($_FILES['foto_menu']['error'] === 4) {
-    $foto_menu = $foto_lama;
+  if ($_FILES['foto_kegiatan']['error'] === 4) {
+    $foto_kegiatan = $foto_lama;
   } else {
-    $foto_menu = upload_foto_menu();
+    $foto_kegiatan = upload_foto_kegiatan();
   }
 
-  mysqli_query($con, "UPDATE menu SET id_jenis_menu='$id_jenis_menu', id_tag ='$id_tag',  foto ='$foto_menu',
-  nama='$nama', deskripsi='$deskripsi',harga='$harga' WHERE id='$id'");
+  mysqli_query($con, "UPDATE kegiatan SET nama='$nama', deskripsi ='$deskripsi',  
+  lokasi='$lokasi',foto ='$foto_kegiatan',tanggal='$tanggal'  WHERE id='$id'");
   return mysqli_affected_rows($con);
 }
 

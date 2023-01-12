@@ -8,11 +8,11 @@ if (!isset($_SESSION["login"])) {
 include "../koneksi.php";
 
 
-$dataPromo = query("SELECT tipe.`tipe` AS nama, promo_pengumuman.`foto`,promo_pengumuman.`judul`,promo_pengumuman.`deskripsi`,promo_pengumuman.`id_tipe`
-,promo_pengumuman.`tanggal_mulai`,promo_pengumuman.`tanggal_selesai`,promo_pengumuman.`id` FROM promo_pengumuman INNER JOIN `tipe` ON
- tipe.`id`=promo_pengumuman.`id_tipe`");
+$dataPromo = query("SELECT sekolah.`tingkat` AS nama, promo_pengumuman.`foto`,promo_pengumuman.`judul`,promo_pengumuman.`deskripsi`,promo_pengumuman.`id_sekolah`
+,promo_pengumuman.`tanggal_mulai`,promo_pengumuman.`tanggal_selesai`,promo_pengumuman.`id` FROM promo_pengumuman INNER JOIN `sekolah` ON
+ sekolah.`id`=promo_pengumuman.`id_sekolah`");
 
-$tipe = query("SELECT * FROM tipe ");
+$sekolah = query("SELECT * FROM sekolah ");
 
 // var_dump($data["alamat"]);
 if (isset($_POST['submit'])) {
@@ -140,12 +140,12 @@ $title = "Dunia Kita Resto Admin Panel";
 							<div class="row">
 								<div class="col-md-6">
 									<div>
-										<label>Tipe
+										<label>Tingkat Pendidikan
 										</label>
 										<select class="select2 form-select shadow-none" name="id_tipe" id="id_tipe" style="width: 100%; height: 36px">
 											<option value="">--Select--</option>
-											<?php foreach ($tipe as $t) :  ?>
-												<option value="<?= $t['id']; ?>"><?= $t['tipe']; ?></option>
+											<?php foreach ($sekolah as $t) :  ?>
+												<option value="<?= $t['id']; ?>"><?= $t['tingkat']; ?></option>
 											<?php endforeach; ?>
 										</select>
 									</div>
@@ -254,8 +254,8 @@ $title = "Dunia Kita Resto Admin Panel";
 																			<label for="hari" style="font-size: 13px;">Nama</label>
 																			<div class="mb-4">
 																				<select class="select2 form-select shadow-none" name="tipe" id="tipe" style="width: 100%; height: 36px">
-																					<?php foreach ($tipe as $t) :  ?>
-																						<option value="<?= $t['id']; ?>" <?php if ($d['id_tipe'] == $t['id']) echo 'selected = "selected"'; ?>><?= $t['tipe']; ?></option>
+																					<?php foreach ($sekolah as $t) :  ?>
+																						<option value="<?= $t['id']; ?>" <?php if ($d['id_sekolah'] == $t['id']) echo 'selected = "selected"'; ?>><?= $t['tipe']; ?></option>
 
 																					<?php endforeach; ?>
 																				</select>

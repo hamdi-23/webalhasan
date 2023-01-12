@@ -262,7 +262,7 @@ https://templatemo.com/tm-569-edu-meeting
               <div class="meeting-item ">
                 <div class=" thumb">
                   <div class="price">
-                    <span>Mubaligh</span>
+                    <span>Bandung</span>
                   </div>
                   <a href="meeting-details.html"><img src="assets/images/santripp.jpeg" alt="New Lecturer Meeting"></a>
                 </div>

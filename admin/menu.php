@@ -9,9 +9,7 @@ if (!isset($_SESSION["login"])) {
 include "../koneksi.php";
 
 //$dmmataMenu = query("SELECT * FROM menu");
-$dataMenu = query(" SELECT jenis_menu.`jenis` AS jm, tag_menu.`tag` AS tm, menu.`nama`, menu.`foto`, menu.`deskripsi`, menu.`harga`, menu.`id`, menu.`id_jenis_menu`,menu.`id_tag`  FROM menu,jenis_menu,tag_menu
- WHERE menu.`id_jenis_menu`=jenis_menu.`id`
- AND menu.`id_tag`=tag_menu.`id` ");
+$dataKegiatan = query("SELECT * FROM kegiatan");
 
 $jenisMenu = query("SELECT * FROM jenis_menu ");
 $tagMenu = query("SELECT * FROM tag_menu ");
@@ -19,7 +17,7 @@ $tagMenu = query("SELECT * FROM tag_menu ");
 // var_dump($data["alamat"]);
 if (isset($_POST['submit'])) {
 
-	if (tambah_menu($_POST) > 0) {
+	if (tambah_kegiatan($_POST) > 0) {
 		echo
 		"
 		  <script>
@@ -37,7 +35,7 @@ if (isset($_POST['submit'])) {
 }
 
 if (isset($_GET['id'])) {
-	if (hapusMenu($_POST) > 0) {
+	if (hapus_kegiatan($_POST) > 0) {
 		echo
 		"
 		  <script>
@@ -55,9 +53,8 @@ if (isset($_GET['id'])) {
 }
 
 if (isset($_POST['update'])) {
-	// var_dump($_POST);
-	// die();
-	if (edit_menu($_POST) > 0) {
+
+	if (edit_kegiatan($_POST) > 0) {
 		echo "<script>
      alert('Data berhasil diupdate');
 	 document.location.href = 'menu.php';  
@@ -138,46 +135,36 @@ $title = "Dunia Kita Resto Admin Panel";
 							<div class="row">
 								<div class="col-md-6">
 									<div>
-										<label>Jenis Menu
-										</label>
-										<select class="select2 form-select shadow-none" name="jenis_menu" id="jenis_menu" style="width: 100%; height: 36px">
-											<option value="">--Select--</option>
-											<?php foreach ($jenisMenu as $j) :  ?>
-												<option value="<?= $j['id']; ?>"><?= $j['jenis']; ?></option>
-											<?php endforeach; ?>
-										</select>
-									</div>
-									<div>
-										<label>Tag Menu
-										</label>
-										<select class="select2 form-select shadow-none" name="tag_menu" id="tag_menu" style="width: 100%; height: 36px">
-											<option value="">--Select--</option>
-											<?php foreach ($tagMenu as $tm) :  ?>
-												<option value="<?= $tm['id']; ?>"><?= $tm['tag']; ?></option>
-											<?php endforeach; ?>
-										</select>
-									</div>
-									<div>
 										<label>Nama
 										</label>
 										<input type="text" name="nama" id="nama" class="form-control" required />
 									</div>
 									<div>
-										<label>Deskripsi
+										<label>Lokasi
+										</label>
+										<input type="text" name="lokasi" id="lokasi" class="form-control" required />
+									</div>
+									<div>
+										<label>
+											Deskripsi
 										</label>
 										<textarea name="deskripsi" id="deskripsi" class="form-control" style="height: 160px;"></textarea>
 									</div>
 									<div>
-										<label>Harga
-										</label>
-										<input type="number" name="harga" id="harga" class="form-control" required />
+										<label>Tanggal</label>
+										<div class="input-group">
+											<input type="text" class="form-control tanggal" name="tanggal" placeholder="yyyy/mm/dd" />
+											<div class="input-group-append">
+												<span class="input-group-text h-100"><i class="mdi mdi-calendar"></i></span>
+											</div>
+										</div>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div>
 										<label>Foto
 										</label>
-										<input type="file" name="foto_menu" id="foto_menu" class="form-control mb-2" required onchange="loadFile(event)" />
+										<input type="file" name="foto_kegiatan" id="foto_kegiatan" class="form-control mb-2" required onchange="loadFile(event)" />
 										<img align="right" width="300" height="300" id="output">
 									</div>
 								</div>
@@ -203,30 +190,26 @@ $title = "Dunia Kita Resto Admin Panel";
 							<thead align="center">
 								<tr>
 									<th width="5%">No</th>
-									<th>Jenis Menu</th>
 									<th>Foto</th>
-									<th>Tag Menu</th>
 									<th>Nama</th>
+									<th>Lokasi</th>
 									<th>Deskripsi</th>
-									<th>Harga</th>
+									<th>Tanggal</th>
 									<th width="10%">Aksi</th>
 								</tr>
 							</thead>
 							<tbody align="center">
 								<?php $no = 1 ?>
-								<?php foreach ($dataMenu as $dm) : ?>
+								<?php foreach ($dataKegiatan as $dm) : ?>
 									<tr>
 										<td><?= $no++ ?></td>
-										<td><?= $dm['jm'] ?></td>
 										<td>
 											<img src="../public/assets/img/menu/<?= $dm['foto']; ?>" width='70' height='90' alt="">
 										</td>
-										<td><?= $dm['tm'] ?></td>
 										<td><?= $dm['nama'] ?></td>
+										<td><?= $dm['lokasi'] ?></td>
 										<td><?= $dm['deskripsi'] ?></td>
-										<td>
-											Rp.<?= number_format($dm['harga'], 0, ",", "."); ?>
-										</td>
+										<td><?= $dm['tanggal'] ?></td>
 										<td class="">
 											<a href='?id=<?= $dm['id'] ?>' type="button" class="btn btn-danger btn-sm">
 												<i class="fas fa-trash"></i>
@@ -252,33 +235,22 @@ $title = "Dunia Kita Resto Admin Panel";
 															<div class="col-md-12">
 																<div class="card">
 																	<div class="card-body">
-																		<label for="jenis_menu">Jenis Menu</label>
-																		<div class="mb-4">
-																			<select class="select2 form-select shadow-none" name="jenis_menu" id="jenis_menu" style="width: 100%; height: 36px">
-																				<?php foreach ($jenisMenu as $jm) :  ?>
-																					<option value="<?= $jm['id']; ?>" <?php if ($dm['id_jenis_menu'] == $jm['id']) echo 'selected = "selected"'; ?>><?= $jm['jenis']; ?></option>
-																				<?php endforeach; ?>
-																			</select>
-																		</div>
-																		<label for="tag_menu">Jenis Menu</label>
-																		<div class="mb-4">
-																			<select class="select2 form-select shadow-none" name="tag_menu" id="tag_menu" style="width: 100%; height: 36px">
-																				<?php foreach ($tagMenu as $tm) :  ?>
-																					<option value="<?= $tm['id']; ?>" <?php if ($dm['id_tag'] == $tm['id']) echo 'selected = "selected"'; ?>><?= $tm['tag']; ?></option>
-																				<?php endforeach; ?>
-																			</select>
-																		</div>
+
 																		<div class="mb-1">
 																			<label>Nama
 																			</label>
 																			<input type="text" class="form-control " id="nama" name="nama" value="<?= $dm['nama'] ?>" />
 																		</div>
 																		<div class="mb-1">
+																			<label>Lokasi
+																			</label>
+																			<input type="text" class="form-control " id="lokasi" name="lokasi" value="<?= $dm['lokasi'] ?>" />
+																		</div>
+																		<div class="mb-1">
 																			<label>Foto
 																			</label>
 																			<input type="file" name="foto_menu" id="foto_menu" class="form-control mb-2" />
 																			<img src="../public/assets/img/menu/<?= $dm['foto']; ?>" width='70' height='90' alt="">
-
 																		</div>
 
 																		<div class="mb-1">
@@ -287,11 +259,14 @@ $title = "Dunia Kita Resto Admin Panel";
 																			<textarea name="deskripsi" id="deskripsi" class="form-control" style="height: 160px;"><?= $dm['deskripsi'] ?></textarea>
 																		</div>
 																		<div class="mb-1">
-																			<label>Harga
-																			</label>
-																			<input type="number" name="harga" id="harga" class="form-control mb-2" value="<?= $dm['harga'] ?>" />
+																			<label>Tanggal Selesai</label>
+																			<div class="input-group">
+																				<input type="text" class="form-control tanggal" name="tanggal" id="tanggal<?= $dm['id'] ?>" value="<?= $dm['tanggal'] ?>" />
+																				<div class="input-group-append">
+																					<span class="input-group-text h-100"><i class="mdi mdi-calendar"></i></span>
+																				</div>
+																			</div>
 																		</div>
-
 																	</div>
 																</div>
 																<div class=" modal-footer">
@@ -376,7 +351,24 @@ $title = "Dunia Kita Resto Admin Panel";
 		$("#zero_config").DataTable();
 	</script>
 
-
+	<script src="../public/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+	<script src="../public/assets/libs/quill/dist/quill.min.js"></script>
+	<script>
+		/*datepicker*/
+		jQuery(".tanggal").datepicker({
+			format: 'yyyy/mm/dd',
+			startDate: '-3d',
+			todayHighlight: true,
+		});
+	</script>
+	<!-- <script>
+		/*datepicker*/
+		jQuery(".tanggal").datepicker({
+			format: 'yyyy/mm/dd',
+			startDate: '-3d',
+			todayHighlight: true,
+		});
+	</script> -->
 
 
 </body>

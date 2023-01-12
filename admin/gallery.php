@@ -129,10 +129,18 @@ $title = "Dunia Kita Resto Admin Panel";
 							<h4 align="center">FORM TAMBAH DATA GALLERY</h4>
 							<div class="row">
 								<div class="col-lg-6">
+									<div></div>
 									<label class="col-lg-2">Foto
 									</label>
 									<input type="file" name="foto" id="foto" class="form-control mb-3" onchange="loadFile(event)" required />
 									<img id="output" height="200" width="300">
+								</div>
+
+								<div class="col-lg-6">
+									<label>
+										Deskripsi
+									</label>
+									<textarea name="deskripsi" id="deskripsi" class="form-control" style="height: 160px;"></textarea>
 								</div>
 							</div>
 						</div>
