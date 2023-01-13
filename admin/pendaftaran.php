@@ -8,9 +8,9 @@ if (!isset($_SESSION["login"])) {
 include "../koneksi.php";
 
 
-$dataPromo = query("SELECT sekolah.`tingkat` AS nama, promo_pengumuman.`foto`,promo_pengumuman.`judul`,promo_pengumuman.`deskripsi`,promo_pengumuman.`id_sekolah`
-,promo_pengumuman.`tanggal_mulai`,promo_pengumuman.`tanggal_selesai`,promo_pengumuman.`id` FROM promo_pengumuman INNER JOIN `sekolah` ON
- sekolah.`id`=promo_pengumuman.`id_sekolah`");
+$dataPendaftaran = query("SELECT sekolah.`tingkat` AS sekolah, pendaftaran.`foto`,pendaftaran.`nama`,pendaftaran.`alamat`,pendaftaran.`id_sekolah`
+,pendaftaran.`tgl_masuk`,pendaftaran.`jenis_kelamin`,pendaftaran.`id` FROM pendaftaran INNER JOIN `sekolah` ON
+ sekolah.`id`=pendaftaran.`id_sekolah`");
 
 $sekolah = query("SELECT * FROM sekolah ");
 
@@ -21,12 +21,12 @@ if (isset($_POST['submit'])) {
 	// var_dump($_FILES);
 	// die();
 
-	if (tambah_promo($_POST) > 0) {
+	if (tambah_pendaftaran($_POST) > 0) {
 		echo
 		"
 		  <script>
 		  alert('data berhasil ditambah');
-		  document.location.href = 'promo.php';  
+		  document.location.href = 'pendaftaran.php';  
 		  </script>
 		  ";
 	} else {
@@ -39,12 +39,12 @@ if (isset($_POST['submit'])) {
 }
 
 if (isset($_GET['id'])) {
-	if (hapus_promo($_POST) > 0) {
+	if (hapus_pendaftaran($_POST) > 0) {
 		echo
 		"
 		  <script>
 		  alert('data berhasil dihapus');
-		  document.location.href = 'promo.php';  
+		  document.location.href = 'pendaftaran.php';  
 		  </script>
 		  ";
 	} else {
@@ -59,17 +59,17 @@ if (isset($_GET['id'])) {
 if (isset($_POST['update'])) {
 	// var_dump($_POST);
 	// die();
-	if (edit_promo($_POST) > 0) {
+	if (edit_pendaftaran($_POST) > 0) {
 		echo "<script>
      alert('Data berhasil diupdate');
-	 document.location.href = 'promo.php';  
+	 document.location.href = 'pendaftaran.php';  
     </script>";
 	} else {
 		echo mysqli_error($con);
 	}
 }
 
-$title = "Dunia Kita Resto Admin Panel";
+$title = "ponpes AL - Hasan";
 
 ?>
 <!DOCTYPE html>
@@ -142,7 +142,7 @@ $title = "Dunia Kita Resto Admin Panel";
 									<div>
 										<label>Tingkat Pendidikan
 										</label>
-										<select class="select2 form-select shadow-none" name="id_tipe" id="id_tipe" style="width: 100%; height: 36px">
+										<select class="select2 form-select shadow-none" name="id_sekolah" id="id_sekolah" style="width: 100%; height: 36px">
 											<option value="">--Select--</option>
 											<?php foreach ($sekolah as $t) :  ?>
 												<option value="<?= $t['id']; ?>"><?= $t['tingkat']; ?></option>
@@ -150,36 +150,38 @@ $title = "Dunia Kita Resto Admin Panel";
 										</select>
 									</div>
 									<div>
-										<label>Judul
+										<label>Nama
 										</label>
-										<input type="text" name="judul" id="judul" class="form-control" required />
+										<input type="text" name="nama" id="nama" class="form-control" required />
+									</div>
+									<div>
+										<label>Jenis Kelamin
+										</label>
+										<select name="jenis_kelamin" id="jenis_kelamin" class="select2 form-select shadow-none">
+											<option value="Laki-Laki">--pilih--</option>
+											<option value="Laki-Laki">Laki-Laki</option>
+											<option value="Perempuan">Perempuan</option>
+
+										</select>
 									</div>
 									<div class="input">
-										<label>Deskripsi
+										<label>Alamat
 										</label>
-										<textarea name="deskripsi" id="deskripsi" class="form-control" style="height: 160px;"></textarea>
+										<textarea name="alamat" id="alamat" class="form-control" style="height: 160px;"></textarea>
 									</div>
 									<div>
-										<label>Tanggal Mulai</label>
+										<label>Tanggal Masuk</label>
 										<div class="input-group">
-											<input type="text" class="form-control " name="tanggal_mulai" id="tanggal_mulai" placeholder="yyyy/mm/dd" />
+											<input type="text" class="form-control tgl_masuk " name="tgl_masuk" id="tgl_masuk" placeholder="yyyy/mm/dd" />
 											<div class="input-group-append">
 												<span class="input-group-text h-100"><i class="mdi mdi-calendar"></i></span>
 											</div>
 										</div>
 									</div>
-									<div>
-										<label>Tanggal Selesai</label>
-										<div class="input-group">
-											<input type="text" class="form-control " name="tanggal_selesai" id="tanggal_selesai" placeholder="yyyy/mm/dd" />
-											<div class="input-group-append">
-												<span class="input-group-text h-100"><i class="mdi mdi-calendar"></i></span>
-											</div>
-										</div>
-									</div>
+
 								</div>
 								<div class="col-md-6">
-									<label>Foto
+									<label>Foto Santri
 									</label>
 									<input type="file" name="foto" id="foto" class="form-control mb-3" onchange="loadFile(event)" required />
 									<img id="output" width="220px" height="300" align="right">
@@ -203,28 +205,28 @@ $title = "Dunia Kita Resto Admin Panel";
 								<thead align="center">
 									<tr>
 										<th width="5%">No</th>
+										<th>Tingkat Pendidikan</th>
 										<th>Nama</th>
 										<th>Foto</th>
-										<th>Judul</th>
-										<th>Deskripsi</th>
-										<th>Tanggal Mulai</th>
-										<th>Tanggal Selesai</th>
+										<th>Jenis Kelamin</th>
+										<th>Alamat</th>
+										<th>Tanggal Masuk</th>
 										<th width="10%">Aksi</th>
 									</tr>
 								</thead>
 								<tbody align="center">
 									<?php $no = 1 ?>
-									<?php foreach ($dataPromo as $d) : ?>
+									<?php foreach ($dataPendaftaran as $d) : ?>
 										<tr>
 											<td><?= $no++ ?></td>
+											<td><?= $d['sekolah'] ?></td>
 											<td><?= $d['nama'] ?></td>
 											<td>
 												<img src="../public/assets/img/promo/<?= $d['foto']; ?>" width='70' height='90' alt="">
 											</td>
-											<td><?= $d['judul'] ?></td>
-											<td><?= $d['deskripsi'] ?></td>
-											<td><?= $d['tanggal_mulai'] ?></td>
-											<td><?= $d['tanggal_selesai'] ?></td>
+											<td><?= $d['jenis_kelamin'] ?></td>
+											<td><?= $d['alamat'] ?></td>
+											<td><?= $d['tgl_masuk'] ?></td>
 											<td>
 												<a href='?id=<?= $d['id'] ?>' type="button" class="btn btn-danger btn-sm">
 													<i class="fas fa-trash"></i>
@@ -253,10 +255,9 @@ $title = "Dunia Kita Resto Admin Panel";
 																		<div class="card-body">
 																			<label for="hari" style="font-size: 13px;">Nama</label>
 																			<div class="mb-4">
-																				<select class="select2 form-select shadow-none" name="tipe" id="tipe" style="width: 100%; height: 36px">
+																				<select class="select2 form-select shadow-none" name="id_sekolah" id="id_sekolah" style="width: 100%; height: 36px">
 																					<?php foreach ($sekolah as $t) :  ?>
-																						<option value="<?= $t['id']; ?>" <?php if ($d['id_sekolah'] == $t['id']) echo 'selected = "selected"'; ?>><?= $t['tipe']; ?></option>
-
+																						<option value="<?= $t['id']; ?>" <?php if ($d['id_sekolah'] == $t['id']) echo 'selected = "selected"'; ?>><?= $t['tingkat']; ?></option>
 																					<?php endforeach; ?>
 																				</select>
 																			</div>
@@ -268,33 +269,36 @@ $title = "Dunia Kita Resto Admin Panel";
 
 																			</div>
 																			<div class="mb-1">
-																				<label>Judul
+																				<label>Nama
 																				</label>
-																				<input type="text" class="form-control " id="judul" name="judul" value="<?= $d['judul'] ?>" />
+																				<input type="text" class="form-control " id="nama" name="nama" value="<?= $d['nama'] ?>" />
 																			</div>
 																			<div class="mb-1">
-																				<label>Deskripsi
-																				</label>
-																				<textarea name="deskripsi" id="deskripsi" class="form-control" style="height: 160px;"><?= $d['deskripsi'] ?></textarea>
-																			</div>
-																			<div class="mb-1">
-																				<label>Tanggal Mulai</label>
+																				<label>Jenis Kelamin</label>
 																				<div class="input-group">
-																					<input type="text" class="form-control tanggal_mulai" name="tanggal_mulai" id="tanggal_mulai<?= $d['id'] ?>" value="<?= $d['tanggal_mulai'] ?>" />
+																					<select class="select2 form-select shadow-none" name="jenis_kelamin" id="jenis_kelamin" style="width: 100%; height: 36px">
+																						<option value="" selected><?= $d['jenis_kelamin'] ?></option>
+																						<option value="Laki-Laki">Laki-Laki</option>
+																						<option value="Perempuan">Perempuan</option>
+
+																					</select>
+																				</div>
+																			</div>
+																			<div class="mb-1">
+																				<label>Alamat
+																				</label>
+																				<textarea name="alamat" id="alamat" class="form-control" style="height: 160px;"><?= $d['alamat'] ?></textarea>
+																			</div>
+																			<div class="mb-1">
+																				<label>Tanggal Masuk</label>
+																				<div class="input-group">
+																					<input type="text" class="form-control tgl_masuk" name="tgl_masuk" id="tgl_masuk<?= $d['id'] ?>" value="<?= $d['tgl_masuk'] ?>" />
 																					<div class="input-group-append">
 																						<span class="input-group-text h-100"><i class="mdi mdi-calendar"></i></span>
 																					</div>
 																				</div>
 																			</div>
-																			<div class="mb-1">
-																				<label>Tanggal Selesai</label>
-																				<div class="input-group">
-																					<input type="text" class="form-control tanggal_selesai" name="tanggal_selesai" id="tanggal_selesai<?= $d['id'] ?>" value="<?= $d['tanggal_selesai'] ?>" />
-																					<div class="input-group-append">
-																						<span class="input-group-text h-100"><i class="mdi mdi-calendar"></i></span>
-																					</div>
-																				</div>
-																			</div>
+
 																		</div>
 																	</div>
 																	<div class="modal-footer">
@@ -392,31 +396,14 @@ $title = "Dunia Kita Resto Admin Panel";
 
 	<script>
 		/*datepicker*/
-		jQuery("#tanggal_mulai").datepicker({
-			format: 'yyyy/mm/dd',
-			startDate: '-3d',
-			todayHighlight: true,
-		});
-		jQuery("#tanggal_selesai").datepicker({
+		jQuery(".tgl_masuk").datepicker({
 			format: 'yyyy/mm/dd',
 			startDate: '-3d',
 			todayHighlight: true,
 		});
 	</script>
 
-	<script>
-		/*datepicker*/
-		jQuery(".tanggal_mulai").datepicker({
-			format: 'yyyy/mm/dd',
-			startDate: '-3d',
-			todayHighlight: true,
-		});
-		jQuery(".tanggal_selesai").datepicker({
-			format: 'yyyy/mm/dd',
-			startDate: '-3d',
-			todayHighlight: true,
-		});
-	</script>
+
 </body>
 
 </html>

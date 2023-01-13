@@ -185,14 +185,14 @@ https://templatemo.com/tm-569-edu-meeting
           <div class="accordions is-first-expanded">
             <article class="accordion">
               <div class="accordion-head">
-                <span>Beridirnya Ponpes</span>
+                <span>Pondok Pesantren Al-Hasan</span>
                 <span class="icon">
                   <i class="icon fa fa-chevron-right"></i>
                 </span>
               </div>
               <div class="accordion-body">
                 <div class="content">
-                  <p>If you want to get the latest collection of HTML CSS templates for your websites, you may visit <a rel="nofollow" href="https://www.toocss.com/" target="_blank">Too CSS website</a>. If you need a working contact form script, please visit <a href="https://templatemo.com/contact" target="_parent">our contact page</a> for more info.</p>
+                  <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus ducimus magni numquam quidem ipsam excepturi ipsum sed, atque, consequuntur soluta necessitatibus deleniti distinctio nostrum! Hic quaerat reprehenderit consectetur veniam minus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, recusandae necessitatibus quas similique ratione amet? Nulla ratione, vitae similique ea, numquam, architecto perferendis quam accusantium vero tempore aliquam incidunt expedita? If you want to get the latest collection of HTML CSS templates for your websites, you may visit <a rel="nofollow" href="https://www.toocss.com/" target="_blank">Too CSS website</a>. If you need a working contact form script, please visit <a href="https://templatemo.com/contact" target="_parent">our contact page</a> for more info.</p>
                 </div>
               </div>
             </article>
@@ -210,7 +210,7 @@ https://templatemo.com/tm-569-edu-meeting
                 </div>
               </div>
             </article>
-            <article class="accordion">
+            <!-- <article class="accordion">
               <div class="accordion-head">
                 <span>Daftar Kitab</span>
                 <span class="icon">
@@ -223,8 +223,8 @@ https://templatemo.com/tm-569-edu-meeting
                     Cras et tortor semper, placerat eros sit amet, porta est. Mauris porttitor sapien et quam volutpat luctus. Nullam sodales ipsum ac neque ultricies varius.</p>
                 </div>
               </div>
-            </article>
-            <article class="accordion last-accordion">
+            </article> -->
+            <!-- <article class="accordion last-accordion">
               <div class="accordion-head">
                 <span>Tentang Kajian</span>
                 <span class="icon">
@@ -237,7 +237,7 @@ https://templatemo.com/tm-569-edu-meeting
                     Sed eleifend metus sit amet magna tristique, posuere laoreet arcu semper. Nulla pellentesque ut tortor sit amet maximus. In eu libero ullamcorper, semper nisi quis, convallis nisi.</p>
                 </div>
               </div>
-            </article>
+            </article> -->
           </div>
         </div>
       </div>
@@ -302,20 +302,6 @@ https://templatemo.com/tm-569-edu-meeting
               <img src="assets/images/course-02.jpg" alt="Course Two">
               <div class="down-content">
                 <h4>Curabitur molestie dignissim purus vel</h4>
-                <div class="info">
-                  <div class="row">
-                    <div class="col-8">
-                      <ul>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                      </ul>
-                    </div>
-                    <div class="col-4">
-                      <span>$180</span>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
             <div class="item">

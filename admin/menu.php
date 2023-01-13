@@ -249,7 +249,7 @@ $title = "Dunia Kita Resto Admin Panel";
 																		<div class="mb-1">
 																			<label>Foto
 																			</label>
-																			<input type="file" name="foto_menu" id="foto_menu" class="form-control mb-2" />
+																			<input type="file" name="foto_kegiatan" id="foto_kegiatan" class="form-control mb-2" />
 																			<img src="../public/assets/img/menu/<?= $dm['foto']; ?>" width='70' height='90' alt="">
 																		</div>
 

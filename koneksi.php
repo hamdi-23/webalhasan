@@ -48,7 +48,6 @@ function ubah($data)
   $alamat = htmlspecialchars($data['alamat']);
   $hp =  htmlspecialchars($data['hp']);;
   $deskripsi = htmlspecialchars($data['deskripsi']);
-  $tagline = htmlspecialchars($data['tagline']);
   $link_video =  htmlspecialchars($data['link_video']);
   $google_map =  htmlspecialchars($data['google_map']);
   $bg_lama = htmlspecialchars($data['bg_lama']);
@@ -73,7 +72,6 @@ function ubah($data)
   alamat = '$alamat',
   hp = '$hp',
   deskripsi = '$deskripsi',
-  tagline = '$tagline',
   foto_bg = '$foto_bg',
   foto_profil = '$foto_profil',
   link_video = '$link_video',
@@ -119,14 +117,14 @@ function upload()
 
 
 // tambah data promo/pengumuman
-function tambah_promo()
+function tambah_pendaftaran()
 {
   global $con;
-  $judul = $_POST['judul'];
-  $deskripsi = $_POST['deskripsi'];
-  $tanggal_mulai = $_POST['tanggal_mulai'];
-  $tanggal_selesai = $_POST['tanggal_selesai'];
-  $id_tipe = $_POST['id_tipe'];
+  $nama = $_POST['nama'];
+  $alamat = $_POST['alamat'];
+  $tgl_masuk = $_POST['tgl_masuk'];
+  $jenis_kelamin = $_POST['jenis_kelamin'];
+  $id_sekolah = $_POST['id_sekolah'];
 
 
   $foto = upload_foto();
@@ -135,7 +133,7 @@ function tambah_promo()
   }
 
   // insert data ke database
-  mysqli_query($con, "INSERT INTO promo_pengumuman VALUES ('','$foto', '$judul', '$deskripsi', '$tanggal_mulai','$tanggal_selesai','$id_tipe')");
+  mysqli_query($con, "INSERT INTO pendaftaran VALUES ('','$foto', '$nama','$jenis_kelamin', '$alamat', '$tgl_masuk','$id_sekolah')");
   return mysqli_affected_rows($con);
 }
 
@@ -190,25 +188,25 @@ function upload_foto()
 }
 
 // hapus data promo
-function hapus_promo()
+function hapus_pendaftaran()
 {
   global $con;
-  mysqli_query($con, "DELETE FROM promo_pengumuman WHERE id='$_GET[id]'");
+  mysqli_query($con, "DELETE FROM pendaftaran WHERE id='$_GET[id]'");
   return mysqli_affected_rows($con);
 }
 
 
 // edit data promo
-function edit_promo($dataPromo)
+function edit_pendaftaran($dataPendaftaran)
 {
   global $con;
   $id = $_POST['id'];
-  $id_tipe = $_POST['tipe'];
-  $foto_lama = $dataPromo['foto_lama'];
-  $judul = htmlspecialchars($dataPromo['judul']);
-  $deskripsi = htmlspecialchars($dataPromo['deskripsi']);
-  $tanggal_mulai = htmlspecialchars($dataPromo['tanggal_mulai']);
-  $tanggal_selesai = htmlspecialchars($dataPromo['tanggal_selesai']);
+  $id_sekolah = $_POST['id_sekolah'];
+  $nama = htmlspecialchars($dataPendaftaran['nama']);
+  $alamat = htmlspecialchars($dataPendaftaran['alamat']);
+  $jenis_kelamin = htmlspecialchars($dataPendaftaran['jenis_kelamin']);
+  $tgl_masuk = htmlspecialchars($dataPendaftaran['tgl_masuk']);
+  $foto_lama = $dataPendaftaran['foto_lama'];
 
 
   // cek gambar apakah upload atau tidak
@@ -217,8 +215,8 @@ function edit_promo($dataPromo)
   } else {
     $foto = upload_foto();
   }
-  mysqli_query($con, "UPDATE promo_pengumuman 
-  SET foto='$foto', judul ='$judul',deskripsi='$deskripsi', tanggal_mulai='$tanggal_mulai',tanggal_selesai='$tanggal_selesai',id_tipe='$id_tipe'
+  mysqli_query($con, "UPDATE pendaftaran 
+  SET foto='$foto', nama ='$nama', jenis_kelamin='$jenis_kelamin',alamat='$alamat',tgl_masuk='$tgl_masuk',id_sekolah='$id_sekolah'
    WHERE id='$id'");
   return mysqli_affected_rows($con);
 }
@@ -375,12 +373,13 @@ function tambah_galery()
 {
 
   global $con;
+  $deskripsi = $_POST['deskripsi'];
   $foto_galery = upload_foto_galery();
   if (!$foto_galery) {
     return false;
   }
 
-  mysqli_query($con, "INSERT INTO gallery VALUES ('','$foto_galery')");
+  mysqli_query($con, "INSERT INTO gallery VALUES ('','$foto_galery', '$deskripsi')");
   return mysqli_affected_rows($con);
 }
 
@@ -439,6 +438,7 @@ function edit_gallery($data)
 {
   global $con;
   $id = $_POST['id'];
+  $deskripsi = $data['deskripsi'];
   $foto_lama = $data['foto_lama'];
 
 
@@ -450,7 +450,7 @@ function edit_gallery($data)
     $foto = upload_foto_galery();
   }
   mysqli_query($con, "UPDATE gallery 
-  SET foto='$foto'
+  SET foto='$foto', deskripsi='$deskripsi'
    WHERE id='$id'");
   return mysqli_affected_rows($con);
 }
@@ -463,37 +463,6 @@ function hapus_gallery()
   return mysqli_affected_rows($con);
 }
 
-
-//tambah data testimoni
-function tambah_testimoni()
-{
-
-  global $con;
-  $nama = $_POST['nama'];
-  $testimoni = $_POST['testimoni'];
-
-  mysqli_query($con, "INSERT INTO testimoni VALUES ('','$nama','$testimoni')");
-  return mysqli_affected_rows($con);
-}
-
-// edit data testimoni 
-function edit_testimoni($data)
-{
-  global $con;
-  $id = $_POST['id'];
-  $nama = htmlspecialchars($data["nama"]);
-  $testimoni = htmlspecialchars($data["testimoni"]);
-  mysqli_query($con, "UPDATE testimoni SET nama='$nama', testimoni='$testimoni' WHERE id='$id'");
-  return mysqli_affected_rows($con);
-}
-
-// hapus data testimoni
-function hapusTestimoni()
-{
-  global $con;
-  mysqli_query($con, "DELETE FROM testimoni WHERE id='$_GET[id]'");
-  return mysqli_affected_rows($con);
-}
 
 // tambah sosial media
 function tambah_sosialMedia()
@@ -532,4 +501,217 @@ function preview()
   global $con;
   mysqli_query($con, "DELETE FROM link_social_media WHERE id='$_GET[id]'");
   return mysqli_affected_rows($con);
+}
+
+
+
+
+// tambah kata santri
+function tambah_katasantri()
+{
+
+  global $con;
+  $nama = $_POST['nama'];
+  $testimoni = $_POST['testimoni'];
+  $foto = upload_foto_santri();
+  if (!$foto) {
+    return false;
+  }
+
+  mysqli_query($con, "INSERT INTO testimoni VALUES ('','$nama','$testimoni','$foto' )");
+  return mysqli_affected_rows($con);
+}
+
+// fungsi utuk upload foto
+function upload_foto_santri()
+{
+  $namaFoto = $_FILES['foto']['name'];
+  $ukuranFoto = $_FILES['foto']['size'];
+  $error = $_FILES['foto']['error'];
+  $tmpFoto = $_FILES['foto']['tmp_name'];
+
+  if ($error === 4) {
+    echo "
+    <script>
+    alert('upload gambar terlebih dahulu');  
+      </script>
+    ";
+    return false;
+  }
+
+  $ekteksiValid = ['jpg', 'png', 'jpeg'];
+  $ektensiGambar = explode('.', $namaFoto);
+  $ektensiGambar = strtolower(end($ektensiGambar));
+
+  // cek ekstensi
+  if (!in_array($ektensiGambar, $ekteksiValid)) {
+    echo "
+    <script>
+    alert('gambar yang diupload tidak sesuai'); 
+    document.location.href = 'testimoni.php';  
+    </script>
+    ";
+    return false;
+  }
+  // cek ukuran file
+  if ($ukuranFoto > 1000000) {
+    echo " <script>
+    alert('gambar yang diupload terlalu besar'); 
+    document.location.href = 'testimoni.php';  
+    </script>
+    ";
+    return false;
+  }
+
+  // membuat nama baru jika ada nama foto yang sama
+  $namaFotoBaru = uniqid();
+  $namaFotoBaru .= '.';
+  $namaFotoBaru .= $ektensiGambar;
+
+  move_uploaded_file($tmpFoto, '../public/assets/img/santri/' . $namaFotoBaru);
+  return $namaFotoBaru;
+}
+
+// edit kata santri
+function edit_katasantri($data)
+{
+  global $con;
+  $id = $_POST['id'];
+  $nama = $data['nama'];
+  $testimoni = $data['testimoni'];
+  $foto_lama = $data['foto_lama'];
+
+
+
+  // cek gambar apakah upload atau tidak
+  if ($_FILES['foto']['error'] === 4) {
+    $foto = $foto_lama;
+  } else {
+    $foto = upload_foto_santri();
+  }
+  mysqli_query($con, "UPDATE testimoni 
+  SET nama='$nama', testimoni='$testimoni',foto='$foto' 
+   WHERE id='$id'");
+  return mysqli_affected_rows($con);
+}
+
+// hapus data testimoni
+function hapus_katasantri()
+{
+  global $con;
+  mysqli_query($con, "DELETE FROM testimoni WHERE id='$_GET[id]'");
+  return mysqli_affected_rows($con);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+function ubah_sejarah($data)
+{
+  global $con;
+  $id = $data['id'];
+  $sejarah = htmlspecialchars($data['sejarah']);
+  $deskripsi1 = htmlspecialchars($data['deskripsi1']);
+  $deskripsi2 = htmlspecialchars($data['deskripsi2']);
+  $deskripsi3 = htmlspecialchars($data['deskripsi3']);
+  $deskripsi4 = htmlspecialchars($data['deskripsi4']);
+
+
+  $foto1_lama = htmlspecialchars($data['foto1_lama']);
+  $foto2_lama =  htmlspecialchars($data['foto2_lama']);
+  $foto3_lama =  htmlspecialchars($data['foto3_lama']);
+  $foto4_lama =  htmlspecialchars($data['foto4_lama']);
+
+  // cek gambar apakah upload atau tidak
+  if ($_FILES['foto1']['error'] === 4) {
+    $foto1 = $foto1_lama;
+  } else {
+    $foto1 = upload_sejarah()['foto1'];
+  }
+  // cek gambar apakah upload atau tidak
+  if ($_FILES['foto2']['error'] === 4) {
+    $foto2 = $foto2_lama;
+  } else {
+    $foto2 = upload_sejarah()['foto2'];
+  }
+  // cek gambar apakah upload atau tidak
+  if ($_FILES['foto3']['error'] === 4) {
+    $foto3 = $foto3_lama;
+  } else {
+    $foto3 = upload_sejarah()['foto3'];
+  }
+  // cek gambar apakah upload atau tidak
+  if ($_FILES['foto4']['error'] === 4) {
+    $foto4 = $foto4_lama;
+  } else {
+    $foto4 = upload_sejarah()['foto4'];
+  }
+
+  // update data di database
+  $query = "UPDATE sejarah SET 
+  sejarah =' $sejarah',
+  foto1 = '$foto1',
+  deskripsi1 = '$deskripsi1',
+  foto2 = '$foto2',
+  deskripsi2 = '$deskripsi2',
+  foto3 = '$foto3',
+  deskripsi3 = '$deskripsi3',
+  foto4 = '$foto4'
+  deskripsi4 = '$deskripsi4',
+  WHERE id = $id
+  ";
+
+  mysqli_query($con, $query);
+  return mysqli_affected_rows($con);
+}
+
+
+//upload data gambar profil
+function upload_sejarah()
+{
+  $nama_foto1 = $_FILES['foto1']['name'];
+  $tmp_foto1 = $_FILES['foto1']['tmp_name'];
+  $nama_foto2 = $_FILES['foto2']['name'];
+  $tmp_foto2 = $_FILES['foto2']['tmp_name'];
+  $nama_foto3 = $_FILES['foto3']['name'];
+  $tmp_foto3 = $_FILES['foto3']['tmp_name'];
+  $nama_foto4 = $_FILES['foto4']['name'];
+  $tmp_foto4 = $_FILES['foto4']['tmp_name'];
+
+
+
+  //cek ektensi
+  $ektensiGambarValid = ['jpg', 'jpeg', 'png'];
+  $ektensiGambar = explode('.', 'nama_foto1');
+  $ektensiGambar = explode('.', 'nama_foto2');
+  $ektensiGambar = explode('.', 'nama_foto3');
+  $ektensiGambar = explode('.', 'nama_foto4');
+
+  $ektensiGambar = strtolower(end($ektensiGambar));
+
+  if (in_array($ektensiGambar, $ektensiGambarValid)) {
+    echo "
+    <script>
+    alert('yang upload gambar tidak sesuai');  
+    </script>
+    ";
+  };
+
+  // move file gambar
+  move_uploaded_file($tmp_foto1, '../public/assets/images/profil/' . $nama_foto1);
+  move_uploaded_file($tmp_foto2, '../public/assets/images/profil/' . $nama_foto2);
+  move_uploaded_file($tmp_foto3, '../public/assets/images/profil/' . $nama_foto3);
+  move_uploaded_file($tmp_foto4, '../public/assets/images/profil/' . $nama_foto4);
+
+
+  return ['foto1' => $nama_foto1, 'foto2' => $nama_foto2, 'foto3' => $nama_foto3, 'foto4' => $nama_foto4];
 }

@@ -15,7 +15,8 @@ $data = query("SELECT * FROM resto WHERE id=1")[0];
 // var_dump($data["alamat"]);
 if (isset($_POST['submit'])) {
 
-	// var_dump($_POST);
+	var_dump($_POST);
+	die();
 
 	if (ubah($_POST) > 0) {
 		echo
@@ -102,9 +103,11 @@ $title = "Dunia Kita Resto Admin Panel";
 							<div class="row">
 								<div class="col-md-6">
 									<div>
-										<label for="nama">Nama</label>
-										<input type="text" id="nama" name="nama" class="form-control" value="<?= $data['nama']; ?>" required />
+										<label for="foto_profil" class="mt-3 ">Gambar logo</label>
+										<input type="file" id="foto_profil" name="foto_profil" class="form-control mb-2 " onchange="loadFile1(event)" />
+										<img alt="" width="150px" height="150px" id="output1">
 									</div>
+
 									<div>
 										<label for="hp" class="mt-3">hp</label>
 										<input type="text" id="hp" name="hp" class="form-control" value="<?= $data['hp']; ?> " />
@@ -125,10 +128,7 @@ $title = "Dunia Kita Resto Admin Panel";
 										<label for="google_map" class="mt-3">google map</label>
 										<input type="text" id="google_map" name="google_map" class="form-control" value="<?= $data['google_map']; ?> " />
 									</div>
-									<div>
-										<label for="foto_profil" class="mt-3">Sejarah Singkat</label>
-										<textarea class="form-control" name="deskripsi" id="deskripsi" class="form-control" style="height: 160px;"><?= $data['deskripsi']; ?></textarea>
-									</div>
+
 								</div>
 
 								<div class="col-md-6">
@@ -138,11 +138,9 @@ $title = "Dunia Kita Resto Admin Panel";
 										<img align="right" alt="" width="450" height="220" id="output">
 									</div>
 									<div>
-										<label for="foto_profil" class="mt-3 ">Gambar logo</label>
-										<input type="file" id="foto_profil" name="foto_profil" class="form-control mb-2 " onchange="loadFile1(event)" />
-										<img align="right" alt="" width="150px" height="150px" id="output1">
+										<label for="foto_profil" class="mt-3">Sejarah Singkat</label>
+										<textarea class="form-control" name="deskripsi" id="deskripsi" class="form-control" style="height: 160px;"><?= $data['deskripsi']; ?></textarea>
 									</div>
-
 								</div>
 							</div>
 							<hr>

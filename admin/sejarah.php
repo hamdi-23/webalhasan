@@ -1,60 +1,42 @@
 <?php
-
 // session untuk login
 session_start();
 if (!isset($_SESSION["login"])) {
 	header("Location: login.php");
 	exit;
 }
-
 include "../koneksi.php";
 
-// query menampilkan data
-$data = query("SELECT * FROM `jenis_menu`");
+// $id = $_GET["id"];
+// var_dump($id);
 
+$data = query("SELECT * FROM sejarah WHERE id=1")[0];
 
+// var_dump($data["alamat"]);
 if (isset($_POST['submit'])) {
-	if (tambah_jenis_menu($_POST) > 0) {
-		echo "<script>
-     alert('Data berhasil ditambakan');
-	 document.location.href = 'jenisMenu.php';  
-    </script>";
-	} else {
-		echo mysqli_error($con);
-	}
-}
 
-if (isset($_GET['id'])) {
-	if (hapusJenisMenu($_POST) > 0) {
+	var_dump($_POST);
+	die();
+
+	if (ubah_sejarah($_POST) > 0) {
+
+
 		echo
 		"
 		  <script>
-		  alert('data berhasil dihapus');
-		  document.location.href = 'jenisMenu.php';  
+		  alert('data berhasil dirubah');
+		  document.location.href = 'sejarah.php';  
 		  </script>
 		  ";
 	} else {
 		echo "
 		  <script>
-		  alert('data gagal dihapus');  
+		  alert('data gagal dirubah');  
 		  </script>
 		  ";
 	}
 }
-
-if (isset($_POST['update'])) {
-
-	if (edit_jenisMenu($_POST) > 0) {
-		echo "<script>
-     alert('Data berhasil diupdate');
-	 document.location.href = 'jenisMenu.php';  
-    </script>";
-	} else {
-		echo mysqli_error($con);
-	}
-}
 $title = "Dunia Kita Resto Admin Panel";
-
 
 ?>
 <!DOCTYPE html>
@@ -68,7 +50,7 @@ $title = "Dunia Kita Resto Admin Panel";
 	<meta name="keywords" content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Matrix lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Matrix admin lite design, Matrix admin lite dashboard bootstrap 5 dashboard template" />
 	<meta name="description" content="Matrix Admin Lite Free Version is powerful and clean admin dashboard template, inpired from Bootstrap Framework" />
 	<meta name="robots" content="noindex,nofollow" />
-	<title><?= $title  ?></title>
+	<title> <?= $title ?></title>
 	<!-- Favicon icon -->
 	<link rel="icon" type="image/png" sizes="16x16" href="../public/assets/images/logodk.png" />
 	<link rel="stylesheet" type="text/css" href="../public/assets/extra-libs/multicheck/multicheck.css" />
@@ -84,8 +66,6 @@ $title = "Dunia Kita Resto Admin Panel";
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-	<link rel="stylesheet" type="text/css" href="../public/assets/extra-libs/multicheck/multicheck.css" />
-	<link href="../public/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -116,104 +96,76 @@ $title = "Dunia Kita Resto Admin Panel";
 			<!-- Container fluid  -->
 			<!-- ============================================================== -->
 			<div class="container-fluid">
-				<div class="card">
-					<div class="row">
-						<form action="" method="POST" enctype="multipart/form-data">
-							<div class="card-body">
-								<h4 align="center">FORM TAMBAH DATA JENIS MENU</h4>
-								<div class="col-lg-6">
-									<label>Jenis Menu
-									</label>
-									<input type="text" name="jenis_menu" id="jenis_menu" class="form-control" required />
+				<form action="" method="POST" enctype="multipart/form-data">
+					<div class="card">
+						<div class="card-body">
+							<input type="hidden" id="id" name="id" class="form-control" value="<?= $data['id']; ?> " required />
+							<input type="text" id="foto1_lama" name="foto1_lama" class="form-control" value="<?= $data['foto1']; ?> " />
+							<input type="text" id="foto2_lama" name="foto2_lama" class="form-control" value="<?= $data['foto2']; ?> " />
+							<input type="text" id="foto3_lama" name="foto3_lama" class="form-control" value="<?= $data['foto3']; ?> " />
+							<input type="text" id="foto4_lama" name="foto4_lama" class="form-control" value="<?= $data['foto4']; ?> " />
+
+							<div class="row">
+								<div class="col-md-6">
+									<div>
+										<label for="foto1" class="mt-3 ">Gambar logo</label>
+										<input type="file" id="foto1" name="foto1" class="form-control mb-2 " onchange="loadFile1(event)" />
+										<img alt="" width="150px" height="150px" id="output1">
+									</div>
+									<div>
+										<label for="deskripsi1" class="mt-3">Keterangan</label>
+										<input type="text" id="deskripsi1" name="deskripsi1" class="form-control" value="<?= $data['deskripsi1']; ?> " />
+									</div>
+									<div>
+										<label for="sejarah" class="mt-3">Sejarah Singkat</label>
+										<textarea class="form-control" name="sejarah" id="sejarah" class="form-control" style="height: 160px;"><?= $data['sejarah']; ?></textarea>
+									</div>
+									<div>
+										<label for="foto2" class="mt-3">Foto Fasilitas 1</label>
+										<input type="file" id="foto2" name="foto2" class="form-control mb-1" onchange="loadFile2(event)" />
+										<img alt="" width="450" height="220" id="output2">
+									</div>
+									<div>
+										<label for="deskripsi2" class="mt-3">Keterangan</label>
+										<input type="text" id="deskripsi2" name="deskripsi2" class="form-control" value="<?= $data['deskripsi2']; ?> " />
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div>
+										<label for="foto3">Foto Fasilitas 2</label>
+										<input type="file" id="foto3" name="foto3" class="form-control mb-1" onchange="loadFile3(event)" />
+										<img align="right" alt="" width="450" height="220" id="output3">
+									</div>
+									<div>
+										<label for="deskripsi3" class="mt-3">Keterangan</label>
+										<input type="text" id="deskripsi3" name="deskripsi3" class="form-control" value="<?= $data['deskripsi3']; ?> " />
+									</div>
+									<div>
+										<label for="foto4" class="mt-3">Foto Fasilitas 3</label>
+										<input type="file" id="foto4" name="foto4" class="form-control mb-1" onchange="loadFile4(event)" />
+										<img src="../public/assets/img/profil/<?= $data['foto2']; ?>" width='200' height='140' alt="">
+									</div>
+									<div>
+										<label for="deskripsi4" class="mt-3">Keterangan</label>
+										<input type="text" id="deskripsi4" name="deskripsi4" class="form-control" value="<?= $data['deskripsi4']; ?> " />
+									</div>
+
 								</div>
 							</div>
 							<hr>
-							<div class="card-footer">
-								<div align="right">
-									<button type="submit" name="submit" class="btn btn-success  text-white">simpan</button>
-								</div>
-							</div>
-						</form>
-					</div>
-					<div class="card">
-						<div class="card-body">
-							<h5 class="card-title">Data Jenis Menu</h5>
-							<div class="table-responsive">
-								<table id="zero_config" class="table table-striped table-bordered">
-									<thead align="center" style="font-weight: 600;">
-										<tr>
-											<th width="5%">No</th>
-											<th>Jenis Menu</th>
-											<th width="10%">Aksi</th>
-										</tr>
-									</thead>
-									<tbody align="center">
-										<?php $no = 1 ?>
-										<?php foreach ($data as $d) : ?>
-											<tr>
-												<td><?= $no++ ?></td>
-												<td><?= $d['jenis'] ?></td>
-
-												<td>
-													<a href='?id=<?= $d['id'] ?>' type="button" class="btn btn-danger btn-sm">
-														<i class="fas fa-trash"></i>
-													</a>
-													<a type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $d['id'] ?>">
-														<i class="fas fa-edit"></i>
-													</a>
-												</td>
-											</tr>
-											<!-- modal edit -->
-											<div class="modal fade" id="exampleModal<?= $d['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-												<div class="modal-dialog">
-													<div class="modal-content">
-														<div class="modal-header blueku">
-															<h1 class="modal-title fs-5" id="exampleModalLabel">Edit Data</h1>
-															<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-														</div>
-														<div class="modal-body">
-															<form action="" method="POST" enctype="multipart/form-data">
-																<div class="row">
-																	<div class="col-md-12">
-																		<div class="card">
-																			<div class="card-body">
-																				<div class="mb-1">
-																					<label>Jenis Menu
-																					</label>
-																					<input type="text" class="form-control " id="jenis_menu" name="jenis_menu" value="<?= $d['jenis'] ?>" />
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																	<div class="modal-footer">
-																		<input type="hidden" name="id" id="id" value="<?= $d['id'] ?>">
-																		<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-																		<button type="submit" name="update" id="update" class="btn btn-primary">Update</button>
-																	</div>
-																</div>
-															</form>
-
-														</div>
-
-													</div>
-												</div>
-											</div>
-										<?php endforeach; ?>
-									</tbody>
-								</table>
+						</div>
+						<div class="card-footer">
+							<div align="right">
+								<button type="submit" name="submit" class="btn btn-success text-white">simpan</button>
 							</div>
 						</div>
 					</div>
-				</div>
 
-
-				<!-- class cont -->
+				</form>
 			</div>
 		</div>
 	</div>
-
-
-
 
 	<!-- ============================================================== -->
 	<!-- End Container fluid  -->
@@ -250,18 +202,51 @@ $title = "Dunia Kita Resto Admin Panel";
 	<script src="../public/assets/libs/flot/jquery.flot.crosshair.js"></script>
 	<script src="../public/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
 	<script src="../public/assets/dist/js/pages/chart/chart-page-init.js"></script>
-
 	<!-- this page js -->
+
 	<script src="../public/assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
 	<script src="../public/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
 	<script src="../public/assets/extra-libs/DataTables/datatables.min.js"></script>
 	<script>
-		/****************************************
-		 *       Basic Table                   *
-		 ****************************************/
-		$("#zero_config").DataTable();
+		var loadFile1 = function(event) {
+			var reader = new FileReader();
+			reader.onload = function() {
+				var output1 = document.getElementById('output1');
+				output1.src = reader.result;
+			};
+			reader.readAsDataURL(event.target.files[0]);
+		};
 	</script>
-
+	<script>
+		var loadFile2 = function(event) {
+			var reader = new FileReader();
+			reader.onload = function() {
+				var output2 = document.getElementById('output2');
+				output2.src = reader.result;
+			};
+			reader.readAsDataURL(event.target.files[0]);
+		};
+	</script>
+	<script>
+		var loadFile3 = function(event) {
+			var reader = new FileReader();
+			reader.onload = function() {
+				var output3 = document.getElementById('output3');
+				output3.src = reader.result;
+			};
+			reader.readAsDataURL(event.target.files[0]);
+		};
+	</script>
+	<script>
+		var loadFile4 = function(event) {
+			var reader = new FileReader();
+			reader.onload = function() {
+				var output4 = document.getElementById('output4');
+				output4.src = reader.result;
+			};
+			reader.readAsDataURL(event.target.files[0]);
+		};
+	</script>
 </body>
 
 </html>

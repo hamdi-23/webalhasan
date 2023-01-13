@@ -15,7 +15,7 @@
         </li> -->
 
         <li class="sidebar-item">
-          <a href="jenisMenu.php" class="sidebar-link"> <i class="mdi mdi-relative-scale"></i><span class="hide-menu"> Jenis Kegiatan </span></a>
+          <a href="sejarah.php" class="sidebar-link"> <i class="mdi mdi-relative-scale"></i><span class="hide-menu">Sejaarah </span></a>
         </li>
         <li class="sidebar-item">
           <a href="menu.php" class="sidebar-link"> <i class="mdi mdi-border-outside"></i><span class="hide-menu"> Kegiatan </span></a>
@@ -27,13 +27,13 @@
           <a class="sidebar-link waves-effect waves-dark sidebar-link" href="gallery.php" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Galery</span></a>
         </li>
         <li class="sidebar-item">
-          <a href="promo.php" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Pendaftaran</span></a>
-        </li>
-        <li class="sidebar-item">
           <a class="sidebar-link waves-effect waves-dark sidebar-link" href="testimoni.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Testimoni</span></a>
         </li>
         <li class="sidebar-item">
           <a class="sidebar-link waves-effect waves-dark sidebar-link" href="sosialMedia.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Sosial Media</span></a>
+        </li>
+        <li class="sidebar-item">
+          <a href="pendaftaran.php" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Pendaftaran</span></a>
         </li>
         <li class="sidebar-item mt-3 d-flex justify-content-center">
           <!-- <p><a href="preview.php" target="iframe_a">W3Schools.com</a></p> -->

@@ -13,7 +13,7 @@ $data = query("SELECT * FROM `testimoni`");
 
 
 if (isset($_POST['submit'])) {
-	if (tambah_testimoni($_POST) > 0) {
+	if (tambah_katasantri($_POST) > 0) {
 		echo "<script>
      alert('Data berhasil ditambakan');
 	 document.location.href = 'testimoni.php';  
@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
 }
 
 if (isset($_GET['id'])) {
-	if (hapusTestimoni($_POST) > 0) {
+	if (hapus_katasantri($_POST) > 0) {
 		echo
 		"
 		  <script>
@@ -43,7 +43,9 @@ if (isset($_GET['id'])) {
 
 if (isset($_POST['update'])) {
 
-	if (edit_testimoni($_POST) > 0) {
+	// var_dump($_POST);
+	// die();
+	if (edit_katasantri($_POST) > 0) {
 		echo "<script>
      alert('Data berhasil diupdate');
 	 document.location.href = 'testimoni.php';  
@@ -76,6 +78,7 @@ $title = "Dunia Kita Resto Admin Panel";
 	<link href="../public/assets/libs/flot/css/float-chart.css" rel="stylesheet" />
 	<!-- Custom CSS -->
 	<link href="../public/assets/dist/css/style.min.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="../public/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" />
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -109,39 +112,43 @@ $title = "Dunia Kita Resto Admin Panel";
 		<?php include '../public/layouts/sidebar.php'; ?>
 		<!-- end sidebar -->
 		<div class="page-wrapper">
-
 			<!-- ============================================================== -->
 			<!-- Container fluid  -->
 			<!-- ============================================================== -->
 			<div class="container-fluid">
 				<form action="" method="POST" enctype="multipart/form-data">
-					<div class="col">
-						<div class="card">
-							<div class="card-body">
-								<h4 align="center">FORM TAMBAH DATA TESTIMONI</h4>
-								<div class="row">
-									<div class="col-lg-6">
-										<div>
-											<label>Nama
-											</label>
-											<input type="text" name="nama" id="nama" class="form-control" required />
-										</div>
+					<div class="card">
 
-										<div>
-											<label>Testimoni
-											</label>
-											<textarea name="testimoni" id="testimoni" class="form-control" style="height: 160px;"></textarea>
-										</div>
+						<div class="card-body">
+							<h4 align="center">FORM TAMBAH DATA KATA SANTRI</h4>
+							<div class="row">
+								<div class="col-lg-6">
+									<div>
+										<label>Nama
+										</label>
+										<input type="text" name="nama" id="nama" class="form-control" required />
+									</div>
+									<div>
+										<label>Foto
+										</label>
+										<input type="file" name="foto" id="foto" class="form-control mb-3" onchange="loadFile(event)" required />
+										<img id="output" height="200" width="300">
 									</div>
 								</div>
-							</div>
-							<hr>
-							<div class="card-footer">
-								<div align="right">
-									<button type="submit" name="submit" class="btn btn-success text-white">simpan</button>
+
+								<div class="col-lg-6">
+									<label>
+										Kata Santri
+									</label>
+									<textarea name="testimoni" id="testimoni" class="form-control" style="height: 160px;"></textarea>
 								</div>
 							</div>
-
+						</div>
+						<hr>
+						<div class="card-footer">
+							<div align="right">
+								<button type="submit" name="submit" class="btn btn-success text-white">simpan</button>
+							</div>
 						</div>
 					</div>
 				</form>
@@ -155,7 +162,8 @@ $title = "Dunia Kita Resto Admin Panel";
 									<tr>
 										<th width="5%">No</th>
 										<th>Nama</th>
-										<th>Testimoni</th>
+										<th>Kata Santri</th>
+										<th>Foto</th>
 										<th width="10%">Aksi</th>
 									</tr>
 								</thead>
@@ -166,9 +174,9 @@ $title = "Dunia Kita Resto Admin Panel";
 											<td><?= $no++ ?></td>
 											<td><?= $d['nama'] ?></td>
 											<td><?= $d['testimoni'] ?></td>
-
+											<td> <img src="../public/assets/img/santri/<?= $d['foto']; ?>" width='180' height='120' alt="">
+											</td>
 											<td>
-
 												<a href='?id=<?= $d['id'] ?>' type="button" class="btn btn-danger btn-sm">
 													<i class="fas fa-trash"></i>
 												</a>
@@ -187,14 +195,22 @@ $title = "Dunia Kita Resto Admin Panel";
 													</div>
 													<div class="modal-body">
 														<form action="" method="POST" enctype="multipart/form-data">
+															<input type="hidden" name="foto_lama" id="foto_lama" value="<?= $d['foto'] ?>" class="form-control mb-2" />
 															<div class="row">
 																<div class="col-md-12">
 																	<div class="card">
 																		<div class="card-body">
+
 																			<div class="mb-1">
 																				<label>Nama
 																				</label>
 																				<input type="text" class="form-control " id="nama" name="nama" value="<?= $d['nama'] ?>" />
+																			</div>
+																			<div class="mb-1">
+																				<label>Foto
+																				</label>
+																				<input type="file" name="foto" id="foto" class="form-control mb-2" />
+																				<img src="../public/assets/img/santri/<?= $d['foto']; ?>" width='200' height='140' alt="">
 																			</div>
 																			<div class="mb-1">
 																				<label>Testimoni
@@ -218,18 +234,27 @@ $title = "Dunia Kita Resto Admin Panel";
 											</div>
 										</div>
 									<?php endforeach; ?>
+									<script>
+										var loadFile = function(event) {
+											var reader = new FileReader();
+											reader.onload = function() {
+												var output = document.getElementById('output');
+												output.src = reader.result;
+											};
+											reader.readAsDataURL(event.target.files[0]);
+										};
+									</script>
+
 								</tbody>
 							</table>
 						</div>
 					</div>
 				</div>
-				<!-- class cont -->
+
 			</div>
+
 		</div>
 	</div>
-
-
-
 
 	<!-- ============================================================== -->
 	<!-- End Container fluid  -->
@@ -266,7 +291,11 @@ $title = "Dunia Kita Resto Admin Panel";
 	<script src="../public/assets/libs/flot/jquery.flot.crosshair.js"></script>
 	<script src="../public/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
 	<script src="../public/assets/dist/js/pages/chart/chart-page-init.js"></script>
+	<!-- this page js -->
 
+	<script src="../public/assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+	<script src="../public/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+	<script src="../public/assets/extra-libs/DataTables/datatables.min.js"></script>
 	<!-- this page js -->
 	<script src="../public/assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
 	<script src="../public/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
@@ -278,6 +307,38 @@ $title = "Dunia Kita Resto Admin Panel";
 		$("#zero_config").DataTable();
 	</script>
 
+
+
+	<script src="../public/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+	<script src="../public/assets/libs/quill/dist/quill.min.js"></script>
+
+	<script>
+		/*datepicker*/
+		jQuery("#tanggal_mulai").datepicker({
+			format: 'yyyy/mm/dd',
+			startDate: '-3d',
+			todayHighlight: true,
+		});
+		jQuery("#tanggal_selesai").datepicker({
+			format: 'yyyy/mm/dd',
+			startDate: '-3d',
+			todayHighlight: true,
+		});
+	</script>
+
+	<script>
+		/*datepicker*/
+		jQuery(".tanggal_mulai").datepicker({
+			format: 'yyyy/mm/dd',
+			startDate: '-3d',
+			todayHighlight: true,
+		});
+		jQuery(".tanggal_selesai").datepicker({
+			format: 'yyyy/mm/dd',
+			startDate: '-3d',
+			todayHighlight: true,
+		});
+	</script>
 </body>
 
 </html>

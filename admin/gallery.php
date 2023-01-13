@@ -50,6 +50,8 @@ if (isset($_GET['id'])) {
 
 if (isset($_POST['update'])) {
 
+	var_dump($_POST);
+	die();
 	if (edit_gallery($_POST) > 0) {
 		echo "<script>
      alert('Data berhasil diupdate');
@@ -163,6 +165,7 @@ $title = "Dunia Kita Resto Admin Panel";
 									<tr>
 										<th width="5%">No</th>
 										<th>Foto</th>
+										<th>Deskripsi</th>
 										<th width="10%">Aksi</th>
 									</tr>
 								</thead>
@@ -173,6 +176,9 @@ $title = "Dunia Kita Resto Admin Panel";
 											<td><?= $no++ ?></td>
 											<td>
 												<img src="../public/assets/img/gallery/<?= $d['foto']; ?>" width='180' height='120' alt="">
+											</td>
+											<td>
+												<?= $d['deskripsi'];  ?>
 											</td>
 											<td class="btn" align="center">
 												<a href='?id=<?= $d['id'] ?>' type="button" class="btn btn-danger btn-sm">
@@ -203,7 +209,13 @@ $title = "Dunia Kita Resto Admin Panel";
 																				<label>Foto
 																				</label>
 																				<input type="file" name="foto" id="foto" class="form-control mb-2" />
-																				<img src="../public/assets/img/gallery/<?= $d['foto']; ?>" width='70' height='90' alt="">
+																				<img src="../public/assets/img/gallery/<?= $d['foto']; ?>" width='200' height='140' alt="">
+																			</div>
+																			<div class="mb-1">
+																				<label>
+																					Deskripsi
+																				</label>
+																				<textarea name="deskripsi" id="deskripsi" class="form-control" style="height: 160px;"><?= $d['deskripsi']; ?></textarea>
 																			</div>
 																		</div>
 																	</div>
@@ -231,9 +243,7 @@ $title = "Dunia Kita Resto Admin Panel";
 									</script>
 								</tbody>
 							</table>
-							<?php
 
-							?>
 						</div>
 					</div>
 				</div>
@@ -299,33 +309,6 @@ $title = "Dunia Kita Resto Admin Panel";
 	<script src="../public/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 	<script src="../public/assets/libs/quill/dist/quill.min.js"></script>
 
-	<script>
-		/*datepicker*/
-		jQuery("#tanggal_mulai").datepicker({
-			format: 'yyyy/mm/dd',
-			startDate: '-3d',
-			todayHighlight: true,
-		});
-		jQuery("#tanggal_selesai").datepicker({
-			format: 'yyyy/mm/dd',
-			startDate: '-3d',
-			todayHighlight: true,
-		});
-	</script>
-
-	<script>
-		/*datepicker*/
-		jQuery(".tanggal_mulai").datepicker({
-			format: 'yyyy/mm/dd',
-			startDate: '-3d',
-			todayHighlight: true,
-		});
-		jQuery(".tanggal_selesai").datepicker({
-			format: 'yyyy/mm/dd',
-			startDate: '-3d',
-			todayHighlight: true,
-		});
-	</script>
 </body>
 
 </html>
