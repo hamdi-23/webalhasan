@@ -15,10 +15,10 @@
         </li> -->
 
         <li class="sidebar-item">
-          <a href="sejarah.php" class="sidebar-link"> <i class="mdi mdi-relative-scale"></i><span class="hide-menu">Sejaarah </span></a>
+          <a href="sejarah.php" class="sidebar-link"> <i class="mdi mdi-relative-scale"></i><span class="hide-menu">Sejarah </span></a>
         </li>
         <li class="sidebar-item">
-          <a href="menu.php" class="sidebar-link"> <i class="mdi mdi-border-outside"></i><span class="hide-menu"> Kegiatan </span></a>
+          <a href="kegiatan.php" class="sidebar-link"> <i class="mdi mdi-border-outside"></i><span class="hide-menu"> Kegiatan </span></a>
         </li>
         <!-- <li class="sidebar-item">
           <a href="topLima.php" class="sidebar-link"><i class="mdi mdi-bulletin-board"></i><span class="hide-menu"> Menu Top 5 </span></a>
@@ -27,7 +27,7 @@
           <a class="sidebar-link waves-effect waves-dark sidebar-link" href="gallery.php" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Galery</span></a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="testimoni.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Testimoni</span></a>
+          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="kataSantri.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Kata Santri</span></a>
         </li>
         <li class="sidebar-item">
           <a class="sidebar-link waves-effect waves-dark sidebar-link" href="sosialMedia.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Sosial Media</span></a>

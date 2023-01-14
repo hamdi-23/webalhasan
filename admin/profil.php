@@ -7,16 +7,10 @@ if (!isset($_SESSION["login"])) {
 }
 include "../koneksi.php";
 
-// $id = $_GET["id"];
-// var_dump($id);
-
-$data = query("SELECT * FROM resto WHERE id=1")[0];
+$data = query("SELECT * FROM profil WHERE id=1")[0];
 
 // var_dump($data["alamat"]);
 if (isset($_POST['submit'])) {
-
-	var_dump($_POST);
-	die();
 
 	if (ubah($_POST) > 0) {
 		echo

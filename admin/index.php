@@ -10,7 +10,7 @@ if (!isset($_SESSION["login"])) {
 
 // koneksi database
 include "../koneksi.php";
-$data = query("SELECT resto.`nama` as r_nama , login.`nama` as l_nama FROM login JOIN resto WHERE resto.`id` = login.`id_resto`; 
+$data = query("SELECT profil.`nama` as r_nama , login.`nama` as l_nama FROM login JOIN profil WHERE profil.`id` = login.`id_profil`; 
 ");
 // end koneksi
 $title = "Dunia Kita Resto Admin Panel";

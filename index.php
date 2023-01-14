@@ -1,5 +1,14 @@
 <?php require_once("koneksi.php");
 
+$dataProfil = mysqli_query($con, "SELECT * FROM profil");
+$kataSantri = mysqli_query($con, "SELECT * FROM katasantri");
+$dataSejarah = mysqli_query($con, "SELECT * FROM sejarah");
+$dataKegiatan = mysqli_query($con, "SELECT * FROM kegiatan");
+$dataGallery = mysqli_query($con, "SELECT * FROM gallery");
+
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -89,160 +98,150 @@ https://templatemo.com/tm-569-edu-meeting
   <!-- ***** Header Area End ***** -->
 
   <!-- ***** Main Banner Area Start ***** -->
-  <section class="section main-banner" id="top" data-section="section1">
-    <video autoplay muted loop id="bg-video">
-      <source src="assets/images/ponpes.mp4" type="video/mp4" />
-    </video>
-    <div class="video-overlay header-text">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="caption">
-              <!-- <h6>Hello Students</h6> -->
-              <h2>PONDOK PESANTREN AL-HASAN</h2>
-              <p>This is an edu meeting HTML CSS template provided by <a rel="nofollow" href="https://templatemo.com/page/1" target="_blank">TemplateMo website</a>. This is a Bootstrap v5.1.3 layout. The video background is taken from Pexels website, a group of young people by <a rel="nofollow" href="https://www.pexels.com/@pressmaster" target="_blank">Pressmaster</a>.</p>
-              <div class="main-button-red">
-                <!-- <div class="scroll-to-section"><a href="#contact">Join Us Now!</a></div> -->
+  <?php foreach ($dataProfil as $dp) : ?>
+    <section class="section main-banner" id="top" data-section="section1">
+      <video autoplay muted loop id="bg-video">
+        <source src="assets/images/ponpes.mp4" type="video/mp4" />
+      </video>
+      <div class="video-overlay header-text">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+
+              <div class="caption">
+                <!-- <h6>Hello Students</h6> -->
+                <h2>PONDOK PESANTREN AL-HASAN</h2>
+                <p><?= $dp['deskripsi'] ?> <a rel="nofollow" href="https://templatemo.com/page/1" target="_blank">TemplateMo website</a>. This is a Bootstra a group of young people by <a rel="nofollow" href="https://www.pexels.com/@pressmaster" target="_blank">Pressmaster</a>.</p>
+                <div class="main-button-red">
+                  <!-- <div class="scroll-to-section"><a href="#contact">Join Us Now!</a></div> -->
+                </div>
               </div>
+
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  <?php endforeach; ?>
   <!-- ***** Main Banner Area End ***** -->
-
-  <section class="services" id="testimoni" data-section="section2">
+  <section class="services">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
           <div class="owl-service-item owl-carousel">
-            <div class="item" style="width: 250px; height: 250px;">
-              <div class="icon">
-                <img src="assets/images/service-icon-01.png" alt="">
-              </div>
-              <div class="down-content">
-                <h4> TAUFIK HIDAYAT</h4>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. </p>
-              </div>
-            </div>
-          </div>
+            <?php foreach ($kataSantri as $ks) : ?>
 
+              <div class="item">
+                <div class="">
+                  <img src="assets/images/<?= $ks['foto'];  ?>" alt="">
+                </div>
+                <hr>
+                <div class="down-content">
+                  <h6><?= $ks['nama'];  ?></h6>
+                  <p style="font-style: italic;">``<?= $ks['testimoni'];  ?>``</p>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="upcoming-meetings" id="sejarah">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="section-heading">
-            <h2>SEJARAH SINGKAT PONDOK PESANTREN AL-HASAN</h2>
+  <?php foreach ($dataSejarah as $ds) : ?>
+    <section class="upcoming-meetings" id="sejarah">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="section-heading">
+              <h2>SEJARAH SINGKAT PONDOK PESANTREN AL-HASAN</h2>
+            </div>
           </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="row">
-                <div class="col-12">
-                  <div class="count-area-content percentage">
-                    <div class="icon">
-                      <img src="assets/images/santripp.jpeg" alt="" type="video/mp4">
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="count-area-content percentage">
+                      <div class="icon">
+                        <img src="./public/assets/images/sejarah/<?= $ds['foto1'] ?>" alt="" type="video/mp4" width="350px" height="250px">
+                      </div>
+                      <div class="count-title"><?= $ds['deskripsi1'] ?></div>
                     </div>
-                    <div class="count-title">Succesed Students</div>
                   </div>
-                </div>
-                <div class="col-12">
-                  <div class="count-area-content">
-                    <video autoplay muted loop width="200px" height="200px">
-                      <source src="assets/images/ponpes.mp4" type="video/mp4" />
-                    </video>
-                    <div class="count-title">Current Teachers</div>
+                  <div class="col-12">
+                    <div class="count-area-content">
+                      <video autoplay muted loop width="200px" height="200px">
+                        <source src="assets/images/ponpes.mp4" type="video/mp4" />
+                      </video>
+                      <div class="count-title"><?= $ds['deskripsi2'] ?></div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="row">
-                <div class="col-12">
-                  <div class="count-area-content new-students">
-                    <div class="count-digit">2345</div>
-                    <div class="count-title">New Students</div>
+              <div class="col-lg-6">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="count-area-content new-students">
+                      <div class="icon">
+                        <img src="./public/assets/images/sejarah/<?= $ds['foto2'] ?>" alt="" type="video/mp4">
+                      </div>
+                      <div class="count-title"><?= $ds['deskripsi3'] ?></div>
+                    </div>
                   </div>
-                </div>
-                <div class="col-12">
-                  <div class="count-area-content">
-                    <div class="count-digit">32</div>
-                    <div class="count-title">Awards</div>
+                  <div class="col-12">
+                    <div class="count-area-content">
+                      <div class="icon">
+                        <img src="./public/assets/images/sejarah/<?= $ds['foto3'] ?>" alt="" type="video/mp4">
+                      </div>
+                      <div class="count-title"><?= $ds['deskripsi4'] ?></div>
+                    </div>
+                    <div class="count-area-content">
+                      <div class="icon">
+                        <img src="./public/assets/images/sejarah/<?= $ds['foto4'] ?>" alt="" type="video/mp4">
+                      </div>
+                      <div class="count-title"><?= $ds['deskripsi4'] ?></div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="accordions is-first-expanded">
-            <article class="accordion">
-              <div class="accordion-head">
-                <span>Pondok Pesantren Al-Hasan</span>
-                <span class="icon">
-                  <i class="icon fa fa-chevron-right"></i>
-                </span>
-              </div>
-              <div class="accordion-body">
-                <div class="content">
-                  <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus ducimus magni numquam quidem ipsam excepturi ipsum sed, atque, consequuntur soluta necessitatibus deleniti distinctio nostrum! Hic quaerat reprehenderit consectetur veniam minus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, recusandae necessitatibus quas similique ratione amet? Nulla ratione, vitae similique ea, numquam, architecto perferendis quam accusantium vero tempore aliquam incidunt expedita? If you want to get the latest collection of HTML CSS templates for your websites, you may visit <a rel="nofollow" href="https://www.toocss.com/" target="_blank">Too CSS website</a>. If you need a working contact form script, please visit <a href="https://templatemo.com/contact" target="_parent">our contact page</a> for more info.</p>
+          <div class="col-lg-6">
+            <div class="accordions is-first-expanded">
+              <article class="accordion">
+                <div class="accordion-head">
+                  <span>Pondok Pesantren Al-Hasan</span>
+                  <span class="icon">
+                    <i class="icon fa fa-chevron-right"></i>
+                  </span>
                 </div>
-              </div>
-            </article>
-            <article class="accordion">
-              <div class="accordion-head">
-                <span>Daftar Mubaligh</span>
-                <span class="icon">
-                  <i class="icon fa fa-chevron-right"></i>
-                </span>
-              </div>
-              <div class="accordion-body">
-                <div class="content">
-                  <p>Etiam posuere metus orci, vel consectetur elit imperdiet eu. Cras ipsum magna, maximus at semper sit amet, eleifend eget neque. Nunc facilisis quam purus, sed vulputate augue interdum vitae. Aliquam a elit massa.<br><br>
-                    Nulla malesuada elit lacus, ac ultricies massa varius sed. Etiam eu metus eget nibh consequat aliquet. Proin fringilla, quam at euismod porttitor, odio odio tempus ligula, ut feugiat ex erat nec mauris. Donec viverra velit eget lectus sollicitudin tincidunt.</p>
+                <div class="accordion-body">
+                  <div class="content">
+                    <p><?= $ds['deskripsi'] ?> <a rel="nofollow" href="https://www.toocss.com/" target="_blank">Too CSS website</a>. If you need a working contact form script, please visit <a href="https://templatemo.com/contact" target="_parent">our contact page</a> for more info.</p>
+                  </div>
                 </div>
-              </div>
-            </article>
-            <!-- <article class="accordion">
-              <div class="accordion-head">
-                <span>Daftar Kitab</span>
-                <span class="icon">
-                  <i class="icon fa fa-chevron-right"></i>
-                </span>
-              </div>
-              <div class="accordion-body">
-                <div class="content">
-                  <p>Ut vehicula mauris est, sed sodales justo rhoncus eu. Morbi porttitor quam velit, at ullamcorper justo suscipit sit amet. Quisque at suscipit mi, non efficitur velit.<br><br>
-                    Cras et tortor semper, placerat eros sit amet, porta est. Mauris porttitor sapien et quam volutpat luctus. Nullam sodales ipsum ac neque ultricies varius.</p>
+              </article>
+              <article class="accordion">
+                <div class="accordion-head">
+                  <span>Visi & Misi</span>
+                  <span class="icon">
+                    <i class="icon fa fa-chevron-right"></i>
+                  </span>
                 </div>
-              </div>
-            </article> -->
-            <!-- <article class="accordion last-accordion">
-              <div class="accordion-head">
-                <span>Tentang Kajian</span>
-                <span class="icon">
-                  <i class="icon fa fa-chevron-right"></i>
-                </span>
-              </div>
-              <div class="accordion-body">
-                <div class="content">
-                  <p>Maecenas suscipit enim libero, vel lobortis justo condimentum id. Interdum et malesuada fames ac ante ipsum primis in faucibus.<br><br>
-                    Sed eleifend metus sit amet magna tristique, posuere laoreet arcu semper. Nulla pellentesque ut tortor sit amet maximus. In eu libero ullamcorper, semper nisi quis, convallis nisi.</p>
+                <div class="accordion-body">
+                  <div class="content">
+                    <p><?= $ds['visi'] ?> .</p>
+                  </div>
                 </div>
-              </div>
-            </article> -->
+              </article>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  <?php endforeach; ?>
+
 
   <section class="apply-now" id="kegiatan">
     <div class="container">
@@ -257,31 +256,28 @@ https://templatemo.com/tm-569-edu-meeting
         </div>
         <div class="col-lg-12">
           <div class="row">
-
-            <div class="col-lg-4">
-              <div class="meeting-item ">
-                <div class=" thumb">
-                  <div class="price">
-                    <span>Bandung</span>
+            <?php foreach ($dataKegiatan as $dg) : ?>
+              <div class="col-lg-4">
+                <div class="meeting-item ">
+                  <div class=" thumb">
+                    <div class="price">
+                      <span><?= $dg['lokasi']; ?></span>
+                    </div>
+                    <a href="meeting-details.html"><img src="./public/assets/img/kegiatan/<?= $dg['foto']; ?>" width="300px" height="200px" alt="al-hasan"></a>
                   </div>
-                  <a href="meeting-details.html"><img src="assets/images/santripp.jpeg" alt="New Lecturer Meeting"></a>
-                </div>
-                <div class="down-content">
-                  <div class="date">
-                    <h6>Nov <span>10</span></h6>
+                  <div class="down-content">
+                    <a href="meeting-details.html">
+                      <h6><?= date('d F Y', strtotime($dg['tanggal'])); ?></span></h6>
+                      <h4><?= $dg['nama']; ?></h4>
+                    </a>
+                    <hr>
+                    <p><?= $dg['deskripsi']; ?></p>
                   </div>
-                  <a href="meeting-details.html">
-                    <h4>tAUFIK HIDAYAT</h4>
-                  </a>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, facere quod. Obcaecati consequatur </p>
                 </div>
               </div>
-            </div>
-
-
+            <?php endforeach; ?>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -296,239 +292,19 @@ https://templatemo.com/tm-569-edu-meeting
         </div>
         <div class="col-lg-12">
           <div class="owl-courses-item owl-carousel">
-
-
-            <div class="item">
-              <img src="assets/images/course-02.jpg" alt="Course Two">
-              <div class="down-content">
-                <h4>Curabitur molestie dignissim purus vel</h4>
-              </div>
-            </div>
-            <div class="item">
-              <img src="assets/images/course-03.jpg" alt="">
-              <div class="down-content">
-                <h4>Nulla at ipsum a mauris egestas tempor</h4>
-                <div class="info">
-                  <div class="row">
-                    <div class="col-8">
-                      <ul>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                      </ul>
-                    </div>
-                    <div class="col-4">
-                      <span>$140</span>
-                    </div>
-                  </div>
+            <?php foreach ($dataGallery as $daga) : ?>
+              <div class="item">
+                <img src="./public/assets/img/gallery/<?= $daga['foto']; ?>" alt="al-hasan">
+                <div class="down-content">
+                  <h4><?= $daga['deskripsi']; ?></h4>
                 </div>
               </div>
-            </div>
-            <div class="item">
-              <img src="assets/images/course-04.jpg" alt="">
-              <div class="down-content">
-                <h4>Aenean molestie quis libero gravida</h4>
-                <div class="info">
-                  <div class="row">
-                    <div class="col-8">
-                      <ul>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                      </ul>
-                    </div>
-                    <div class="col-4">
-                      <span>$120</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <img src="assets/images/course-01.jpg" alt="">
-              <div class="down-content">
-                <h4>Lorem ipsum dolor sit amet adipiscing elit</h4>
-                <div class="info">
-                  <div class="row">
-                    <div class="col-8">
-                      <ul>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                      </ul>
-                    </div>
-                    <div class="col-4">
-                      <span>$250</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <img src="assets/images/course-02.jpg" alt="">
-              <div class="down-content">
-                <h4>TemplateMo is the best website for Free CSS</h4>
-                <div class="info">
-                  <div class="row">
-                    <div class="col-8">
-                      <ul>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                      </ul>
-                    </div>
-                    <div class="col-4">
-                      <span>$270</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <img src="assets/images/course-03.jpg" alt="">
-              <div class="down-content">
-                <h4>Web Design Templates at your finger tips</h4>
-                <div class="info">
-                  <div class="row">
-                    <div class="col-8">
-                      <ul>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                      </ul>
-                    </div>
-                    <div class="col-4">
-                      <span>$340</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <img src="assets/images/course-04.jpg" alt="">
-              <div class="down-content">
-                <h4>Please visit our website again</h4>
-                <div class="info">
-                  <div class="row">
-                    <div class="col-8">
-                      <ul>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                      </ul>
-                    </div>
-                    <div class="col-4">
-                      <span>$360</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <img src="assets/images/course-01.jpg" alt="">
-              <div class="down-content">
-                <h4>Responsive HTML Templates for you</h4>
-                <div class="info">
-                  <div class="row">
-                    <div class="col-8">
-                      <ul>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                      </ul>
-                    </div>
-                    <div class="col-4">
-                      <span>$400</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <img src="assets/images/course-02.jpg" alt="">
-              <div class="down-content">
-                <h4>Download Free CSS Layouts for your business</h4>
-                <div class="info">
-                  <div class="row">
-                    <div class="col-8">
-                      <ul>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                      </ul>
-                    </div>
-                    <div class="col-4">
-                      <span>$430</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <img src="assets/images/course-03.jpg" alt="">
-              <div class="down-content">
-                <h4>Morbi in libero blandit lectus cursus</h4>
-                <div class="info">
-                  <div class="row">
-                    <div class="col-8">
-                      <ul>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                      </ul>
-                    </div>
-                    <div class="col-4">
-                      <span>$480</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <img src="assets/images/course-04.jpg" alt="">
-              <div class="down-content">
-                <h4>Curabitur molestie dignissim purus</h4>
-                <div class="info">
-                  <div class="row">
-                    <div class="col-8">
-                      <ul>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                      </ul>
-                    </div>
-                    <div class="col-4">
-                      <span>$560</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <?php endforeach; ?>
           </div>
         </div>
       </div>
     </div>
   </section>
-
   <section class="contact-us" id="contact">
     <div class="container">
       <div class="row">
@@ -574,29 +350,29 @@ https://templatemo.com/tm-569-edu-meeting
           <div class="right-info">
             <ul>
               <li>
-                <h6>Phone Number</h6>
-                <span>010-020-0340</span>
+                <h6>Nomor Telepon</h6>
+                <span><?= $dp['hp']; ?></span>
               </li>
               <li>
+                <h6>Alamat</h6>
+                <span><?= $dp['alamat']; ?></span>
+              </li>
+              <!-- <li>
                 <h6>Email Address</h6>
                 <span>info@meeting.edu</span>
               </li>
               <li>
-                <h6>Street Address</h6>
-                <span>Rio de Janeiro - RJ, 22795-008, Brazil</span>
-              </li>
-              <li>
                 <h6>Website URL</h6>
                 <span>www.meeting.edu</span>
-              </li>
+              </li> -->
             </ul>
           </div>
         </div>
       </div>
     </div>
     <div class="footer">
-      <p>Copyright © 2022 Edu Meeting Co., Ltd. All Rights Reserved.
-        <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a>
+      <p>Copyright © Pondok Pesantren AL-Hasan., Ltd. All Rights Reserved.
+        <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">Pondok Pesantren AL-Hasan </a>
       </p>
     </div>
   </section>

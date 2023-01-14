@@ -1,35 +1,43 @@
 <?php
+
 // session untuk login
 session_start();
 if (!isset($_SESSION["login"])) {
 	header("Location: login.php");
 	exit;
 }
-
 include "../koneksi.php";
 
-// query menampilkan data
-$data = query("SELECT * FROM `testimoni`");
+$dataKegiatan = query("SELECT * FROM kegiatan");
 
 
+// var_dump($data["alamat"]);
 if (isset($_POST['submit'])) {
-	if (tambah_katasantri($_POST) > 0) {
-		echo "<script>
-     alert('Data berhasil ditambakan');
-	 document.location.href = 'testimoni.php';  
-    </script>";
+
+	if (tambah_kegiatan($_POST) > 0) {
+		echo
+		"
+		  <script>
+		  alert('data berhasil ditambah');
+		  document.location.href = 'kegiatan.php';  
+		  </script>
+		  ";
 	} else {
-		echo mysqli_error($con);
+		echo "
+		  <script>
+		  alert('data gagal ditambah');  
+		  </script>
+		  ";
 	}
 }
 
 if (isset($_GET['id'])) {
-	if (hapus_katasantri($_POST) > 0) {
+	if (hapus_kegiatan($_POST) > 0) {
 		echo
 		"
 		  <script>
 		  alert('data berhasil dihapus');
-		  document.location.href = 'testimoni.php';  
+		  document.location.href = 'kegiatan.php';  
 		  </script>
 		  ";
 	} else {
@@ -43,17 +51,16 @@ if (isset($_GET['id'])) {
 
 if (isset($_POST['update'])) {
 
-	// var_dump($_POST);
-	// die();
-	if (edit_katasantri($_POST) > 0) {
+	if (edit_kegiatan($_POST) > 0) {
 		echo "<script>
      alert('Data berhasil diupdate');
-	 document.location.href = 'testimoni.php';  
+	 document.location.href = 'kegiatan.php';  
     </script>";
 	} else {
 		echo mysqli_error($con);
 	}
 }
+
 $title = "Dunia Kita Resto Admin Panel";
 
 ?>
@@ -112,35 +119,51 @@ $title = "Dunia Kita Resto Admin Panel";
 		<?php include '../public/layouts/sidebar.php'; ?>
 		<!-- end sidebar -->
 		<div class="page-wrapper">
+
 			<!-- ============================================================== -->
 			<!-- Container fluid  -->
 			<!-- ============================================================== -->
 			<div class="container-fluid">
-				<form action="" method="POST" enctype="multipart/form-data">
-					<div class="card">
 
+				<div class="card">
+					<form action="" method="POST" enctype="multipart/form-data">
+						<h4 align="center">FORM TAMBAH DATA MENU</h4>
 						<div class="card-body">
-							<h4 align="center">FORM TAMBAH DATA KATA SANTRI</h4>
 							<div class="row">
-								<div class="col-lg-6">
+								<div class="col-md-6">
 									<div>
 										<label>Nama
 										</label>
 										<input type="text" name="nama" id="nama" class="form-control" required />
 									</div>
 									<div>
-										<label>Foto
+										<label>Lokasi
 										</label>
-										<input type="file" name="foto" id="foto" class="form-control mb-3" onchange="loadFile(event)" required />
-										<img id="output" height="200" width="300">
+										<input type="text" name="lokasi" id="lokasi" class="form-control" required />
+									</div>
+									<div>
+										<label>
+											Deskripsi
+										</label>
+										<textarea name="deskripsi" id="deskripsi" class="form-control" style="height: 160px;"></textarea>
+									</div>
+									<div>
+										<label>Tanggal</label>
+										<div class="input-group">
+											<input type="text" class="form-control tanggal" name="tanggal" placeholder="yyyy/mm/dd" />
+											<div class="input-group-append">
+												<span class="input-group-text h-100"><i class="mdi mdi-calendar"></i></span>
+											</div>
+										</div>
 									</div>
 								</div>
-
-								<div class="col-lg-6">
-									<label>
-										Kata Santri
-									</label>
-									<textarea name="testimoni" id="testimoni" class="form-control" style="height: 160px;"></textarea>
+								<div class="col-md-6">
+									<div>
+										<label>Foto
+										</label>
+										<input type="file" name="foto_kegiatan" id="foto_kegiatan" class="form-control mb-2" required onchange="loadFile(event)" />
+										<img align="right" width="300" height="300" id="output">
+									</div>
 								</div>
 							</div>
 						</div>
@@ -150,110 +173,128 @@ $title = "Dunia Kita Resto Admin Panel";
 								<button type="submit" name="submit" class="btn btn-success text-white">simpan</button>
 							</div>
 						</div>
-					</div>
-				</form>
+					</form>
 
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">Data Jenis Menu</h5>
-						<div class="table-responsive">
-							<table id="zero_config" class="table table-striped table-bordered">
-								<thead align="center">
-									<tr>
-										<th width="5%">No</th>
-										<th>Nama</th>
-										<th>Kata Santri</th>
-										<th>Foto</th>
-										<th width="10%">Aksi</th>
-									</tr>
-								</thead>
-								<tbody align="center">
-									<?php $no = 1 ?>
-									<?php foreach ($data as $d) : ?>
-										<tr>
-											<td><?= $no++ ?></td>
-											<td><?= $d['nama'] ?></td>
-											<td><?= $d['testimoni'] ?></td>
-											<td> <img src="../public/assets/img/santri/<?= $d['foto']; ?>" width='180' height='120' alt="">
-											</td>
-											<td>
-												<a href='?id=<?= $d['id'] ?>' type="button" class="btn btn-danger btn-sm">
-													<i class="fas fa-trash"></i>
-												</a>
-												<a type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $d['id'] ?>">
-													<i class="fas fa-edit"></i>
-												</a>
-											</td>
-										</tr>
-										<!-- modal edit -->
-										<div class="modal fade" id="exampleModal<?= $d['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-											<div class="modal-dialog">
-												<div class="modal-content">
-													<div class="modal-header blueku">
-														<h1 class="modal-title fs-5" id="exampleModalLabel">Edit Data</h1>
-														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-													</div>
-													<div class="modal-body">
-														<form action="" method="POST" enctype="multipart/form-data">
-															<input type="hidden" name="foto_lama" id="foto_lama" value="<?= $d['foto'] ?>" class="form-control mb-2" />
-															<div class="row">
-																<div class="col-md-12">
-																	<div class="card">
-																		<div class="card-body">
-
-																			<div class="mb-1">
-																				<label>Nama
-																				</label>
-																				<input type="text" class="form-control " id="nama" name="nama" value="<?= $d['nama'] ?>" />
-																			</div>
-																			<div class="mb-1">
-																				<label>Foto
-																				</label>
-																				<input type="file" name="foto" id="foto" class="form-control mb-2" />
-																				<img src="../public/assets/img/santri/<?= $d['foto']; ?>" width='200' height='140' alt="">
-																			</div>
-																			<div class="mb-1">
-																				<label>Testimoni
-																				</label>
-																				<textarea name="testimoni" id="testimoni" class="form-control" style="height: 160px;"><?= $d['testimoni'] ?></textarea>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<div class="modal-footer">
-																	<input type="hidden" name="id" id="id" value="<?= $d['id'] ?>">
-																	<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-																	<button type="submit" name="update" id="update" class="btn btn-primary">Update</button>
-																</div>
-															</div>
-														</form>
-
-													</div>
-
-												</div>
-											</div>
-										</div>
-									<?php endforeach; ?>
-									<script>
-										var loadFile = function(event) {
-											var reader = new FileReader();
-											reader.onload = function() {
-												var output = document.getElementById('output');
-												output.src = reader.result;
-											};
-											reader.readAsDataURL(event.target.files[0]);
-										};
-									</script>
-
-								</tbody>
-							</table>
-						</div>
-					</div>
 				</div>
 
 			</div>
 
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Data Menu</h5>
+					<div class="table-responsive">
+						<table id="zero_config" class="table table-bordered">
+							<thead align="center">
+								<tr>
+									<th width="5%">No</th>
+									<th>Foto</th>
+									<th>Nama</th>
+									<th>Lokasi</th>
+									<th>Deskripsi</th>
+									<th>Tanggal</th>
+									<th width="10%">Aksi</th>
+								</tr>
+							</thead>
+							<tbody align="center">
+								<?php $no = 1 ?>
+								<?php foreach ($dataKegiatan as $dm) : ?>
+									<tr>
+										<td><?= $no++ ?></td>
+										<td>
+											<img src="../public/assets/img/kegiatan/<?= $dm['foto']; ?>" width='200' height='140' alt="">
+										</td>
+										<td><?= $dm['nama'] ?></td>
+										<td><?= $dm['lokasi'] ?></td>
+										<td><?= $dm['deskripsi'] ?></td>
+										<td><?= $dm['tanggal'] ?></td>
+										<td class="">
+											<a href='?id=<?= $dm['id'] ?>' type="button" class="btn btn-danger btn-sm">
+												<i class="fas fa-trash"></i>
+											</a>
+											<a type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $dm['id'] ?>">
+												<i class="fas fa-edit"></i>
+											</a>
+										</td>
+									</tr>
+
+									<!-- modal edit -->
+									<div class="modal fade" id="exampleModal<?= $dm['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header blueku">
+													<h1 class="modal-title fs-5" id="exampleModalLabel">Edit Data</h1>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body">
+													<form action="" method="POST" enctype="multipart/form-data">
+														<input type="hidden" name="foto_lama" id="foto_lama" value="<?= $dm['foto'] ?>" class="form-control mb-2" />
+														<div class="row">
+															<div class="col-md-12">
+																<div class="card">
+																	<div class="card-body">
+
+																		<div class="mb-1">
+																			<label>Nama
+																			</label>
+																			<input type="text" class="form-control " id="nama" name="nama" value="<?= $dm['nama'] ?>" />
+																		</div>
+																		<div class="mb-1">
+																			<label>Lokasi
+																			</label>
+																			<input type="text" class="form-control " id="lokasi" name="lokasi" value="<?= $dm['lokasi'] ?>" />
+																		</div>
+																		<div class="mb-1">
+																			<label>Foto
+																			</label>
+																			<input type="file" name="foto_kegiatan" id="foto_kegiatan" class="form-control mb-2" />
+																			<img src="../public/assets/img/kegiatan/<?= $dm['foto']; ?>" width='70' height='90' alt="">
+																		</div>
+
+																		<div class="mb-1">
+																			<label>Deskripsi
+																			</label>
+																			<textarea name="deskripsi" id="deskripsi" class="form-control" style="height: 160px;"><?= $dm['deskripsi'] ?></textarea>
+																		</div>
+																		<div class="mb-1">
+																			<label>Tanggal Selesai</label>
+																			<div class="input-group">
+																				<input type="text" class="form-control tanggal" name="tanggal" id="tanggal<?= $dm['id'] ?>" value="<?= $dm['tanggal'] ?>" />
+																				<div class="input-group-append">
+																					<span class="input-group-text h-100"><i class="mdi mdi-calendar"></i></span>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class=" modal-footer">
+																	<input type="hidden" name="id" id="id" value="<?= $dm['id'] ?>">
+																	<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+																	<button type="submit" name="update" id="update" class="btn btn-primary">Update</button>
+																</div>
+															</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								<?php endforeach; ?>
+								<script>
+									var loadFile = function(event) {
+										var reader = new FileReader();
+										reader.onload = function() {
+											var output = document.getElementById('output');
+											output.src = reader.result;
+										};
+										reader.readAsDataURL(event.target.files[0]);
+									};
+								</script>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
 		</div>
+	</div>
 	</div>
 
 	<!-- ============================================================== -->
@@ -307,38 +348,26 @@ $title = "Dunia Kita Resto Admin Panel";
 		$("#zero_config").DataTable();
 	</script>
 
-
-
 	<script src="../public/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 	<script src="../public/assets/libs/quill/dist/quill.min.js"></script>
-
 	<script>
 		/*datepicker*/
-		jQuery("#tanggal_mulai").datepicker({
-			format: 'yyyy/mm/dd',
-			startDate: '-3d',
-			todayHighlight: true,
-		});
-		jQuery("#tanggal_selesai").datepicker({
+		jQuery(".tanggal").datepicker({
 			format: 'yyyy/mm/dd',
 			startDate: '-3d',
 			todayHighlight: true,
 		});
 	</script>
-
-	<script>
+	<!-- <script>
 		/*datepicker*/
-		jQuery(".tanggal_mulai").datepicker({
+		jQuery(".tanggal").datepicker({
 			format: 'yyyy/mm/dd',
 			startDate: '-3d',
 			todayHighlight: true,
 		});
-		jQuery(".tanggal_selesai").datepicker({
-			format: 'yyyy/mm/dd',
-			startDate: '-3d',
-			todayHighlight: true,
-		});
-	</script>
+	</script> -->
+
+
 </body>
 
 </html>

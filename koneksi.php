@@ -67,7 +67,7 @@ function ubah($data)
   }
 
   // update data di database
-  $query = "UPDATE resto SET 
+  $query = "UPDATE profil SET 
   nama =' $nama',
   alamat = '$alamat',
   hp = '$hp',
@@ -298,7 +298,7 @@ function upload_foto_kegiatan()
     echo "
     <script>
     alert('gambar yang diupload tidak sesuai'); 
-    document.location.href = 'menu.php';  
+    document.location.href = 'kegiatan.php';  
     </script>
     ";
     return false;
@@ -307,7 +307,7 @@ function upload_foto_kegiatan()
   if ($ukuranFoto > 1000000) {
     echo " <script>
     alert('gambar yang diupload terlalu besar'); 
-    document.location.href = 'menu.php';  
+    document.location.href = 'kegiatan.php';  
     </script>
     ";
     return false;
@@ -318,7 +318,7 @@ function upload_foto_kegiatan()
   $namaFotoBaru .= '.';
   $namaFotoBaru .= $ektensiGambar;
 
-  move_uploaded_file($tmpFoto, '../public/assets/img/menu/' . $namaFotoBaru);
+  move_uploaded_file($tmpFoto, '../public/assets/img/kegiatan/' . $namaFotoBaru);
   return $namaFotoBaru;
 }
 
@@ -518,7 +518,7 @@ function tambah_katasantri()
     return false;
   }
 
-  mysqli_query($con, "INSERT INTO testimoni VALUES ('','$nama','$testimoni','$foto' )");
+  mysqli_query($con, "INSERT INTO katasantri VALUES ('','$nama','$testimoni','$foto' )");
   return mysqli_affected_rows($con);
 }
 
@@ -548,7 +548,7 @@ function upload_foto_santri()
     echo "
     <script>
     alert('gambar yang diupload tidak sesuai'); 
-    document.location.href = 'testimoni.php';  
+    document.location.href = 'kataSantri.php';  
     </script>
     ";
     return false;
@@ -557,7 +557,7 @@ function upload_foto_santri()
   if ($ukuranFoto > 1000000) {
     echo " <script>
     alert('gambar yang diupload terlalu besar'); 
-    document.location.href = 'testimoni.php';  
+    document.location.href = 'kataSantri.php';  
     </script>
     ";
     return false;
@@ -568,7 +568,7 @@ function upload_foto_santri()
   $namaFotoBaru .= '.';
   $namaFotoBaru .= $ektensiGambar;
 
-  move_uploaded_file($tmpFoto, '../public/assets/img/santri/' . $namaFotoBaru);
+  move_uploaded_file($tmpFoto, '../assets/images/' . $namaFotoBaru);
   return $namaFotoBaru;
 }
 
@@ -589,7 +589,7 @@ function edit_katasantri($data)
   } else {
     $foto = upload_foto_santri();
   }
-  mysqli_query($con, "UPDATE testimoni 
+  mysqli_query($con, "UPDATE katasantri 
   SET nama='$nama', testimoni='$testimoni',foto='$foto' 
    WHERE id='$id'");
   return mysqli_affected_rows($con);
@@ -599,7 +599,7 @@ function edit_katasantri($data)
 function hapus_katasantri()
 {
   global $con;
-  mysqli_query($con, "DELETE FROM testimoni WHERE id='$_GET[id]'");
+  mysqli_query($con, "DELETE FROM katasantri WHERE id='$_GET[id]'");
   return mysqli_affected_rows($con);
 }
 
@@ -615,21 +615,25 @@ function hapus_katasantri()
 
 
 
-function ubah_sejarah($data)
+function ubah_sejarah($dataSejarah)
 {
+  // var_dump($dataSejarah);
+  // die();
   global $con;
-  $id = $data['id'];
-  $sejarah = htmlspecialchars($data['sejarah']);
-  $deskripsi1 = htmlspecialchars($data['deskripsi1']);
-  $deskripsi2 = htmlspecialchars($data['deskripsi2']);
-  $deskripsi3 = htmlspecialchars($data['deskripsi3']);
-  $deskripsi4 = htmlspecialchars($data['deskripsi4']);
+  $id = $dataSejarah['id'];
+
+  $sejarah = htmlspecialchars($dataSejarah['deskripsi']);
+  $visi = htmlspecialchars($dataSejarah['visi']);
+  $deskripsi1 = htmlspecialchars($dataSejarah['deskripsi1']);
+  $deskripsi2 = htmlspecialchars($dataSejarah['deskripsi2']);
+  $deskripsi3 = htmlspecialchars($dataSejarah['deskripsi3']);
+  $deskripsi4 = htmlspecialchars($dataSejarah['deskripsi4']);
 
 
-  $foto1_lama = htmlspecialchars($data['foto1_lama']);
-  $foto2_lama =  htmlspecialchars($data['foto2_lama']);
-  $foto3_lama =  htmlspecialchars($data['foto3_lama']);
-  $foto4_lama =  htmlspecialchars($data['foto4_lama']);
+  $foto1_lama = htmlspecialchars($dataSejarah['foto1_lama']);
+  $foto2_lama =  htmlspecialchars($dataSejarah['foto2_lama']);
+  $foto3_lama =  htmlspecialchars($dataSejarah['foto3_lama']);
+  $foto4_lama =  htmlspecialchars($dataSejarah['foto4_lama']);
 
   // cek gambar apakah upload atau tidak
   if ($_FILES['foto1']['error'] === 4) {
@@ -658,15 +662,16 @@ function ubah_sejarah($data)
 
   // update data di database
   $query = "UPDATE sejarah SET 
-  sejarah =' $sejarah',
+  deskripsi =' $sejarah',
+   visi =' $visi',
   foto1 = '$foto1',
   deskripsi1 = '$deskripsi1',
   foto2 = '$foto2',
   deskripsi2 = '$deskripsi2',
   foto3 = '$foto3',
   deskripsi3 = '$deskripsi3',
-  foto4 = '$foto4'
-  deskripsi4 = '$deskripsi4',
+  foto4 = '$foto4',
+  deskripsi4 = '$deskripsi4'
   WHERE id = $id
   ";
 
@@ -707,10 +712,10 @@ function upload_sejarah()
   };
 
   // move file gambar
-  move_uploaded_file($tmp_foto1, '../public/assets/images/profil/' . $nama_foto1);
-  move_uploaded_file($tmp_foto2, '../public/assets/images/profil/' . $nama_foto2);
-  move_uploaded_file($tmp_foto3, '../public/assets/images/profil/' . $nama_foto3);
-  move_uploaded_file($tmp_foto4, '../public/assets/images/profil/' . $nama_foto4);
+  move_uploaded_file($tmp_foto1, '../public/assets/images/sejarah/' . $nama_foto1);
+  move_uploaded_file($tmp_foto2, '../public/assets/images/sejarah/' . $nama_foto2);
+  move_uploaded_file($tmp_foto3, '../public/assets/images/sejarah/' . $nama_foto3);
+  move_uploaded_file($tmp_foto4, '../public/assets/images/sejarah/' . $nama_foto4);
 
 
   return ['foto1' => $nama_foto1, 'foto2' => $nama_foto2, 'foto3' => $nama_foto3, 'foto4' => $nama_foto4];

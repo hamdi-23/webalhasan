@@ -10,13 +10,13 @@ include "../koneksi.php";
 // $id = $_GET["id"];
 // var_dump($id);
 
-$data = query("SELECT * FROM sejarah WHERE id=1")[0];
+$dataSejarah = query("SELECT * FROM sejarah WHERE id=1")[0];
 
 // var_dump($data["alamat"]);
 if (isset($_POST['submit'])) {
 
-	var_dump($_POST);
-	die();
+	// var_dump($_POST);
+	// die();
 
 	if (ubah_sejarah($_POST) > 0) {
 
@@ -99,58 +99,70 @@ $title = "Dunia Kita Resto Admin Panel";
 				<form action="" method="POST" enctype="multipart/form-data">
 					<div class="card">
 						<div class="card-body">
-							<input type="hidden" id="id" name="id" class="form-control" value="<?= $data['id']; ?> " required />
-							<input type="text" id="foto1_lama" name="foto1_lama" class="form-control" value="<?= $data['foto1']; ?> " />
-							<input type="text" id="foto2_lama" name="foto2_lama" class="form-control" value="<?= $data['foto2']; ?> " />
-							<input type="text" id="foto3_lama" name="foto3_lama" class="form-control" value="<?= $data['foto3']; ?> " />
-							<input type="text" id="foto4_lama" name="foto4_lama" class="form-control" value="<?= $data['foto4']; ?> " />
+							<input type="hidden" id="id" name="id" class="form-control" value="<?= $dataSejarah['id']; ?> " required />
+							<input type="hidden" id="foto1_lama" name="foto1_lama" class="form-control" value="<?= $dataSejarah['foto1']; ?> " />
+							<input type="hidden" id="foto2_lama" name="foto2_lama" class="form-control" value="<?= $dataSejarah['foto2']; ?> " />
+							<input type="hidden" id="foto3_lama" name="foto3_lama" class="form-control" value="<?= $dataSejarah['foto3']; ?> " />
+							<input type="hidden" id="foto4_lama" name="foto4_lama" class="form-control" value="<?= $dataSejarah['foto4']; ?> " />
 
 							<div class="row">
 								<div class="col-md-6">
 									<div>
-										<label for="foto1" class="mt-3 ">Gambar logo</label>
+										<label>
+											Sejarah
+										</label>
+										<textarea name="deskripsi" id="deskripsi" class="form-control" style="height: 160px;"><?= $dataSejarah['deskripsi']; ?></textarea>
+									</div>
+									<hr>
+									<div>
+										<label>
+											Visi & Misi
+										</label>
+										<textarea name="visi" id="visi" class="form-control" style="height: 160px;"><?= $dataSejarah['visi']; ?></textarea>
+									</div>
+									<hr>
+									<div>
+										<label for="foto1" class="mt-3 ">Foto Pimpinan</label>
 										<input type="file" id="foto1" name="foto1" class="form-control mb-2 " onchange="loadFile1(event)" />
 										<img alt="" width="150px" height="150px" id="output1">
 									</div>
 									<div>
-										<label for="deskripsi1" class="mt-3">Keterangan</label>
-										<input type="text" id="deskripsi1" name="deskripsi1" class="form-control" value="<?= $data['deskripsi1']; ?> " />
+										<label for="deskripsi1" class="mt-3">Keterangan </label>
+										<input type="text" id="deskripsi1" name="deskripsi1" class="form-control" value="<?= $dataSejarah['deskripsi1']; ?> " />
 									</div>
-									<div>
-										<label for="sejarah" class="mt-3">Sejarah Singkat</label>
-										<textarea class="form-control" name="sejarah" id="sejarah" class="form-control" style="height: 160px;"><?= $data['sejarah']; ?></textarea>
-									</div>
+
+								</div>
+
+								<div class="col-md-6">
 									<div>
 										<label for="foto2" class="mt-3">Foto Fasilitas 1</label>
 										<input type="file" id="foto2" name="foto2" class="form-control mb-1" onchange="loadFile2(event)" />
 										<img alt="" width="450" height="220" id="output2">
 									</div>
 									<div>
-										<label for="deskripsi2" class="mt-3">Keterangan</label>
-										<input type="text" id="deskripsi2" name="deskripsi2" class="form-control" value="<?= $data['deskripsi2']; ?> " />
+										<label for="deskripsi2" class="mt-3">Keterangan 1</label>
+										<input type="text" id="deskripsi2" name="deskripsi2" class="form-control" value="<?= $dataSejarah['deskripsi2']; ?> " />
 									</div>
-								</div>
-
-								<div class="col-md-6">
-									<div>
+									<hr>
+									<div class=" mt-2">
 										<label for="foto3">Foto Fasilitas 2</label>
 										<input type="file" id="foto3" name="foto3" class="form-control mb-1" onchange="loadFile3(event)" />
 										<img align="right" alt="" width="450" height="220" id="output3">
 									</div>
 									<div>
-										<label for="deskripsi3" class="mt-3">Keterangan</label>
-										<input type="text" id="deskripsi3" name="deskripsi3" class="form-control" value="<?= $data['deskripsi3']; ?> " />
+										<label for="deskripsi3" class="mt-3">Keterangan 2</label>
+										<input type="text" id="deskripsi3" name="deskripsi3" class="form-control" value="<?= $dataSejarah['deskripsi3']; ?> " />
 									</div>
+									<hr>
 									<div>
 										<label for="foto4" class="mt-3">Foto Fasilitas 3</label>
 										<input type="file" id="foto4" name="foto4" class="form-control mb-1" onchange="loadFile4(event)" />
-										<img src="../public/assets/img/profil/<?= $data['foto2']; ?>" width='200' height='140' alt="">
+										<img align="right" alt="" width="450" height="220" id="output4">
 									</div>
 									<div>
-										<label for="deskripsi4" class="mt-3">Keterangan</label>
-										<input type="text" id="deskripsi4" name="deskripsi4" class="form-control" value="<?= $data['deskripsi4']; ?> " />
+										<label for="deskripsi4" class="mt-3">Keterangan 3</label>
+										<input type="text" id="deskripsi4" name="deskripsi4" class="form-control" value="<?= $dataSejarah['deskripsi4']; ?> " />
 									</div>
-
 								</div>
 							</div>
 							<hr>

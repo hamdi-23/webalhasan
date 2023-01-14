@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2023 at 10:51 AM
+-- Generation Time: Jan 14, 2023 at 10:55 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -38,24 +38,15 @@ CREATE TABLE `gallery` (
 --
 
 INSERT INTO `gallery` (`id`, `foto`, `deskripsi`) VALUES
-(1, '63b24a3c3bdea.jpg', 'foto pertama'),
-(3, '63b2a32f8461d.jpg', ''),
-(4, '63b2a3382f892.jpg', ''),
-(5, '63b2a34242fb2.jpeg', ''),
-(6, '63b2a34a39c02.png', ''),
-(7, '63b2a3530026f.png', ''),
-(8, '63b3851f2178d.jpg', ''),
-(9, '63b3852f25672.jpg', ''),
-(10, '63b3866150e12.png', ''),
-(11, '63b65881b77c4.jpg', ''),
-(12, '63b658893f081.jpg', ''),
-(13, '63b659098a987.jpg', ''),
-(14, '63b6590f8d617.jpeg', ''),
-(15, '63b66b5bc6590.jpg', ''),
-(16, '63bbbdba90200.jpg', ''),
-(17, '63bd0f12b922a.jpg', ''),
-(18, '63bd2b96b6cf3.jpg', ''),
-(19, '63c0c068d094e.jpg', 'apa kabar werty');
+(1, '63c261012991c.jpg', 'foto ke 1'),
+(2, '63c2613742698.jpg', 'foto ke 2'),
+(3, '63c2615858d1c.jpg', 'foto ke 3'),
+(4, '63c261720eadb.jpg', 'foto ke 4'),
+(5, '63c261843c515.jpg', 'foto ke 5'),
+(6, '63c2618f86742.jpg', 'foto ke 6'),
+(7, '63c2631a937cb.jpeg', ''),
+(8, '63c26d7741411.jpeg', ''),
+(9, '63c26da82401e.png', '');
 
 -- --------------------------------------------------------
 
@@ -83,6 +74,31 @@ INSERT INTO `jenis_menu` (`id`, `jenis`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `katasantri`
+--
+
+CREATE TABLE `katasantri` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(32) NOT NULL,
+  `testimoni` text NOT NULL,
+  `foto` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `katasantri`
+--
+
+INSERT INTO `katasantri` (`id`, `nama`, `testimoni`, `foto`) VALUES
+(4, 'lee cong wey', '  Enim nisi quem export duis labore cillum quae magna enim ', 'santripp.jpeg'),
+(13, 'DUNIA MANJI', '63c0c6ffb5f4f.jpg', 'meeting-01.jpg'),
+(15, 'DUNIA MANJI 4', '12344ere', 'meeting-02.jpg'),
+(16, 'qwert', 'ssssssssssssssss', 'meeting-03.jpg'),
+(17, 'hamdi abdul aziz', 'oopsssssssss', 'meeting-04.jpg'),
+(18, 'dani ', 'good job', '63c23270140ef.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `kegiatan`
 --
 
@@ -100,10 +116,12 @@ CREATE TABLE `kegiatan` (
 --
 
 INSERT INTO `kegiatan` (`id`, `nama`, `deskripsi`, `lokasi`, `foto`, `tanggal`) VALUES
-(1, 'Tabligh Akbar', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 'Bandung', '63c0bdc50c1e7.jpg', '22-01-1998'),
-(2, 'hamdi', 'qew', 'qwe', '63c0bdacafe99.jpg', '2023/01/18'),
-(3, 'pebajian bulanan', 'ontrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard M', 'cipatujah', '63c0bdb708fd3.jpg', '2023/01/23'),
-(5, ' DUNIA KITA SATU dua tiga', 'eeeeeeeeeeeee', 'qweeee', '63c0bc3b64c3b.jpeg', '2023/02/01');
+(1, 'Tabligh Akbar', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 'Bandung', '63c259b7ee312.jpg', '22-01-1998'),
+(2, 'hamdi', 'qew', 'qwe', '63c259d411a56.jpg', '2023/01/18'),
+(3, 'pebajian bulanan', 'ontrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard M', 'cipatujah', '63c259c608fcf.jpg', '2023/01/23'),
+(5, ' DUNIA KITA SATU dua tiga', 'eeeeeeeeeeeee', 'qweeee', '63c0bc3b64c3b.jpeg', '2023/02/01'),
+(6, 'sarinah', 'pengajian bulanan', 'bandung', '63c2521598961.jpeg', '2023/01/26'),
+(7, '3213', '33', 'Ponpes Alhasan', '63c2585ae4e68.jpg', '2023/02/16');
 
 -- --------------------------------------------------------
 
@@ -141,14 +159,14 @@ CREATE TABLE `login` (
   `password` varchar(255) NOT NULL,
   `status` varchar(32) NOT NULL,
   `nama` varchar(50) NOT NULL,
-  `id_resto` int(11) NOT NULL
+  `id_profil` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`id`, `username`, `password`, `status`, `nama`, `id_resto`) VALUES
+INSERT INTO `login` (`id`, `username`, `password`, `status`, `nama`, `id_profil`) VALUES
 (1, 'admin', '$2y$10$2DPjYBQw5NSDzfLvTyscPuONCYVeLOdFkyreKzbMrmiy0VBEoKgfW', 'admin', 'admin', 1);
 
 -- --------------------------------------------------------
@@ -204,10 +222,10 @@ INSERT INTO `pendaftaran` (`id`, `foto`, `nama`, `jenis_kelamin`, `alamat`, `tgl
 -- --------------------------------------------------------
 
 --
--- Table structure for table `resto`
+-- Table structure for table `profil`
 --
 
-CREATE TABLE `resto` (
+CREATE TABLE `profil` (
   `id` int(11) NOT NULL,
   `nama` varchar(32) NOT NULL,
   `alamat` text NOT NULL,
@@ -217,14 +235,14 @@ CREATE TABLE `resto` (
   `foto_profil` varchar(32) NOT NULL,
   `link_video` varchar(50) NOT NULL,
   `google_map` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='profil';
 
 --
--- Dumping data for table `resto`
+-- Dumping data for table `profil`
 --
 
-INSERT INTO `resto` (`id`, `nama`, `alamat`, `hp`, `deskripsi`, `foto_bg`, `foto_profil`, `link_video`, `google_map`) VALUES
-(1, ' ', 'Jalan Seturan Raya No.168 ADaerah Istimewa Yogyakarta 55281Indonesia                                                                                      ', 81336121328, 'irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.\r\nUllamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in \r\nculpa qui officia deserunt mollit anim id est laborum\r\nirure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.\r\nUllamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in \r\nculpa qui officia deserunt mollit anim id est laborum', 'profil.jpg', 'bgtest.jpeg', 'https://youtu.be/hwNWx1GTSKo                      ', 'https://www.google.com/maps/dir//resto+dunia+kita/');
+INSERT INTO `profil` (`id`, `nama`, `alamat`, `hp`, `deskripsi`, `foto_bg`, `foto_profil`, `link_video`, `google_map`) VALUES
+(1, ' ', 'Jalan Seturan Raya No.168 ADaerah Istimewa Yogyakarta 55281Indonesia                                                                                       ', 81336121328, 'irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.\r\nUllamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute ', 'profil.jpg ', 'bgtest.jpeg ', 'https://youtu.be/hwNWx1GTSKo                      ', 'https://www.google.com/maps/dir//resto+dunia+kita/');
 
 -- --------------------------------------------------------
 
@@ -234,7 +252,8 @@ INSERT INTO `resto` (`id`, `nama`, `alamat`, `hp`, `deskripsi`, `foto_bg`, `foto
 
 CREATE TABLE `sejarah` (
   `id` int(11) NOT NULL,
-  `sejarah` text NOT NULL,
+  `deskripsi` text NOT NULL,
+  `visi` text NOT NULL,
   `foto1` varchar(32) NOT NULL,
   `deskripsi1` varchar(32) NOT NULL,
   `foto2` varchar(32) NOT NULL,
@@ -249,8 +268,8 @@ CREATE TABLE `sejarah` (
 -- Dumping data for table `sejarah`
 --
 
-INSERT INTO `sejarah` (`id`, `sejarah`, `foto1`, `deskripsi1`, `foto2`, `deskripsi2`, `foto3`, `deskripsi3`, `foto4`, `deskripsi4`) VALUES
-(1, 'Apa itu Lorem Ipsum?\r\nLorem Ipsum hanyalah teks tiruan dari industri percetakan dan penyusunan huruf. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500-an, ketika seorang tukang cetak yang tidak dikenal mengambil kumpulan teks dan mengacaknya untuk membuat buku contoh huruf. Itu bertahan tidak hanya selam', '1.jpg', 'dskripsi dulu1', 'background.jpg', 'dskripsi dulu 2', 'bgtest.jpeg', 'dskripsi dulu 3', 'profil.jpg', '2321');
+INSERT INTO `sejarah` (`id`, `deskripsi`, `visi`, `foto1`, `deskripsi1`, `foto2`, `deskripsi2`, `foto3`, `deskripsi3`, `foto4`, `deskripsi4`) VALUES
+(1, '      Apa itu Lorem Ipsum?\r\nLorem Ipsum hanyalah teks tiruan dari industri percetakan dan penyusunan ', '  Sebelum mengetahui contoh visi misi pribadi, penting juga mengerti manfaat dari visi sehingga dalam membuatnya menjadi lebih paham. Berikut adalah beberapa manfaat visi:\r\n\r\n    Menjadi sebuah jembatan dari kondisi saat ini dengan kondisi yang ada di masa depan.\r\n    1. Meningkatkan taraf hidup dan kualitas manusia.\r\n   2.  Menumbuhkan sikap untuk meningkatkan tanggung jawab dengan melakukan pekerjaan semaksimal mungkin untuk mencapai visi tersebut.\r\n   3. Menumbuhkan sikap yang positif dan semangat dalam bekerja.', 'ss.PNG', 'dskripsi dulu1      ', '1.jpg  ', 'dskripsi dulu 2      ', 'profil.jpg  ', 'dskripsi dulu 3      ', 'bgtest.jpeg  ', '2321      ');
 
 -- --------------------------------------------------------
 
@@ -316,30 +335,6 @@ INSERT INTO `tag_menu` (`id`, `tag`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `testimoni`
---
-
-CREATE TABLE `testimoni` (
-  `id` int(11) NOT NULL,
-  `nama` varchar(32) NOT NULL,
-  `testimoni` text NOT NULL,
-  `foto` varchar(32) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `testimoni`
---
-
-INSERT INTO `testimoni` (`id`, `nama`, `testimoni`, `foto`) VALUES
-(4, 'lee cong wey', '  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim', '63c0d6167c0f3.jpg'),
-(13, 'DUNIA MANJI', '63c0c6ffb5f4f.jpg', '63c0d75566ab3.jpg'),
-(15, 'DUNIA MANJI 4', '12344ere', '63c0c8ade9bd2.png'),
-(16, 'qwert', 'ssssssssssssssss', '63c0cb480947c.jpg'),
-(17, 'hamdi', 'wewew', '63c0d585afc62.jpg');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `top_lima`
 --
 
@@ -378,6 +373,12 @@ ALTER TABLE `jenis_menu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `katasantri`
+--
+ALTER TABLE `katasantri`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `kegiatan`
 --
 ALTER TABLE `kegiatan`
@@ -395,7 +396,7 @@ ALTER TABLE `link_social_media`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_resto` (`id_resto`);
+  ADD KEY `id_resto` (`id_profil`);
 
 --
 -- Indexes for table `operasional`
@@ -412,9 +413,9 @@ ALTER TABLE `pendaftaran`
   ADD KEY `id_sekolah` (`id_sekolah`);
 
 --
--- Indexes for table `resto`
+-- Indexes for table `profil`
 --
-ALTER TABLE `resto`
+ALTER TABLE `profil`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -442,12 +443,6 @@ ALTER TABLE `tag_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `testimoni`
---
-ALTER TABLE `testimoni`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `top_lima`
 --
 ALTER TABLE `top_lima`
@@ -462,7 +457,7 @@ ALTER TABLE `top_lima`
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `jenis_menu`
@@ -471,10 +466,16 @@ ALTER TABLE `jenis_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT for table `katasantri`
+--
+ALTER TABLE `katasantri`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
 -- AUTO_INCREMENT for table `kegiatan`
 --
 ALTER TABLE `kegiatan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `link_social_media`
@@ -501,9 +502,9 @@ ALTER TABLE `pendaftaran`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `resto`
+-- AUTO_INCREMENT for table `profil`
 --
-ALTER TABLE `resto`
+ALTER TABLE `profil`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
@@ -525,12 +526,6 @@ ALTER TABLE `tag_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `testimoni`
---
-ALTER TABLE `testimoni`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
 -- AUTO_INCREMENT for table `top_lima`
 --
 ALTER TABLE `top_lima`
@@ -550,13 +545,13 @@ ALTER TABLE `link_social_media`
 -- Constraints for table `login`
 --
 ALTER TABLE `login`
-  ADD CONSTRAINT `login_ibfk_1` FOREIGN KEY (`id_resto`) REFERENCES `resto` (`id`);
+  ADD CONSTRAINT `login_ibfk_1` FOREIGN KEY (`id_profil`) REFERENCES `profil` (`id`);
 
 --
 -- Constraints for table `operasional`
 --
 ALTER TABLE `operasional`
-  ADD CONSTRAINT `operasional_ibfk_1` FOREIGN KEY (`id_resto`) REFERENCES `resto` (`id`);
+  ADD CONSTRAINT `operasional_ibfk_1` FOREIGN KEY (`id_resto`) REFERENCES `profil` (`id`);
 
 --
 -- Constraints for table `pendaftaran`

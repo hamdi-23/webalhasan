@@ -50,8 +50,7 @@ if (isset($_GET['id'])) {
 
 if (isset($_POST['update'])) {
 
-	var_dump($_POST);
-	die();
+
 	if (edit_gallery($_POST) > 0) {
 		echo "<script>
      alert('Data berhasil diupdate');
