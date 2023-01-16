@@ -10,8 +10,9 @@ if (!isset($_SESSION["login"])) {
 
 // koneksi database
 include "../koneksi.php";
-$data = query("SELECT profil.`nama` as r_nama , login.`nama` as l_nama FROM login JOIN profil WHERE profil.`id` = login.`id_profil`; 
+$data = query("SELECT profil.`nama` as nama , login.`nama` as l_nama FROM login JOIN profil WHERE profil.`id` = login.`id_profil`; 
 ");
+$dataProfil = query("SELECT * FROM profil");
 // end koneksi
 $title = "Dunia Kita Resto Admin Panel";
 ?>
@@ -83,8 +84,8 @@ $title = "Dunia Kita Resto Admin Panel";
       <!-- Container fluid  -->
       <div class="container-fluid mt-5">
         <div class="" style="font-size: 50px; font-style: normal; font: 200; text-align: center; margin-block-start: 100px">
-          <?php foreach ($data as $row) : ?>
-            <b> Selamat datang, <?= $row['l_nama']; ?><br> di <?= $row['r_nama']; ?></b>
+          <?php foreach ($data as $dp) : ?>
+            <b> Selamat datang, <?= $dp['l_nama']; ?><br> di <?= $dp['nama']; ?></b>
           <?php endforeach; ?>
         </div>
       </div>

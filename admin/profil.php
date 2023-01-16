@@ -97,6 +97,10 @@ $title = "Dunia Kita Resto Admin Panel";
 							<div class="row">
 								<div class="col-md-6">
 									<div>
+										<label for="nama" class="mt-3">Nama Pesantren</label>
+										<input type="text" id="nama" name="nama" class="form-control" value="<?= $data['nama']; ?> " />
+									</div>
+									<div>
 										<label for="foto_profil" class="mt-3 ">Gambar logo</label>
 										<input type="file" id="foto_profil" name="foto_profil" class="form-control mb-2 " onchange="loadFile1(event)" />
 										<img alt="" width="150px" height="150px" id="output1">

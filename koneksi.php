@@ -415,14 +415,14 @@ function upload_foto_galery()
     return false;
   }
   // cek ukuran file
-  if ($ukuranFoto > 1000000) {
-    echo " <script>
-    alert('gambar yang diupload terlalu besar'); 
-    document.location.href = 'gallery.php';  
-    </script>
-    ";
-    return false;
-  }
+  // if ($ukuranFoto > 1000000) {
+  //   echo " <script>
+  //   alert('gambar yang diupload terlalu besar'); 
+  //   document.location.href = 'gallery.php';  
+  //   </script>
+  //   ";
+  //   return false;
+  // }
 
   // membuat nama baru jika ada nama foto yang sama
   $namaFotoBaru = uniqid();
