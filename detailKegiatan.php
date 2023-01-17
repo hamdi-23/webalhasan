@@ -1,14 +1,14 @@
 <?php require_once("koneksi.php");
 
+$id = $_GET['id'];
 $dataProfil = mysqli_query($con, "SELECT * FROM profil");
-$kataSantri = mysqli_query($con, "SELECT * FROM katasantri");
-$dataSejarah = mysqli_query($con, "SELECT * FROM sejarah");
-$dataKegiatan = mysqli_query($con, " SELECT kegiatan.`id`, kegiatan.`deskripsi`,kegiatan.`foto`,kegiatan.`lokasi`,kegiatan.`nama`,kegiatan.`tanggal` FROM kegiatan WHERE id=$id;");
-$dataGallery = mysqli_query($con, "SELECT * FROM gallery");
+$dataSosialMedia = mysqli_query($con, "SELECT social_media.`nama`, social_media.`id` as idSosmed, link_social_media.`id_social_media`, link_social_media.`link` as link FROM link_social_media
+INNER JOIN social_media ON link_social_media.`id_social_media`=social_media.`id`");
 
+$dataKegiatan = mysqli_query($con, "SELECT * FROM kegiatan WHERE id= $id");
+$row = $dataKegiatan->fetch_assoc();
 
-
-
+$title = "Pondok Pesantren Al-Hasan";
 
 ?>
 
@@ -23,7 +23,7 @@ $dataGallery = mysqli_query($con, "SELECT * FROM gallery");
 	<meta name="author" content="Template Mo">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
-	<title>Education Template - Meeting Detail Page</title>
+	<title><?= $title; ?></title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -53,16 +53,15 @@ https://templatemo.com/tm-569-edu-meeting
 			<div class="row">
 				<div class="col-lg-8 col-sm-8">
 					<div class="left-content">
-						<p>This is an educational <em>HTML CSS</em> template by TemplateMo website.</p>
+						<p>Pondok Pesantren Al-Hasan Cipatujah Tasikmalaya</p>
 					</div>
 				</div>
 				<div class="col-lg-4 col-sm-4">
 					<div class="right-icons">
 						<ul>
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-behance"></i></a></li>
-							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+							<?php foreach ($dataSosialMedia as $medsos) : ?>
+								<li><a href="<?= $medsos['link'] ?>"><i class="fa fa-<?= $medsos['nama'] ?>"></i></a></li>
+							<?php endforeach; ?>
 						</ul>
 					</div>
 				</div>
@@ -77,26 +76,9 @@ https://templatemo.com/tm-569-edu-meeting
 				<div class="col-12">
 					<nav class="main-nav">
 						<!-- ***** Logo Start ***** -->
-						<a href="index.html" class="logo">
-							Edu Meeting
+						<a href="index.php" class="logo">
+							AL-HASAN
 						</a>
-						<!-- ***** Logo End ***** -->
-						<!-- ***** Menu Start ***** -->
-						<!-- <ul class="nav">
-							<li><a href="index.php">Home</a></li>
-							<li class="scroll-to-section"><a href="#sejarah">Sejarah Al-Hasan</a></li>
-
-							<li><a href="index.html">Apply Now</a></li>
-							<li class="has-sub">
-								<a href="javascript:void(0)">Pages</a>
-								<ul class="sub-menu">
-									<li><a href="meetings.html">Upcoming Meetings</a></li>
-									<li><a href="meeting-details.html">Meeting Details</a></li>
-								</ul>
-							</li>
-							<li><a href="index.html">Courses</a></li>
-							<li><a href="index.html">Contact Us</a></li>
-						</ul> -->
 						<a class='menu-trigger'>
 							<span>Menu</span>
 						</a>
@@ -107,93 +89,78 @@ https://templatemo.com/tm-569-edu-meeting
 		</div>
 	</header>
 	<!-- ***** Header Area End ***** -->
-	<?php foreach ($dataKegiatan as $dg) : ?>
-
-		<section class="heading-page header-text" id="top">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<h6>Get all details</h6>
-						<h2><?= $dg['nama']; ?></h2>
-					</div>
+	<section class="heading-page header-text" id="top">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<!-- <h6>Get all details</h6> -->
+					<h2><?= $row['nama']; ?></h2>
 				</div>
 			</div>
-		</section>
+		</div>
+	</section>
 
-		<section class="meetings-page" id="meetings">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="row">
-							<div class="col-lg-12">
-								<div class="meeting-single-item">
-									<div class="thumb">
-										<div class="price">
-											<span>$14.00</span>
-										</div>
-										<div class="date">
-											<?= $dg['tanggal']; ?>
-										</div>
-										<a href="meeting-details.html"><img src="assets/images/single-meeting.jpg" alt=""></a>
+	<section class="meetings-page" id="meetings">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="meeting-single-item">
+								<div class="thumb">
+									<div class="price">
+										<span><?= $row['lokasi']; ?></span>
 									</div>
-									<div class="down-content">
-										<a href="meeting-details.html">
-											<h4><?= $dg['nama']; ?></h4>
-										</a>
-										<p><?= $dg['deskripsi']; ?></p>
-										<div class="row">
-											<div class="col-lg-4">
-												<div class="hours">
-													<h5>Hours</h5>
-													<p>Monday - Friday: 07:00 AM - 13:00 PM<br>Saturday- Sunday: 09:00 AM - 15:00 PM</p>
-												</div>
+									<a href="meeting-details.html"><img src="./public/assets/img/kegiatan/<?= $row['foto']; ?>" alt=""></a>
+								</div>
+								<div class="down-content">
+									<a href="meeting-details.html">
+										<h4><?= $row['nama']; ?></h4>
+									</a>
+									<p><?= $row['deskripsi']; ?></p>
+									<div class="row">
+										<div class="col-lg-4">
+											<div class="hours">
+												<h5>Tanggal</h5>
+												<p><?= date('d F Y', strtotime($row['tanggal'])); ?></p>
 											</div>
-											<div class="col-lg-4">
-												<div class="location">
-													<h5>Location</h5>
-													<p>Recreio dos Bandeirantes,
-														<br>Rio de Janeiro - RJ, 22795-008, Brazil
-													</p>
-												</div>
+										</div>
+										<div class="col-lg-4">
+											<div class="location">
+												<h5>Lokasi</h5>
+												<p><?= $row['lokasi']; ?></p>
 											</div>
-											<div class="col-lg-4">
-												<div class="book now">
-													<h5>Book Now</h5>
-													<p>010-020-0340<br>090-080-0760</p>
-												</div>
-											</div>
-											<div class="col-lg-12">
-												<div class="share">
-													<h5>Share:</h5>
-													<ul>
-														<li><a href="#">Facebook</a>,</li>
-														<li><a href="#">Twitter</a>,</li>
-														<li><a href="#">Linkedin</a>,</li>
-														<li><a href="#">Behance</a></li>
-													</ul>
-												</div>
+										</div>
+
+										<div class="col-lg-12">
+											<div class="share">
+												<h5>Share:</h5>
+												<ul>
+													<?php foreach ($dataSosialMedia as $medsos) : ?>
+														<li><a href="<?= $medsos['link'] ?>"><?= $medsos['nama'] ?></a></li>
+													<?php endforeach; ?>
+												</ul>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col-lg-12">
-								<div class="main-button-red">
-									<a href="index.php">Back To Meetings List</a>
-								</div>
+						</div>
+						<div class="col-lg-12">
+							<div class="main-button-red">
+								<a href="index.php">Kembali</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="footer">
-				<p>Copyright © 2022 Edu Meeting Co., Ltd. All Rights Reserved.
-					<br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a>
-				</p>
-			</div>
-		</section>
-	<?php endforeach; ?>
-
+		</div>
+		<div class="footer">
+			<p>Copyright © 2022 Edu Meeting Co., Ltd. All Rights Reserved.
+				<br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a>
+			</p>
+		</div>
+	</section>
 
 	<!-- Scripts -->
 	<!-- Bootstrap core JavaScript -->

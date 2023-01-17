@@ -1,12 +1,16 @@
 <?php require_once("koneksi.php");
 
+
 $dataProfil = mysqli_query($con, "SELECT * FROM profil");
 $kataSantri = mysqli_query($con, "SELECT * FROM katasantri");
 $dataSejarah = mysqli_query($con, "SELECT * FROM sejarah");
-$dataKegiatan = mysqli_query($con, "SELECT * FROM kegiatan");
+$dataKegiatan = mysqli_query($con, "SELECT * FROM kegiatan ORDER BY id DESC LIMIT 6");
 $dataGallery = mysqli_query($con, "SELECT * FROM gallery");
 
+$dataSosialMedia = mysqli_query($con, "SELECT social_media.`nama`, social_media.`id` as idSosmed, link_social_media.`id_social_media`, link_social_media.`link` as link FROM link_social_media
+INNER JOIN social_media ON link_social_media.`id_social_media`=social_media.`id`");
 
+$title = "Pondok pesantren Al-Hasan";
 
 
 
@@ -23,7 +27,7 @@ $dataGallery = mysqli_query($con, "SELECT * FROM gallery");
   <meta name="author" content="TemplateMo">
   <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
-  <title>Education Meeting HTML5 Template</title>
+  <title><?= $title; ?></title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -51,16 +55,15 @@ https://templatemo.com/tm-569-edu-meeting
       <div class="row">
         <div class="col-lg-8 col-sm-8">
           <div class="left-content">
-            <p>This is an educational <em>HTML CSS</em> template by TemplateMo website.</p>
+            <p>Pondok Pesantren Al-Hasan Cipatujah Tasikmalaya</p>
           </div>
         </div>
         <div class="col-lg-4 col-sm-4">
           <div class="right-icons">
             <ul>
-              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-behance"></i></a></li>
-              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+              <?php foreach ($dataSosialMedia as $medsos) : ?>
+                <li><a href="<?= $medsos['link'] ?>"><i class="fa fa-<?= $medsos['nama'] ?>"></i></a></li>
+              <?php endforeach; ?>
             </ul>
           </div>
         </div>
@@ -75,8 +78,8 @@ https://templatemo.com/tm-569-edu-meeting
         <div class="col-12">
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">
-              Edu Meeting
+            <a href="index.php" class="logo">
+              AL-HASAN
             </a>
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
@@ -114,7 +117,7 @@ https://templatemo.com/tm-569-edu-meeting
                 <h2>Di <?= $dp['nama']; ?></h2>
                 <p><?= $dp['deskripsi']; ?></p>
                 <div class="main-button-red">
-                  <div class="scroll-to-section"><a href="#contact">Join Us Now!</a></div>
+                  <div class="scroll-to-section"><a href="#contact">Daftar</a></div>
                 </div>
               </div>
             </div>
@@ -304,42 +307,40 @@ https://templatemo.com/tm-569-edu-meeting
     </section>
   <?php endforeach; ?>
 
-  <section class="kegiatan-now" id="kegiatan">
+  <section class="upcoming-meetings" id="kegiatan">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
           <div class="section-heading">
-            <h2>Upcoming Meetings</h2>
+            <h2>KEGIATAN PONDOK PESANTREN AL-HASAN</h2>
           </div>
         </div>
+
         <div class="col-lg-12">
           <div class="row">
             <?php foreach ($dataKegiatan as $dg) : ?>
               <div class="col-lg-4">
-                <div class="meeting-item ">
-                  <div class=" thumb">
+                <div class="meeting-item">
+                  <div class="thumb">
                     <div class="price">
                       <span><?= $dg['lokasi']; ?></span>
                     </div>
-                    <a href="detailKegiatan.php"><img src="./public/assets/img/kegiatan/<?= $dg['foto']; ?>" width="300px" height="200px" alt="al-hasan"></a>
+                    <a href="detailKegiatan.php?id=<?= $dg['id']; ?>"><img src="./public/assets/img/kegiatan/<?= $dg['foto']; ?>" alt="New Lecturer Meeting"></a>
                   </div>
                   <div class="down-content">
-                    <a href="detailKegiatan.php/<?= $dg['id']; ?>">
+                    <div class="">
                       <h6><?= date('d F Y', strtotime($dg['tanggal'])); ?></span></h6>
+                    </div>
+                    <hr>
+                    <a href="detailKegiatan.php?id=<?= $dg['id']; ?>">
                       <h4><?= $dg['nama']; ?></h4>
                     </a>
-                    <hr>
-                    <p><?= substr($dg['deskripsi'], 0, 20); ?></p>
-                    <br>
-                    <a href="detailKegiatan.php">
-                      <p>Baca Selengkapnya . . . . .</p>
-                    </a>
-
-                    <!-- <p><?= $dg['deskripsi']; ?></p> -->
+                    <p><?= substr($dg['deskripsi'], 0, 25); ?><br> Baca Selengkapnya.........</p><br>
                   </div>
                 </div>
               </div>
             <?php endforeach; ?>
+
           </div>
         </div>
       </div>

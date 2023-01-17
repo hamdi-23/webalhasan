@@ -54,7 +54,27 @@ if (isset($_POST['update'])) {
 		echo mysqli_error($con);
 	}
 }
-$title = "Dunia Kita Resto Admin Panel";
+
+
+if (isset($_GET['id'])) {
+	if (hapus_katasantri($_POST) > 0) {
+		echo
+		"
+		  <script>
+		  alert('data berhasil dihapus');
+		  document.location.href = 'kataSantri.php';  
+		  </script>
+		  ";
+	} else {
+		echo "
+		  <script>
+		  alert('data gagal dihapus');  
+		  </script>
+		  ";
+	}
+}
+
+$title = "Al-Hasan Admin Panel";
 
 ?>
 <!DOCTYPE html>
@@ -68,7 +88,7 @@ $title = "Dunia Kita Resto Admin Panel";
 	<meta name="keywords" content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Matrix lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Matrix admin lite design, Matrix admin lite dashboard bootstrap 5 dashboard template" />
 	<meta name="description" content="Matrix Admin Lite Free Version is powerful and clean admin dashboard template, inpired from Bootstrap Framework" />
 	<meta name="robots" content="noindex,nofollow" />
-	<title><?= $title ?></title>
+	<title><?= $title; ?></title>
 	<!-- Favicon icon -->
 	<link rel="icon" type="image/png" sizes="16x16" href="../public/assets/images/logodk.png" />
 	<link rel="stylesheet" type="text/css" href="../public/assets/extra-libs/multicheck/multicheck.css" />

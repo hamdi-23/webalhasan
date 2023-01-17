@@ -14,7 +14,8 @@ $data = query("SELECT profil.`nama` as nama , login.`nama` as l_nama FROM login 
 ");
 $dataProfil = query("SELECT * FROM profil");
 // end koneksi
-$title = "Dunia Kita Resto Admin Panel";
+$title = "Al-Hasan Admin Panel";
+
 ?>
 
 <!DOCTYPE html>

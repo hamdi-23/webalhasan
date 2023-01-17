@@ -61,7 +61,8 @@ if (isset($_POST['update'])) {
 	}
 }
 
-$title = "Dunia Kita Resto Admin Panel";
+$title = "Al-Hasan Admin Panel";
+
 
 ?>
 <!DOCTYPE html>

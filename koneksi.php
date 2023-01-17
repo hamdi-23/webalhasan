@@ -38,7 +38,6 @@ function registrasi($data)
 }
 
 
-
 // ubah data profil
 function ubah($data)
 {
@@ -221,36 +220,6 @@ function edit_pendaftaran($dataPendaftaran)
   return mysqli_affected_rows($con);
 }
 
-// fungsi tambah jenis menu
-function tambah_jenis_menu()
-{
-
-  global $con;
-  $jenis_menu = $_POST['jenis_menu'];
-
-  mysqli_query($con, "INSERT INTO jenis_menu VALUES ('','$jenis_menu')");
-  return mysqli_affected_rows($con);
-}
-
-function hapusJenisMenu()
-{
-  global $con;
-  mysqli_query($con, "DELETE FROM jenis_menu WHERE id='$_GET[id]'");
-  return mysqli_affected_rows($con);
-}
-
-
-// edit data jenis menu 
-function edit_jenisMenu()
-{
-  global $con;
-  $id = $_POST['id'];
-  $jenis_menu = htmlspecialchars($_POST["jenis_menu"]);
-
-
-  mysqli_query($con, "UPDATE jenis_menu SET jenis='$jenis_menu' WHERE id='$id'");
-  return mysqli_affected_rows($con);
-}
 function tambah_kegiatan()
 {
 
@@ -504,8 +473,6 @@ function preview()
 }
 
 
-
-
 // tambah kata santri
 function tambah_katasantri()
 {
@@ -581,8 +548,6 @@ function edit_katasantri($data)
   $testimoni = $data['testimoni'];
   $foto_lama = $data['foto_lama'];
 
-
-
   // cek gambar apakah upload atau tidak
   if ($_FILES['foto']['error'] === 4) {
     $foto = $foto_lama;
@@ -602,11 +567,6 @@ function hapus_katasantri()
   mysqli_query($con, "DELETE FROM katasantri WHERE id='$_GET[id]'");
   return mysqli_affected_rows($con);
 }
-
-
-
-
-
 
 
 
@@ -719,4 +679,14 @@ function upload_sejarah()
 
 
   return ['foto1' => $nama_foto1, 'foto2' => $nama_foto2, 'foto3' => $nama_foto3, 'foto4' => $nama_foto4];
+}
+
+
+function detail($data)
+{
+  global $con;
+  $id = $_POST['id'];
+  $id_menu = htmlspecialchars($data["id_menu"]);
+  mysqli_query($con, "UPDATE top_lima SET id_menu='$id_menu' WHERE id='$id'");
+  return mysqli_affected_rows($con);
 }

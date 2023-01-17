@@ -951,7 +951,7 @@ upcoming meetings
 */
 
 section.upcoming-meetings {
-  background-image: url(../images/meetings-bg.jpg);
+  background-image: url(../images/facts-bg.jpg);
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -1072,7 +1072,7 @@ section.upcoming-meetings .categories .main-button-red a {
 }
 
 .meeting-item .down-content p {
-  margin-left: 5px;
+  margin-left: 1px;
   color: #1f272b;
   font-size: 14px;
 }
@@ -1413,9 +1413,8 @@ contact us
 */
 
 section.contact-us {
-  background-image: url(../images/santripp.jpeg);
+  background-image: url(../images/santri1pp.jpeg);
   background-position: center center;
-  background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   padding: 140px 0px 0px 0px;
@@ -1577,7 +1576,7 @@ upcoming meetings page
 */
 
 section.meetings-page {
-  background-image: url(../images/meetings-page-bg.jpg);
+  background-image: url(../images/meetings-bgsantri1.jpg);
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
