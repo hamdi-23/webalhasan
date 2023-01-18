@@ -192,12 +192,12 @@ https://templatemo.com/tm-569-edu-meeting
 
 
   <?php foreach ($dataSejarah as $ds) : ?>
-    <section class="apply-now" id="sejarah">
+    <section class="apply-now" id="sejarah" style="background-image: url('./assets/images/meeting-01.jpg');">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
             <div class="section-heading">
-              <h2>Upcoming Meetings</h2>
+              <h2 align="center">SEJARAH PONDOK PESANTREN AL-HASAN</h2>
             </div>
           </div>
           <div class="col-lg-6 align-self-center">
@@ -211,12 +211,10 @@ https://templatemo.com/tm-569-edu-meeting
                       </div>
                       <div class="count-title"><?= $ds['deskripsi1'] ?></div>
                     </div>
-                  </div>
-                  <div class="col-12">
                     <div class="count-area-content">
-                      <video autoplay muted loop width="200px" height="200px">
-                        <source src="assets/images/ponpes.mp4" type="video/mp4" />
-                      </video>
+                      <div class="icon">
+                        <img src="./public/assets/images/sejarah/<?= $ds['foto2'] ?>" alt="" type="video/mp4">
+                      </div>
                       <div class="count-title"><?= $ds['deskripsi2'] ?></div>
                     </div>
                   </div>
@@ -227,15 +225,13 @@ https://templatemo.com/tm-569-edu-meeting
                   <div class="col-12">
                     <div class="count-area-content new-students">
                       <div class="icon">
-                        <img src="./public/assets/images/sejarah/<?= $ds['foto2'] ?>" alt="" type="video/mp4">
+                        <img src="./public/assets/images/sejarah/<?= $ds['foto3'] ?>" alt="" type="video/mp4">
                       </div>
                       <div class="count-title"><?= $ds['deskripsi3'] ?></div>
                     </div>
-                  </div>
-                  <div class="col-12">
                     <div class="count-area-content">
                       <div class="icon">
-                        <img src="./public/assets/images/sejarah/<?= $ds['foto3'] ?>" alt="" type="video/mp4">
+                        <img src="./public/assets/images/sejarah/<?= $ds['foto4'] ?>" alt="">
                       </div>
                       <div class="count-title"><?= $ds['deskripsi4'] ?></div>
                     </div>
@@ -272,34 +268,14 @@ https://templatemo.com/tm-569-edu-meeting
                   </div>
                 </div>
               </article>
-              <!-- <article class="accordion">
-                <div class="accordion-head">
-                  <span>Please tell your friends</span>
-                  <span class="icon">
-                    <i class="icon fa fa-chevron-right"></i>
-                  </span>
-                </div>
-                <div class="accordion-body">
-                  <div class="content">
-                    <p>Ut vehicula mauris est, sed sodales justo rhoncus eu. Morbi porttitor quam velit, at ullamcorper justo suscipit sit amet. Quisque at suscipit mi, non efficitur velit.<br><br>
-                      Cras et tortor semper, placerat eros sit amet, porta est. Mauris porttitor sapien et quam volutpat luctus. Nullam sodales ipsum ac neque ultricies varius.</p>
-                  </div>
-                </div>
-              </article>
-              <article class="accordion last-accordion">
-                <div class="accordion-head">
-                  <span>Share this to your colleagues</span>
-                  <span class="icon">
-                    <i class="icon fa fa-chevron-right"></i>
-                  </span>
-                </div>
-                <div class="accordion-body">
-                  <div class="content">
-                    <p>Maecenas suscipit enim libero, vel lobortis justo condimentum id. Interdum et malesuada fames ac ante ipsum primis in faucibus.<br><br>
-                      Sed eleifend metus sit amet magna tristique, posuere laoreet arcu semper. Nulla pellentesque ut tortor sit amet maximus. In eu libero ullamcorper, semper nisi quis, convallis nisi.</p>
-                  </div>
-                </div>
-              </article> -->
+            </div>
+            <div class="col-12">
+              <div class="count-area-content">
+                <video autoplay muted loop width="450px" height="300px">
+                  <source src="assets/images/ponpes.mp4" type="video/mp4" />
+                </video>
+                <div class="count-title"><?= $ds['deskripsi2'] ?></div>
+              </div>
             </div>
           </div>
         </div>
@@ -307,7 +283,7 @@ https://templatemo.com/tm-569-edu-meeting
     </section>
   <?php endforeach; ?>
 
-  <section class="upcoming-meetings" id="kegiatan">
+  <section class="upcoming-meetings" id="kegiatan" style="background-image: url('./assets/images/meeting-02.jpg') ;">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -348,7 +324,7 @@ https://templatemo.com/tm-569-edu-meeting
   </section>
 
 
-  <section class="our-courses" id="galeri">
+  <section class="our-courses" id="galeri" style="background-image: url('./assets/images/bgsantri1.jpg ');">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -372,7 +348,7 @@ https://templatemo.com/tm-569-edu-meeting
     </div>
   </section>
 
-  <section class="contact-us" id="contact">
+  <section class="contact-us" id="contact" style="background-image: url('./assets/images/meetings-bg.jpg');">
     <div class="container">
       <div class="row">
         <div class="col-lg-9 align-self-center">

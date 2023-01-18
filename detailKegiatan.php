@@ -89,7 +89,7 @@ https://templatemo.com/tm-569-edu-meeting
 		</div>
 	</header>
 	<!-- ***** Header Area End ***** -->
-	<section class="heading-page header-text" id="top">
+	<section class="heading-page header-text" id="top" style="background-image: url('./assets/images/heading-bg.jpg');">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
@@ -100,7 +100,7 @@ https://templatemo.com/tm-569-edu-meeting
 		</div>
 	</section>
 
-	<section class="meetings-page" id="meetings">
+	<section class="meetings-page" id="meetings" style="background-image: url('./assets/images/meeting-01.jpg');">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">

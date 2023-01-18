@@ -951,7 +951,6 @@ upcoming meetings
 */
 
 section.upcoming-meetings {
-  background-image: url(../images/meetings-bg.jpg);
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -1084,7 +1083,6 @@ apply now
 */
 
 section.apply-now {
-  background-image: url(../images/apply-bg.jpg);
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -1167,7 +1165,6 @@ courses
 */
 
 section.our-courses {
-  background-image: url(../images/meetings-bg.jpg);
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -1334,8 +1331,8 @@ section.our-facts h2 {
 .count-area-content {
   text-align: center;
   background-color: rgba(250, 250, 250, 0.15);
-  border-radius: 20px;
-  padding: 25px 30px 35px 30px;
+  border-radius: 12px;
+  padding: 25px 10px 15px 10px;
   margin: 15px 0px;
 }
 
@@ -1383,7 +1380,6 @@ contact us
 */
 
 section.contact-us {
-  background-image: url(../images/meetings-bg.jpg);
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -1458,15 +1454,15 @@ section.contact-us #contact button:hover {
 
 section.contact-us .right-info {
   background-color: #a12c2f;
-  border-radius: 20px;
-  padding: 40px;
+  border-radius: 10px;
+  padding: 20px;
 }
 
 section.contact-us .right-info ul li {
   display: inline-block;
   border-bottom: 1px solid rgba(250, 250, 250, 0.15);
-  margin-bottom: 30px;
-  padding-bottom: 30px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 section.contact-us .right-info ul li:last-child {
@@ -1476,15 +1472,15 @@ section.contact-us .right-info ul li:last-child {
 }
 
 section.contact-us .right-info ul li h6 {
-  color: #fff;
+  color: #f5a425;
   font-size: 15px;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 2px;
 }
 
 section.contact-us .right-info ul li span {
   display: block;
-  font-size: 18px;
+  font-size: 15px;
   color: #fff;
   font-weight: 700;
 }
@@ -1512,7 +1508,6 @@ heading page
 */
 
 section.heading-page {
-  background-image: url(../images/heading-bg.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1547,7 +1542,6 @@ upcoming meetings page
 */
 
 section.meetings-page {
-  background-image: url(../images/meetings-page-bg.jpg);
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
