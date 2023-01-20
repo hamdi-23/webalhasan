@@ -847,10 +847,10 @@ services
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  border-radius: 20px;
+  border-radius: 5px;
   text-align: center;
   color: #fff;
-  padding: 40px;
+  padding: 5px;
 }
 
 .services .item .icon {
@@ -1087,7 +1087,6 @@ section.apply-now {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 140px 0px;
 }
 
 section.apply-now .item {

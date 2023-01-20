@@ -12,8 +12,33 @@ INNER JOIN social_media ON link_social_media.`id_social_media`=social_media.`id`
 
 $title = "Pondok pesantren Al-Hasan";
 
+$dataPendaftaran = query("SELECT sekolah.`tingkat` AS sekolah, pendaftaran.`foto`,pendaftaran.`nama`,pendaftaran.`alamat`,pendaftaran.`id_sekolah`
+,pendaftaran.`tgl_masuk`,pendaftaran.`jenis_kelamin`,pendaftaran.`id` FROM pendaftaran INNER JOIN `sekolah` ON
+ sekolah.`id`=pendaftaran.`id_sekolah`");
+
+$sekolah = query("SELECT * FROM sekolah ");
+
+// var_dump($data["alamat"]);
+if (isset($_POST['submit'])) {
 
 
+
+  if (pendaftar_baru($_POST) > 0) {
+    echo
+    "
+		  <script>
+		  alert('data berhasil ditambah');
+		  document.location.href = 'index.php';  
+		  </script>
+		  ";
+  } else {
+    echo "
+		  <script>
+		  alert('data gagal ditambah');  
+		  </script>
+		  ";
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -57,6 +82,7 @@ https://templatemo.com/tm-569-edu-meeting
           <div class="left-content">
             <p>Pondok Pesantren Al-Hasan Cipatujah Tasikmalaya</p>
           </div>
+
         </div>
         <div class="col-lg-4 col-sm-4">
           <div class="right-icons">
@@ -64,6 +90,7 @@ https://templatemo.com/tm-569-edu-meeting
               <?php foreach ($dataSosialMedia as $medsos) : ?>
                 <li><a href="<?= $medsos['link'] ?>"><i class="fa fa-<?= $medsos['nama'] ?>"></i></a></li>
               <?php endforeach; ?>
+
             </ul>
           </div>
         </div>
@@ -78,8 +105,12 @@ https://templatemo.com/tm-569-edu-meeting
         <div class="col-12">
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
-            <a href="index.php" class="logo">
-              AL-HASAN
+            <a href="index.php" class="logo mx-3" style="width: 35px;">
+              <div class="item">
+                <div class="">
+                  <img src="assets/images/logo.png ?>" alt="">
+                </div>
+              </div>
             </a>
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
@@ -103,7 +134,7 @@ https://templatemo.com/tm-569-edu-meeting
 
   <!-- ***** Main Banner Area Start ***** -->
   <?php foreach ($dataProfil as $dp) : ?>
-    <section class="section main-banner" id="top" data-section="section1">
+    <section class="section main-banner" id="top">
       <video autoplay muted loop id="bg-video">
         <source src="assets/images/ponpes.mp4" type="video/mp4" />
       </video>
@@ -128,84 +159,23 @@ https://templatemo.com/tm-569-edu-meeting
   <?php endforeach; ?>
   <!-- ***** Main Banner Area End ***** -->
 
-  <!-- <section class="services">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="owl-service-item owl-carousel">
-
-            <div class="item">
-              <div class="icon">
-                <img src="assets/images/service-icon-01.png" alt="">
-              </div>
-              <div class="down-content">
-                <h4>Best Education</h4>
-                <p>Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis massa non vestibulum.</p>
-              </div>
-            </div>
-
-            <div class="item">
-              <div class="icon">
-                <img src="assets/images/service-icon-02.png" alt="">
-              </div>
-              <div class="down-content">
-                <h4>Best Teachers</h4>
-                <p>Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis massa non vestibulum.</p>
-              </div>
-            </div>
-
-            <div class="item">
-              <div class="icon">
-                <img src="assets/images/service-icon-03.png" alt="">
-              </div>
-              <div class="down-content">
-                <h4>Best Students</h4>
-                <p>Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis massa non vestibulum.</p>
-              </div>
-            </div>
-
-            <div class="item">
-              <div class="icon">
-                <img src="assets/images/service-icon-02.png" alt="">
-              </div>
-              <div class="down-content">
-                <h4>Online Meeting</h4>
-                <p>Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis massa non vestibulum.</p>
-              </div>
-            </div>
-
-            <div class="item">
-              <div class="icon">
-                <img src="assets/images/service-icon-03.png" alt="">
-              </div>
-              <div class="down-content">
-                <h4>Best Networking</h4>
-                <p>Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis massa non vestibulum.</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
-
 
   <?php foreach ($dataSejarah as $ds) : ?>
-    <section class="apply-now" id="sejarah" style="background-image: url('./assets/images/meeting-01.jpg');">
+    <section class="apply-now" id="sejarah" style="background-image: url('./assets/images/bg1.jpg'); padding: 55px;">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
             <div class="section-heading">
-              <h2 align="center">SEJARAH PONDOK PESANTREN AL-HASAN</h2>
+              <h2 align="center">PONDOK PESANTREN AL-HASAN</h2>
             </div>
           </div>
-          <div class="col-lg-6 align-self-center">
+          <div class="col-lg-6 ">
             <div class="row">
               <div class="col-lg-6">
                 <div class="row">
                   <div class="col-12">
                     <div class="count-area-content percentage">
+                      <p style="font-size: 15px; color:white; margin-bottom: 6px;">Pimpinan Pondok Pesantren</p>
                       <div class="icon">
                         <img src="./public/assets/images/sejarah/<?= $ds['foto1'] ?>" alt="" type="video/mp4" width="350px" height="250px">
                       </div>
@@ -251,7 +221,7 @@ https://templatemo.com/tm-569-edu-meeting
                 </div>
                 <div class="accordion-body">
                   <div class="content">
-                    <p><?= $ds['deskripsi'] ?> <a rel="nofollow" href="https://www.toocss.com/" target="_blank">Too CSS website</a>. If you need a working contact form script, please visit <a href="https://templatemo.com/contact" target="_parent">our contact page</a> for more info.</p>
+                    <p style="text-align: justify;"><?= $ds['deskripsi'] ?> <a rel="nofollow" href="https://www.toocss.com/" target="_blank">Too CSS website</a>. If you need a working contact form script, please visit <a href="https://templatemo.com/contact" target="_parent">our contact page</a> for more info.</p>
                   </div>
                 </div>
               </article>
@@ -264,30 +234,31 @@ https://templatemo.com/tm-569-edu-meeting
                 </div>
                 <div class="accordion-body">
                   <div class="content">
-                    <p><?= $ds['visi'] ?> .</p>
+                    <p style="text-align: justify;"><?= $ds['visi'] ?> .</p>
                   </div>
                 </div>
               </article>
             </div>
             <div class="col-12">
-              <div class="count-area-content">
-                <video autoplay muted loop width="450px" height="300px">
-                  <source src="assets/images/ponpes.mp4" type="video/mp4" />
-                </video>
-                <div class="count-title"><?= $ds['deskripsi2'] ?></div>
+              <div class="count-area-content ">
+                <iframe width="100%" height="350px" src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1">
+                </iframe>
+
+
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
   <?php endforeach; ?>
 
-  <section class="upcoming-meetings" id="kegiatan" style="background-image: url('./assets/images/meeting-02.jpg') ;">
+  <section class="upcoming-meetings" id="kegiatan" style="background-image: url('./assets/images/flag.jpeg') ; padding: 5px;">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <div class="section-heading">
+          <div class="section-heading" style="margin-top: 30px;">
             <h2>KEGIATAN PONDOK PESANTREN AL-HASAN</h2>
           </div>
         </div>
@@ -348,6 +319,7 @@ https://templatemo.com/tm-569-edu-meeting
     </div>
   </section>
 
+
   <section class="contact-us" id="contact" style="background-image: url('./assets/images/meetings-bg.jpg');">
     <div class="container">
       <div class="row">
@@ -357,31 +329,48 @@ https://templatemo.com/tm-569-edu-meeting
               <form id="contact" action="" method="post">
                 <div class="row">
                   <div class="col-lg-12">
-                    <h2>Let's get in touch</h2>
+                    <h2>Silahkan Isi Formulir Dibawah</h2>
                   </div>
                   <div class="col-lg-4">
                     <fieldset>
-                      <input name="name" type="text" id="name" placeholder="YOURNAME...*" required="">
+                      <label>Tingkat Pendidikan
+                      </label>
+                      <select class="select2 form-select shadow-none" name="id_sekolah" id="id_sekolah" style="width: 100%; height: 36px">
+                        <option value="">--Select--</option>
+                        <?php foreach ($sekolah as $t) :  ?>
+                          <option value="<?= $t['id']; ?>"><?= $t['tingkat']; ?></option>
+                        <?php endforeach; ?>
+                      </select>
                     </fieldset>
                   </div>
                   <div class="col-lg-4">
                     <fieldset>
-                      <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="YOUR EMAIL..." required="">
+                      <label>Nama
+                      </label>
+                      <input type="text" name="nama" id="nama" class="form-control" required />
                     </fieldset>
                   </div>
                   <div class="col-lg-4">
                     <fieldset>
-                      <input name="subject" type="text" id="subject" placeholder="SUBJECT...*" required="">
+                      <label>Jenis Kelamin
+                      </label>
+                      <select name="jenis_kelamin" id="jenis_kelamin" class="select2 form-select shadow-none">
+                        <option value="Laki-Laki">--pilih--</option>
+                        <option value="Laki-Laki">Laki-Laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                      </select>
                     </fieldset>
                   </div>
                   <div class="col-lg-12">
                     <fieldset>
-                      <textarea name="message" type="text" class="form-control" id="message" placeholder="YOUR MESSAGE..." required=""></textarea>
+                      <label>Alamat
+                      </label>
+                      <textarea name="alamat" id="alamat" class="form-control" style="height: 160px;"></textarea>
                     </fieldset>
                   </div>
                   <div class="col-lg-12">
                     <fieldset>
-                      <button type="submit" id="form-submit" class="button">SEND MESSAGE NOW</button>
+                      <button type="submit" id="form-submit" name="submit" class="button">SIMPAN</button>
                     </fieldset>
                   </div>
                 </div>

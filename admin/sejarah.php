@@ -124,7 +124,7 @@ $title = "Dunia Kita Resto Admin Panel";
 									<div>
 										<label for="foto1" class="mt-3 ">Foto Pimpinan</label>
 										<input type="file" id="foto1" name="foto1" class="form-control mb-2 " onchange="loadFile1(event)" />
-										<img alt="" width="150px" height="150px" id="output1">
+										<img alt="" width="150px" height="200px" id="output1">
 									</div>
 									<div>
 										<label for="deskripsi1" class="mt-3">Keterangan </label>

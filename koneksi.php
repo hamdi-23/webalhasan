@@ -162,7 +162,7 @@ function upload_foto()
     echo "
     <script>
     alert('gambar yang diupload tidak sesuai'); 
-    document.location.href = 'promo.php';  
+    document.location.href = 'pendaftaran.php';  
     </script>
     ";
     return false;
@@ -171,7 +171,7 @@ function upload_foto()
   if ($ukuranFoto > 1000000) {
     echo " <script>
     alert('gambar yang diupload terlalu besar'); 
-    document.location.href = 'promo.php';  
+    document.location.href = 'pendaftaran.php';  
     </script>
     ";
     return false;
@@ -688,5 +688,24 @@ function detail($data)
   $id = $_POST['id'];
   $id_menu = htmlspecialchars($data["id_menu"]);
   mysqli_query($con, "UPDATE top_lima SET id_menu='$id_menu' WHERE id='$id'");
+  return mysqli_affected_rows($con);
+}
+
+
+// tambah data promo/pengumuman
+function pendaftar_baru()
+{
+  global $con;
+  $nama = $_POST['nama'];
+  $alamat = $_POST['alamat'];
+  // $tgl_masuk = $_POST['tgl_masuk'];
+  $jenis_kelamin = $_POST['jenis_kelamin'];
+  $id_sekolah = $_POST['id_sekolah'];
+
+
+
+
+  // insert data ke database
+  mysqli_query($con, "INSERT INTO pendaftaran VALUES ('','', '$nama','$jenis_kelamin', '$alamat', '','$id_sekolah')");
   return mysqli_affected_rows($con);
 }

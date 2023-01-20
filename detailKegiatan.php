@@ -76,8 +76,12 @@ https://templatemo.com/tm-569-edu-meeting
 				<div class="col-12">
 					<nav class="main-nav">
 						<!-- ***** Logo Start ***** -->
-						<a href="index.php" class="logo">
-							AL-HASAN
+						<a href="index.php" class="logo mx-3" style="width: 35px;">
+							<div class="item">
+								<div class="">
+									<img src="assets/images/logo.png ?>" alt="">
+								</div>
+							</div>
 						</a>
 						<a class='menu-trigger'>
 							<span>Menu</span>
@@ -156,8 +160,8 @@ https://templatemo.com/tm-569-edu-meeting
 			</div>
 		</div>
 		<div class="footer">
-			<p>Copyright © 2022 Edu Meeting Co., Ltd. All Rights Reserved.
-				<br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a>
+			<p>Copyright © Pondok Pesantren Al-Hasan., Ltd. All Rights Reserved.
+				<br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">PONPES AL-HASAN</a>
 			</p>
 		</div>
 	</section>

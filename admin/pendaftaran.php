@@ -161,7 +161,6 @@ $title = "ponpes AL - Hasan";
 											<option value="Laki-Laki">--pilih--</option>
 											<option value="Laki-Laki">Laki-Laki</option>
 											<option value="Perempuan">Perempuan</option>
-
 										</select>
 									</div>
 									<div class="input">
