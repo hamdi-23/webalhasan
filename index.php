@@ -116,7 +116,7 @@ https://templatemo.com/tm-569-edu-meeting
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
               <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-              <li class="scroll-to-section"><a href="#sejarah">Sejarah Al-Hasan</a></li>
+              <li class="scroll-to-section"><a href="#sejarah">Tentang Al-Hasan</a></li>
               <li class="scroll-to-section"><a href="#kegiatan">Kegiatan Al-Hasan</a></li>
               <li class="scroll-to-section"><a href="#galeri">Galeri Al-Hasan</a></li>
               <li class="scroll-to-section"><a href="#contact">Pendaftaran</a></li>
@@ -161,31 +161,31 @@ https://templatemo.com/tm-569-edu-meeting
 
 
   <?php foreach ($dataSejarah as $ds) : ?>
-    <section class="apply-now" id="sejarah" style="background-image: url('./assets/images/bg1.jpg'); padding: 55px;">
+    <section class=" apply-now" id="sejarah" style="background-image: url('./assets/images/kobong.jpg'); padding: 55px; box-shadow: inset 0 0 0 1500px rgba(0,0,0,.2);">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <div class="section-heading">
-              <h2 align="center">PONDOK PESANTREN AL-HASAN</h2>
+            <div class="bg-overlay section-heading">
+              <h2 align="center" style="color: black; font-size: 45px;">PONDOK PESANTREN AL-HASAN</h2>
             </div>
           </div>
-          <div class="col-lg-6 ">
+          <div class="col-lg-6 " style="color: black;">
             <div class="row">
               <div class="col-lg-6">
                 <div class="row">
                   <div class="col-12">
                     <div class="count-area-content percentage">
-                      <p style="font-size: 15px; color:white; margin-bottom: 6px;">Pimpinan Pondok Pesantren</p>
+                      <p style="font-size: 15px; color:black; margin-bottom: 6px; font-weight: 700;">Pimpinan <br>Pondok Pesantren</p>
                       <div class="icon">
                         <img src="./public/assets/images/sejarah/<?= $ds['foto1'] ?>" alt="" type="video/mp4" width="350px" height="250px">
                       </div>
-                      <div class="count-title"><?= $ds['deskripsi1'] ?></div>
+                      <div class="count-title" style="color: black;"><?= $ds['deskripsi1'] ?></div>
                     </div>
                     <div class="count-area-content">
                       <div class="icon">
                         <img src="./public/assets/images/sejarah/<?= $ds['foto2'] ?>" alt="" type="video/mp4">
                       </div>
-                      <div class="count-title"><?= $ds['deskripsi2'] ?></div>
+                      <div class="count-title" style="color: black;"><?= $ds['deskripsi2'] ?></div>
                     </div>
                   </div>
                 </div>
@@ -197,13 +197,13 @@ https://templatemo.com/tm-569-edu-meeting
                       <div class="icon">
                         <img src="./public/assets/images/sejarah/<?= $ds['foto3'] ?>" alt="" type="video/mp4">
                       </div>
-                      <div class="count-title"><?= $ds['deskripsi3'] ?></div>
+                      <div class="count-title" style="color: black;"><?= $ds['deskripsi3'] ?></div>
                     </div>
                     <div class="count-area-content">
                       <div class="icon">
                         <img src="./public/assets/images/sejarah/<?= $ds['foto4'] ?>" alt="">
                       </div>
-                      <div class="count-title"><?= $ds['deskripsi4'] ?></div>
+                      <div class="count-title" style="color: black;"><?= $ds['deskripsi4'] ?></div>
                     </div>
                   </div>
                 </div>
@@ -241,7 +241,7 @@ https://templatemo.com/tm-569-edu-meeting
             </div>
             <div class="col-12">
               <div class="count-area-content ">
-                <iframe width="100%" height="350px" src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1">
+                <iframe width="100%" height="350px" src="https://www.youtube.com/watch?v=aMXzpJDmwis&list=RDMMtRwMD-hCtjk&index=3">
                 </iframe>
 
 
@@ -254,7 +254,7 @@ https://templatemo.com/tm-569-edu-meeting
     </section>
   <?php endforeach; ?>
 
-  <section class="upcoming-meetings" id="kegiatan" style="background-image: url('./assets/images/flag.jpeg') ; padding: 5px;">
+  <section class="upcoming-meetings" id="kegiatan" style="background-image: url('./assets/images/bg2.jpg') ; padding: 5px; box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">

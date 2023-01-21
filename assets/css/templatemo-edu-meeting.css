@@ -779,6 +779,16 @@ banner
   width: 100%;
 }
 
+.bg-overlay {
+  position: absolute;
+  background-color: rgba(31, 39, 43, 0.75);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}
+
 .main-banner .caption {
   position: absolute;
   top: 50%;
