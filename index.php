@@ -104,33 +104,31 @@ https://templatemo.com/tm-575-leadership-event
                         <a class="nav-link click-scroll" href="#section_1">Home</a>
                     </li>
 
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link click-scroll" href="#section_2">About</a>
+                    </li> -->
+
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="#tentang"> Tentang AL-HASAN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="#kegiatan">kegiatan</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_3">Speakers</a>
+                        <a class="nav-link click-scroll" href="#galeri">Galeri AL-HASAN</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="#alamat">Alamat</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_4">Schedules</a>
+                        <a class="nav-link click-scroll" href="#kontak">Pendaftaran</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_5">Pricing</a>
-                    </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_6">Venue</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_7">Contact</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link custom-btn btn d-none d-lg-block" href="#">Buy Tickets</a>
-                    </li>
                 </ul>
                 <div>
 
@@ -155,7 +153,7 @@ https://templatemo.com/tm-575-leadership-event
 
                 <div class="video-wrap">
                     <video autoplay="" loop="" muted="" class="custom-video" poster="">
-                        <source src="videos/pexels-pavel-danilyuk-8716790.mp4" type="video/mp4">
+                        <source src="videos/ponpes.mp4" type="video/mp4">
 
                         Your browser does not support the video tag.
                     </video>
@@ -174,8 +172,8 @@ https://templatemo.com/tm-575-leadership-event
 
                             <div class="highlight-info">
                                 <h3 class="highlight-title">2019 Highlights</h3>
-
-                                <a href="https://www.youtube.com/templatemo" class="bi-youtube highlight-icon"></a>
+                                <iframe src="https://www.youtube.com/templatemo"></iframe>
+                                <a href="<?= $medsos['link_video'] ?>" class="bi-youtube highlight-icon" class="_"></a>
                             </div>
                         </div>
                     </div>
@@ -201,41 +199,7 @@ https://templatemo.com/tm-575-leadership-event
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="highlight-thumb">
-                            <img src="images/highlight/alexandre-pellaes-6vAjp0pscX0-unsplash.jpg" class="highlight-image img-fluid" alt="">
 
-                            <div class="highlight-info">
-                                <h3 class="highlight-title">2019 Highlights</h3>
-
-                                <a href="https://www.youtube.com/templatemo" class="bi-youtube highlight-icon"></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="highlight-thumb">
-                            <img src="images/highlight/miguel-henriques--8atMWER8bI-unsplash.jpg" class="highlight-image img-fluid" alt="">
-
-                            <div class="highlight-info">
-                                <h3 class="highlight-title">2020 Highlights</h3>
-
-                                <a href="https://www.youtube.com/templatemo" class="bi-youtube highlight-icon"></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="highlight-thumb">
-                            <img src="images/highlight/jakob-dalbjorn-cuKJre3nyYc-unsplash.jpg" class="highlight-image img-fluid" alt="">
-
-                            <div class="highlight-info">
-                                <h3 class="highlight-title">2021 Highlights</h3>
-
-                                <a href="https://www.youtube.com/templatemo" class="bi-youtube highlight-icon"></a>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
             </div>
@@ -261,7 +225,7 @@ https://templatemo.com/tm-575-leadership-event
         </section> -->
 
         <?php foreach ($dataSejarah as $ds) : ?>
-            <section class="speakers section-padding" id="section_3">
+            <section class="speakers section-padding" id="tentang">
                 <div class="container">
                     <div class="row">
 
@@ -377,7 +341,7 @@ https://templatemo.com/tm-575-leadership-event
             </section>
         <?php endforeach; ?>
 
-        <section class="schedule section-padding" id="section_4">
+        <section class="schedule section-padding" id="kegiatan">
             <div class="container">
                 <div class="row">
 
@@ -431,16 +395,18 @@ https://templatemo.com/tm-575-leadership-event
                 </div>
         </section>
 
-        <section class="call-to-action section-padding" style="position: absolte; height: 1200px;">
+        <section class="call-to-action section-padding" id="galeri" style="position: absolte; height: 1200px; ">
+            <div class="card" style="background-color: #ffffff; margin-bottom: 5px;">
+                <h1 style="font-weight: 700;  color:black; text-align: center; ">GALERI AL-HASAN</h1>
+            </div>
             <div class="container">
-                <h1 style="font-weight: 900; color:white; align-content: center; ">GALERI PONPES</h1>
                 <div class="row align-items-center">
                     <?php foreach ($dataGallery as $daga) : ?>
-                        <div class="w3-display-container mySlides">
+                        <!-- <div class="w3-display-bottomleft w3-container w3-padding-16 w3-black">
+                            <?= $daga['deskripsi']; ?>
+                        </div> -->
+                        <div class="w3-display-container mySlides" style="max-width: 100%; height: 100%;">
                             <img src="./public/assets/img/gallery/<?= $daga['foto']; ?>" style="width:100%; height: auto;">
-                            <div class="w3-display-bottomleft w3-container w3-padding-16 w3-black">
-                                <?= $daga['deskripsi']; ?>
-                            </div>
                         </div>
                     <?php endforeach; ?>
 
@@ -448,7 +414,7 @@ https://templatemo.com/tm-575-leadership-event
             </div>
         </section>
 
-        <!-- <section class="pricing section-padding" id="section_5" style="position: absolte; height: 900px;">
+        <!-- <section class="pricing section-padding" id="galeri" style="position: absolte; height: 900px;">
             <h1 class="" align="center" style="font-weight: 900;">Galeri Pondok Pesantren <br> Al-Hasan</h1>
 
             <div class="col-lg-8 col-md-6 col-12  mb-lg-0" style="padding: 50px; ">
@@ -469,7 +435,7 @@ https://templatemo.com/tm-575-leadership-event
 
         </section> -->
 
-        <section class="venue section-padding" id="section_6">
+        <section class="venue section-padding" id="alamat">
             <div class="container">
                 <div class="row">
 
@@ -478,20 +444,20 @@ https://templatemo.com/tm-575-leadership-event
                     </div>
 
                     <div class="col-lg-6 col-12">
-                        <iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1511.091461689997!2d-73.9866630916883!3d40.758001294831736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855a96da09d%3A0x860bf5a5e1a00a68!2sTimes%20Square%2C%20New%20York%2C%20NY%2010036%2C%20USA!5e0!3m2!1sen!2ssg!4v1643035529098!5m2!1sen!2ssg" width="100%" height="371.59" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe class="google-map" src="<?= $dp['google_map']; ?>" width="100%" height="371.59" allowfullscreen="" loading="lazy"></iframe>
                     </div>
 
                     <div class="col-lg-6 col-12 mt-5 mt-lg-0">
                         <div class="venue-thumb bg-white shadow-lg">
 
                             <div class="venue-info-title">
-                                <h2 class="text-white mb-0">Times Square</h2>
+                                <h2 class="text-white mb-0">Pondok Pesantren Al-Hasan</h2>
                             </div>
 
                             <div class="venue-info-body">
                                 <h4 class="d-flex">
                                     <i class="bi-geo-alt me-2"></i>
-                                    <span>102 South. 7th Street, New York, NY 10036, USA</span>
+                                    <span><?= $dp['alamat']; ?></span>
                                 </h4>
 
                                 <h5 class="mt-4 mb-3">
@@ -504,7 +470,7 @@ https://templatemo.com/tm-575-leadership-event
                                 <h5 class="mb-0">
                                     <a href="tel: 305-240-9671">
                                         <i class="bi-telephone me-2"></i>
-                                        010-020-0340
+                                        0<?= $dp['hp']; ?>
                                     </a>
                                 </h5>
                             </div>
@@ -515,33 +481,48 @@ https://templatemo.com/tm-575-leadership-event
             </div>
         </section>
 
-        <section class="contact section-padding" id="section_7">
+        <section class="contact section-padding" id="kontak">
             <div class="container">
                 <div class="row">
 
                     <div class="col-lg-8 col-12 mx-auto">
                         <form class="custom-form contact-form bg-white shadow-lg" action="#" method="post" role="form">
-                            <h2>Please Say Hi</h2>
+                            <h2>Silahkan isi formulir Dibawah Untuk mendaftar</h2>
 
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-12">
-                                    <input type="text" name="name" id="name" class="form-control" placeholder="Name" required="">
+                                    <label>Nama
+                                    </label>
+                                    <input type="text" name="nama" id="nama" class="form-control" required />
                                 </div>
 
                                 <div class="col-lg-4 col-md-4 col-12">
-                                    <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email" required="">
+                                    <label>Tingkat Pendidikan
+                                    </label>
+                                    <select class="select2 form-select shadow-none" name="id_sekolah" id="id_sekolah" style="width: 100%; height: 36px">
+                                        <option value="">--Select--</option>
+                                        <?php foreach ($sekolah as $t) :  ?>
+                                            <option value="<?= $t['id']; ?>"><?= $t['tingkat']; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                 </div>
 
                                 <div class="col-lg-4 col-md-4 col-12">
-                                    <input type="text" name="subject" id="subject" class="form-control" placeholder="Subject">
+                                    <label>Jenis Kelamin
+                                    </label>
+                                    <select name="jenis_kelamin" id="jenis_kelamin" class="select2 form-select shadow-none">
+                                        <option value="Laki-Laki">--pilih--</option>
+                                        <option value="Laki-Laki">Laki-Laki</option>
+                                        <option value="Perempuan">Perempuan</option>
+                                    </select>
                                 </div>
 
                                 <div class="col-12">
-                                    <textarea class="form-control" rows="5" id="message" name="message" placeholder="Message"></textarea>
-
-                                    <button type="submit" class="form-control">Submit</button>
+                                    <label>Alamat
+                                    </label>
+                                    <textarea class="form-control" name="alamat" id="alamat" rows="5" id="message" name="message" placeholder="Message"></textarea>
+                                    <button type="submit" id="form-submit" name="submit" class="form-control">Simpan</button>
                                 </div>
-
                             </div>
                         </form>
                     </div>
@@ -564,13 +545,9 @@ https://templatemo.com/tm-575-leadership-event
                         </a>
 
                         <ul class="social-icon ms-auto">
-                            <li><a href="#" class="social-icon-link bi-facebook"></a></li>
-
-                            <li><a href="#" class="social-icon-link bi-instagram"></a></li>
-
-                            <li><a href="#" class="social-icon-link bi-whatsapp"></a></li>
-
-                            <li><a href="#" class="social-icon-link bi-youtube"></a></li>
+                            <?php foreach ($dataSosialMedia as $medsos) : ?>
+                                <li><a href="<?= $medsos['link'] ?>" class="social-icon-link bi-<?= $medsos['nama'] ?>"></a></li>
+                            <?php endforeach; ?>
                         </ul>
                     </div>
                 </div>
