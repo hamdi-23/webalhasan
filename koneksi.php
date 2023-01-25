@@ -47,7 +47,9 @@ function ubah($data)
   $alamat = htmlspecialchars($data['alamat']);
   $hp =  htmlspecialchars($data['hp']);;
   $deskripsi = htmlspecialchars($data['deskripsi']);
-  $link_video =  htmlspecialchars($data['link_video']);
+  $link_video1 =  htmlspecialchars($data['link_video1']);
+  $link_video2 =  htmlspecialchars($data['link_video2']);
+  $link_video3 =  htmlspecialchars($data['link_video3']);
   $google_map =  htmlspecialchars($data['google_map']);
   $bg_lama = htmlspecialchars($data['bg_lama']);
   $profil_lama =  htmlspecialchars($data['profil_lama']);
@@ -73,7 +75,9 @@ function ubah($data)
   deskripsi = '$deskripsi',
   foto_bg = '$foto_bg',
   foto_profil = '$foto_profil',
-  link_video = '$link_video',
+  link_video1 = '$link_video1',
+  link_video2 = '$link_video2',
+  link_video3 = '$link_video3',
   google_map = '$google_map'
   WHERE id = $id
   ";

@@ -115,8 +115,16 @@ $title = "Dunia Kita Resto Admin Panel";
 										<input type="text" id="tagline" name="tagline" class="form-control" value="<?= $data['tagline']; ?> " />
 									</div> -->
 									<div>
-										<label for="link_video" class="mt-3">Link Video</label>
-										<input type="text" id="link_video" name="link_video" class="form-control" value="<?= $data['link_video']; ?> " />
+										<label for="link_video1" class="mt-3">Link Video 1</label>
+										<input type="text" id="link_video1" name="link_video1" class="form-control" value="<?= $data['link_video1']; ?> " />
+									</div>
+									<div>
+										<label for="link_video2" class="mt-3">Link Video 2</label>
+										<input type="text" id="link_video2" name="link_video2" class="form-control" value="<?= $data['link_video2']; ?> " />
+									</div>
+									<div>
+										<label for="link_video3" class="mt-3">Link Video 3</label>
+										<input type="text" id="link_video3" name="link_video3" class="form-control" value="<?= $data['link_video3']; ?> " />
 									</div>
 									<div>
 										<label for="alamat" class="mt-3">alamat</label>
@@ -133,7 +141,7 @@ $title = "Dunia Kita Resto Admin Panel";
 									<div>
 										<label for="foto_bg">Foto Background</label>
 										<input type="file" id="foto_bg" name="foto_bg" class="form-control mb-1" onchange="loadFile(event)" />
-										<img align="right" alt="" width="450" height="220" id="output">
+										<img alt="" width="450" height="220" id="output">
 									</div>
 									<div>
 										<label for="foto_profil" class="mt-3">Sejarah Singkat</label>
@@ -144,7 +152,7 @@ $title = "Dunia Kita Resto Admin Panel";
 							<hr>
 						</div>
 						<div class="card-footer">
-							<div align="right">
+							<div>
 								<button type="submit" name="submit" class="btn btn-success text-white">simpan</button>
 							</div>
 						</div>

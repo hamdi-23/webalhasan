@@ -124,7 +124,7 @@ $title = "Dunia Kita Resto Admin Panel";
 									<div>
 										<label for="foto1" class="mt-3 ">Foto Pimpinan</label>
 										<input type="file" id="foto1" name="foto1" class="form-control mb-2 " onchange="loadFile1(event)" />
-										<img alt="" width="150px" height="200px" id="output1">
+										<img alt="" width="300px" height="200px" id="output1">
 									</div>
 									<div>
 										<label for="deskripsi1" class="mt-3">Keterangan </label>
@@ -147,7 +147,7 @@ $title = "Dunia Kita Resto Admin Panel";
 									<div class=" mt-2">
 										<label for="foto3">Foto Fasilitas 2</label>
 										<input type="file" id="foto3" name="foto3" class="form-control mb-1" onchange="loadFile3(event)" />
-										<img align="right" alt="" width="450" height="220" id="output3">
+										<img alt="" width="450" height="220" id="output3">
 									</div>
 									<div>
 										<label for="deskripsi3" class="mt-3">Keterangan 2</label>
@@ -157,7 +157,7 @@ $title = "Dunia Kita Resto Admin Panel";
 									<div>
 										<label for="foto4" class="mt-3">Foto Fasilitas 3</label>
 										<input type="file" id="foto4" name="foto4" class="form-control mb-1" onchange="loadFile4(event)" />
-										<img align="right" alt="" width="450" height="220" id="output4">
+										<img alt="" width="450" height="220" id="output4">
 									</div>
 									<div>
 										<label for="deskripsi4" class="mt-3">Keterangan 3</label>

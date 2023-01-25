@@ -12,221 +12,153 @@ $title = "Pondok Pesantren Al-Hasan";
 
 ?>
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<meta name="description" content="">
-	<meta name="author" content="Template Mo">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+	<meta name="author" content="">
 
-	<title><?= $title; ?></title>
+	<title>Leadership Event HTML5 Bootstrap v5 Template</title>
 
-	<!-- Bootstrap core CSS -->
-	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- CSS FILES -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-	<!-- Additional CSS Files -->
-	<link rel="stylesheet" href="assets/css/fontawesome.css">
-	<link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
-	<link rel="stylesheet" href="assets/css/owl.css">
-	<link rel="stylesheet" href="assets/css/lightbox.css">
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+
+	<link href="css/bootstrap-icons.css" rel="stylesheet">
+
+	<link href="css/templatemo-leadership-event.css" rel="stylesheet">
+
 	<!--
 
-TemplateMo 569 Edu Meeting
+TemplateMo 575 Leadership Event
 
-https://templatemo.com/tm-569-edu-meeting
+https://templatemo.com/tm-575-leadership-event
 
 -->
 </head>
 
 <body>
 
-
-
-	<!-- Sub Header -->
-	<div class="sub-header">
+	<nav class="navbar navbar-expand-lg">
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-sm-8">
-					<div class="left-content">
-						<p>Pondok Pesantren Al-Hasan Cipatujah Tasikmalaya</p>
+
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<a href="index.html" class="navbar-brand mx-auto mx-lg-0">
+				<i class="bi-bullseye brand-logo"></i>
+				<span class="brand-text">Leadership <br> Event</span>
+			</a>
+	</nav>
+
+	<main>
+
+
+		<section class="contact section-padding" id="kegiatan" style=" background-image: url('./public/assets/img/kegiatan/<?= $row['foto']; ?>');">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-lg-8 col-12 mx-auto">
+						<form class="custom-form contact-form bg-white shadow-lg" action="#" method="post" role="form">
+							<h2><?= $row['nama']; ?></h2>
+							<div class="row">
+								<div style=" margin-bottom: 5px;">
+									<span class="">
+										<i class="bi-clock me-2"></i>
+										<?= date('d F Y', strtotime($row['tanggal'])); ?>
+									</span>
+
+									<span class="mx-1 mx-lg-5">
+										<i class="bi-layout-sidebar me-2"></i>
+										<?= $row['lokasi']; ?>
+									</span>
+								</div>
+
+								<div class="col-12">
+									<p><?= $row['deskripsi']; ?></p>
+								</div>
+
+								<div>
+									<a href="index.php" type="button" class="form-control" style="text-align: center; font-weight: 800;">Kembali</a>
+								</div>
+
+							</div>
+						</form>
 					</div>
+
 				</div>
-				<div class="col-lg-4 col-sm-4">
-					<div class="right-icons">
-						<ul>
+			</div>
+		</section>
+
+
+
+
+	</main>
+
+	<footer class="site-footer">
+		<div class="container">
+			<div class="row align-items-center">
+
+				<div class="col-lg-12 col-12 border-bottom pb-5 mb-5">
+					<div class="d-flex">
+						<a href="index.html" class="navbar-brand">
+							<i class="bi-bullseye brand-logo"></i>
+							<span class="brand-text">Leadership <br> Event</span>
+						</a>
+
+						<ul class="social-icon ms-auto">
 							<?php foreach ($dataSosialMedia as $medsos) : ?>
-								<li><a href="<?= $medsos['link'] ?>"><i class="fa fa-<?= $medsos['nama'] ?>"></i></a></li>
+								<li><a href="<?= $medsos['link'] ?>" class="social-icon-link bi-<?= $medsos['nama'] ?>"></a></li>
 							<?php endforeach; ?>
 						</ul>
 					</div>
 				</div>
-			</div>
-		</div>
-	</div>
 
-	<!-- ***** Header Area Start ***** -->
-	<header class="header-area header-sticky">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<nav class="main-nav">
-						<!-- ***** Logo Start ***** -->
-						<a href="index.php" class="logo mx-3" style="width: 35px;">
-							<div class="item">
-								<div class="">
-									<img src="assets/images/logo.png ?>" alt="">
-								</div>
-							</div>
-						</a>
-						<a class='menu-trigger'>
-							<span>Menu</span>
-						</a>
-						<!-- ***** Menu End ***** -->
-					</nav>
+				<div class="col-lg-7 col-12">
+					<ul class="footer-menu d-flex flex-wrap">
+						<li class="footer-menu-item"><a href="#" class="footer-menu-link">Our Story</a></li>
+
+						<li class="footer-menu-item"><a href="#" class="footer-menu-link">Code of Conduct</a></li>
+
+						<li class="footer-menu-item"><a href="#" class="footer-menu-link">Privacy and Terms</a></li>
+
+						<li class="footer-menu-item"><a href="#" class="footer-menu-link">Contact</a></li>
+					</ul>
 				</div>
-			</div>
-		</div>
-	</header>
-	<!-- ***** Header Area End ***** -->
-	<section class="heading-page header-text" id="top" style="background-image: url('./assets/images/heading-bg.jpg');">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<!-- <h6>Get all details</h6> -->
-					<h2><?= $row['nama']; ?></h2>
-				</div>
-			</div>
-		</div>
-	</section>
 
-	<section class="meetings-page" id="meetings" style="background-image: url('./assets/images/meeting-01.jpg');">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="meeting-single-item">
-								<div class="thumb">
-									<div class="price">
-										<span><?= $row['lokasi']; ?></span>
-									</div>
-									<a href="meeting-details.html"><img src="./public/assets/img/kegiatan/<?= $row['foto']; ?>" alt=""></a>
-								</div>
-								<div class="down-content">
-									<a href="meeting-details.html">
-										<h4><?= $row['nama']; ?></h4>
-									</a>
-									<p><?= $row['deskripsi']; ?></p>
-									<div class="row">
-										<div class="col-lg-4">
-											<div class="hours">
-												<h5>Tanggal</h5>
-												<p><?= date('d F Y', strtotime($row['tanggal'])); ?></p>
-											</div>
-										</div>
-										<div class="col-lg-4">
-											<div class="location">
-												<h5>Lokasi</h5>
-												<p><?= $row['lokasi']; ?></p>
-											</div>
-										</div>
 
-										<div class="col-lg-12">
-											<div class="share">
-												<h5>Share:</h5>
-												<ul>
-													<?php foreach ($dataSosialMedia as $medsos) : ?>
-														<li><a href="<?= $medsos['link'] ?>"><?= $medsos['nama'] ?></a></li>
-													<?php endforeach; ?>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-12">
-							<div class="main-button-red">
-								<a href="index.php">Kembali</a>
-							</div>
-						</div>
+				<div class="col-lg-5 col-12 ms-lg-auto">
+					<div class="copyright-text-wrap d-flex align-items-center">
+						<p class="copyright-text ms-lg-auto me-4 mb-0">Copyright © 2022 Leadership Event Co., Ltd.
+
+							<br>All Rights Reserved.
+
+							<br><br>Design: <a title="CSS Templates" rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
+						</p>
+
+						<a href="#section_1" class="bi-arrow-up arrow-icon custom-link"></a>
 					</div>
 				</div>
+
 			</div>
 		</div>
-		<div class="footer">
-			<p>Copyright © Pondok Pesantren Al-Hasan., Ltd. All Rights Reserved.
-				<br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">PONPES AL-HASAN</a>
-			</p>
-		</div>
-	</section>
+	</footer>
 
-	<!-- Scripts -->
-	<!-- Bootstrap core JavaScript -->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-	<script src="assets/js/isotope.min.js"></script>
-	<script src="assets/js/owl-carousel.js"></script>
-	<script src="assets/js/lightbox.js"></script>
-	<script src="assets/js/tabs.js"></script>
-	<script src="assets/js/video.js"></script>
-	<script src="assets/js/slick-slider.js"></script>
-	<script src="assets/js/custom.js"></script>
-	<script>
-		//according to loftblog tut
-		$('.nav li:first').addClass('active');
-
-		var showSection = function showSection(section, isAnimate) {
-			var
-				direction = section.replace(/#/, ''),
-				reqSection = $('.section').filter('[data-section="' + direction + '"]'),
-				reqSectionPos = reqSection.offset().top - 0;
-
-			if (isAnimate) {
-				$('body, html').animate({
-						scrollTop: reqSectionPos
-					},
-					800);
-			} else {
-				$('body, html').scrollTop(reqSectionPos);
-			}
-
-		};
-
-		var checkSection = function checkSection() {
-			$('.section').each(function() {
-				var
-					$this = $(this),
-					topEdge = $this.offset().top - 80,
-					bottomEdge = topEdge + $this.height(),
-					wScroll = $(window).scrollTop();
-				if (topEdge < wScroll && bottomEdge > wScroll) {
-					var
-						currentId = $this.data('section'),
-						reqLink = $('a').filter('[href*=\\#' + currentId + ']');
-					reqLink.closest('li').addClass('active').
-					siblings().removeClass('active');
-				}
-			});
-		};
-
-		$('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function(e) {
-			e.preventDefault();
-			showSection($(this).attr('href'), true);
-		});
-
-		$(window).scroll(function() {
-			checkSection();
-		});
-	</script>
-</body>
-
+	<!-- JAVASCRIPT FILES -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.sticky.js"></script>
+	<script src="js/click-scroll.js"></script>
+	<script src="js/custom.js"></script>
 
 </body>
 
