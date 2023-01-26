@@ -15,7 +15,7 @@
 .slide {
   height: 80vh;
   border-radius: 20px;
-  margin: 10px;
+  margin: 4px;
   cursor: pointer;
   color: #fff;
   flex: 1;
@@ -24,7 +24,7 @@
   background-repeat: no-repeat;
   position: relative;
   transition: all 0.7s ease-in-out;
-  /* filter: blur(4px); */
+  filter: blur(2px);
 }
 
 .slide h3 {

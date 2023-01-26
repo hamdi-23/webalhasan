@@ -54,16 +54,16 @@ https://templatemo.com/tm-575-leadership-event
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<a href="index.html" class="navbar-brand mx-auto mx-lg-0">
-				<i class="bi-bullseye brand-logo"></i>
-				<span class="brand-text">Leadership <br> Event</span>
+			<a href="index.php" class="navbar-brand mx-auto mx-lg-0">
+				<img src="./public/assets/img/apple-touch-icon.png" alt="Sarinah Otomotif Solution" class="img-fluid" style="width: 40px; height: 40px; ">
+				<span class="brand-text" style="color: greenyellow;">PONDOK PESANTREN <br> AL-HASAN</span>
 			</a>
 	</nav>
 
 	<main>
 
 
-		<section class="contact section-padding" id="kegiatan" style=" background-image: url('./public/assets/img/kegiatan/<?= $row['foto']; ?>');">
+		<section class="contact section-padding" id="kegiatan">
 			<div class="container">
 				<div class="row">
 
@@ -88,7 +88,7 @@ https://templatemo.com/tm-575-leadership-event
 								</div>
 
 								<div>
-									<a href="index.php" type="button" class="form-control" style="text-align: center; font-weight: 800;">Kembali</a>
+									<a href="index.php#kegiatan" type="button" class="form-control" style="text-align: center; font-weight: 800;">Kembali</a>
 								</div>
 
 							</div>

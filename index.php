@@ -5,7 +5,7 @@ $dataProfil = mysqli_query($con, "SELECT * FROM profil");
 $kataSantri = mysqli_query($con, "SELECT * FROM katasantri");
 $dataSejarah = mysqli_query($con, "SELECT * FROM sejarah");
 $dataKegiatan = mysqli_query($con, "SELECT * FROM kegiatan ORDER BY id DESC LIMIT 6");
-$dataGallery = mysqli_query($con, "SELECT * FROM gallery");
+$dataGallery = mysqli_query($con, "SELECT * FROM gallery ORDER BY id DESC LIMIT 20;");
 
 $dataSosialMedia = mysqli_query($con, "SELECT social_media.`nama`, social_media.`id` as idSosmed, link_social_media.`id_social_media`, link_social_media.`link` as link FROM link_social_media
 INNER JOIN social_media ON link_social_media.`id_social_media`=social_media.`id`");
@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
     echo
     "
 		  <script>
-		  alert('data berhasil ditambah');
+		  alert('Terima Kasih Anda Berhasil Mendaftar');
 		  document.location.href = 'index.php';  
 		  </script>
 		  ";
@@ -75,7 +75,6 @@ if (isset($_POST['submit'])) {
   <link href="./public/assets/vendor/aos/aos.css" rel="stylesheet">
 
   <link href="./css/style.css" rel="stylesheet">
-  l
 
   <style>
     .mySlides {
@@ -101,12 +100,12 @@ https://templatemo.com/tm-575-leadership-event
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <a href="index.html" class="navbar-brand mx-auto mx-lg-0">
-        <i class="bi-bullseye brand-logo"></i>
-        <span class="brand-text">Leadership <br> Event</span>
+      <a href="index.php" class="navbar-brand mx-auto mx-lg-0">
+        <img src="./public/assets/img/apple-touch-icon.png" alt="Sarinah Otomotif Solution" class="img-fluid" style="width: 40px; height: 40px; ">
+        <span class="brand-text" style="color: greenyellow;">PONDOK PESANTREN <br> AL-HASAN</span>
       </a>
 
-      <a class="nav-link custom-btn btn d-lg-none" href="#">Buy Tickets</a>
+      <a class="nav-link custom-btn btn d-lg-none" href="#pendaftaran">Daftar</a>
 
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
@@ -119,14 +118,14 @@ https://templatemo.com/tm-575-leadership-event
                     </li> -->
 
           <li class="nav-item">
-            <a class="nav-link click-scroll" href="#tentang"> Tentang AL-HASAN</a>
+            <a class="nav-link click-scroll" href="#tentang"> Tentang Al-Hasan</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link click-scroll" href="#kegiatan">kegiatan</a>
+            <a class="nav-link click-scroll" href="#kegiatan">Kegiatan</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link click-scroll" href="#galeri">Galeri AL-HASAN</a>
+            <a class="nav-link click-scroll" href="#galeri">Galeri Al-Hasan</a>
           </li>
 
 
@@ -135,7 +134,7 @@ https://templatemo.com/tm-575-leadership-event
           </li>
 
           <li class="nav-item">
-            <a class="nav-link click-scroll" href="#kontak">Pendaftaran</a>
+            <a class="nav-link click-scroll" href="#pendaftaran">Pendaftaran</a>
           </li>
 
 
@@ -149,12 +148,14 @@ https://templatemo.com/tm-575-leadership-event
       <section class="hero" id="section_1">
         <div class="container">
           <div class="row">
-
+            <div class="alert alert-success" id="myAlert">
+              Formulir berhasil dikirim
+            </div>
             <div class="col-lg-5 col-12 m-auto">
               <div class="hero-text">
 
-                <h1 class="text-white mb-4"> <?= $dp['nama']; ?></h1>
-                <p style="color: white;"><?= $dp['deskripsi']; ?></p>
+                <h1 class="text-white mb-2">PONDOK PESANTREN <br><?= $dp['nama']; ?></h1>
+                <p style="color: white; font-size: 14px; margin-bottom: 0px;"><?= $dp['deskripsi']; ?></p>
                 <a href="#tentang" class="custom-link bi-arrow-down arrow-icon"></a>
               </div>
             </div>
@@ -178,37 +179,33 @@ https://templatemo.com/tm-575-leadership-event
 
           <div class="col-lg-4 col-md-6 col-12">
             <div class="highlight-thumb">
-              <a href=" <?= $dp['link_video']; ?>" class=" venobox play-btn" data-vbtype="video" data-autoplay="true" target="_blank"><img src="images/highlight/alexandre-pellaes-6vAjp0pscX0-unsplash.jpg" class="highlight-image img-fluid" alt=""></a>
-              <div class="highlight-info">
-                <h3 class="highlight-title">kEGIATAN </h3>
-                <div class="  align-items-center" data-aos="zoom-in" data-aos-delay="200">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-12">
-            <div class="highlight-thumb">
               <img src="images/highlight/alexandre-pellaes-6vAjp0pscX0-unsplash.jpg" class="highlight-image img-fluid" alt="">
-
-              <div class="highlight-info">
-                <h3 class="highlight-title">2019 Highlights</h3>
-
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-12">
-            <div class="highlight-thumb">
-              <img src="images/highlight/alexandre-pellaes-6vAjp0pscX0-unsplash.jpg" class="highlight-image img-fluid" alt="">
-
               <div class="highlight-info">
                 <h3 class="highlight-title">Acara Pidato Santri</h3>
-
-                <a href=" <?= $dp['link_video']; ?>" class=" bi-youtube highlight-icon" data-vbtype="video" data-autoplay="true" target="_blank"></a>
+                <a href=" <?= $dp['link_video1']; ?>" class=" bi-youtube highlight-icon" data-vbtype="video" data-autoplay="true" target="_blank"></a>
               </div>
             </div>
           </div>
 
+          <div class="col-lg-4 col-md-6 col-12">
+            <div class="highlight-thumb">
+              <img src="images/highlight/alexandre-pellaes-6vAjp0pscX0-unsplash.jpg" class="highlight-image img-fluid" alt="">
+              <div class="highlight-info">
+                <h3 class="highlight-title">Acara Pidato Santri</h3>
+                <a href=" <?= $dp['link_video2']; ?>" class=" bi-youtube highlight-icon" data-vbtype="video" data-autoplay="true" target="_blank"></a>
+              </div>
+            </div>
+          </div>
 
+          <div class="col-lg-4 col-md-6 col-12">
+            <div class="highlight-thumb">
+              <img src="images/highlight/alexandre-pellaes-6vAjp0pscX0-unsplash.jpg" class="highlight-image img-fluid" alt="">
+              <div class="highlight-info">
+                <h3 class="highlight-title">Acara Pidato Santri</h3>
+                <a href=" <?= $dp['link_video3']; ?>" class=" bi-youtube highlight-icon" data-vbtype="video" data-autoplay="true" target="_blank"></a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -218,25 +215,23 @@ https://templatemo.com/tm-575-leadership-event
         <div class="container">
           <div class="row">
 
-            <div class="col-lg-6 col-12 d-flex flex-column justify-content-center align-items-center">
-              <div class="speakers-text-info" style="padding: 2px;">
-                <h2 class="mb-5">Pondok Pesantren Al-Hasan</h2>
-
-                <p style=" color: ; text-align: justify;"><?= $ds['deskripsi'] ?> </p>
+            <div class="col-lg-6 col-12 d-flex flex-column justify-content-center align-items-center" style="padding: 3px; box-sizing: inherit;">
+              <div class="speakers-text-info" style="padding: 0px; ">
+                <h2 class="mb-2" style="padding: 0px; font-weight: 900; font-size: 35px; text-align: center; ">Pondok Pesantren <br> Al-Hasan</u></h2>
+                <hr>
+                <p style="padding: 3px; text-align: justify;"><?= $ds['deskripsi'] ?></p>
               </div>
             </div>
-
             <div class="col-lg-6 col-12">
               <div class="speakers-thumb">
-                <img src="./public/assets/images/sejarah/<?= $ds['foto1'] ?>" class="img-fluid speakers-image" alt="">
-                <!-- 
-                                <small class="speakers-featured-text">Featured</small> -->
+                <img src="./public/assets/images/sejarah/<?= $ds['foto1'] ?>" class="img-fluid speakers-image" alt="" style="margin-top: 118px;">
+                <!-- <small class="speakers-featured-text">Featured</small> -->
 
                 <div class="speakers-info">
 
                   <h5 class="speakers-title mb-0"><?= $ds['deskripsi1'] ?></h5>
 
-                  <p class="speakers-text mb-0">PIMPINAN PONDOK PESANTREN AL-HASAN</p>
+                  <p class="speakers-text mb-0">Pimpinan Pondok Pesantren Al-Hasan</p>
 
                   <ul class="social-icon">
                     <li><a href="#" class="social-icon-link bi-facebook"></a></li>
@@ -247,19 +242,17 @@ https://templatemo.com/tm-575-leadership-event
                   </ul>
                 </div>
               </div>
+              <hr>
             </div>
-
             <div class="col-lg-12 col-12">
+              <hr>
               <div class="row">
-                <div class="col-lg-3 col-md-6 col-12">
+                <div class="col-lg-4 col-md-6 col-12">
                   <div class="speakers-thumb speakers-thumb-small">
                     <img src="./public/assets/images/sejarah/<?= $ds['foto2'] ?>" class="img-fluid speakers-image" alt="">
 
                     <div class="speakers-info">
-                      <!-- <h5 class="speakers-title mb-0">Natalie</h5> -->
-
                       <p class="speakers-text mb-0"><?= $ds['deskripsi2'] ?></p>
-
                       <ul class="social-icon">
                         <li><a href="#" class="social-icon-link bi-facebook"></a></li>
 
@@ -269,13 +262,12 @@ https://templatemo.com/tm-575-leadership-event
                   </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-12">
+                <div class="col-lg-4 col-md-6 col-12">
                   <div class="speakers-thumb speakers-thumb-small">
                     <img src="./public/assets/images/sejarah/<?= $ds['foto3'] ?>" class="img-fluid speakers-image" alt="">
 
                     <div class="speakers-info">
-
-                      <p class="speakers-text mb-0">Startup Coach</p>
+                      <p class="speakers-text mb-0"><?= $ds['deskripsi3'] ?></p>
 
                       <ul class="social-icon">
                         <li><a href="#" class="social-icon-link bi-instagram"></a></li>
@@ -286,7 +278,7 @@ https://templatemo.com/tm-575-leadership-event
                   </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-12">
+                <div class="col-lg-4 col-md-6 col-12">
                   <div class="speakers-thumb speakers-thumb-small">
                     <img src="./public/assets/images/sejarah/<?= $ds['foto4'] ?>" class="img-fluid speakers-image" alt="">
 
@@ -305,23 +297,7 @@ https://templatemo.com/tm-575-leadership-event
                   </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-12">
-                  <div class="speakers-thumb speakers-thumb-small">
-                    <img src="images/avatar/indoor-shot-beautiful-happy-african-american-woman-smiling-cheerfully-keeping-her-arms-folded-relaxing-indoors-after-morning-lectures-university.jpg" class="img-fluid speakers-image" alt="">
 
-                    <div class="speakers-info">
-                      <h5 class="speakers-title mb-0">Samantha</h5>
-
-                      <p class="speakers-text mb-0">Top Level Speaker</p>
-
-                      <ul class="social-icon">
-                        <li><a href="#" class="social-icon-link bi-instagram"></a></li>
-
-                        <li><a href="#" class="social-icon-link bi-whatsapp"></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -330,7 +306,7 @@ https://templatemo.com/tm-575-leadership-event
       </section>
     <?php endforeach; ?>
 
-    <section class="schedule section-padding" id="kegiatan" style="padding-bottom: 12px; padding-top: 12px; background-image: url('images/highlight/alexandre-pellaes-6vAjp0pscX0-unsplash.jpg');">
+    <section class="schedule section-padding" id="kegiatan" style="padding-bottom: 12px; ">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 col-12">
@@ -384,12 +360,14 @@ https://templatemo.com/tm-575-leadership-event
     </section>
 
     <section class="pricing section-padding" id="galeri">
-      <h1 class="" align="center" style="font-weight: 900;">Galeri Pondok Pesantren <br> Al-Hasan</h1>
+      <h1 class="" style="font-weight: 900; text-align: center;">Galeri Pondok Pesantren <br> Al-Hasan</h1>
       <div class="container-img">
+        <hr>
         <div class="box-img">
           <?php foreach ($dataGallery as $daga) : ?>
-            <div class="slide" style="background-image: url('./public/assets/img/gallery/<?= $daga['foto']; ?>'); display: flex; width: 800px;">
-              <h3><?= $daga['deskripsi']; ?></h3>
+            <div class="slide" style="background-image: url('./public/assets/img/gallery/<?= $daga['foto']; ?>'); display: flex; background-size: cover;">
+              <h3 style="color: greenyellow;"><?= $daga['deskripsi']; ?></h3>
+              <hr>
             </div>
           <?php endforeach; ?>
         </div>
@@ -403,11 +381,11 @@ https://templatemo.com/tm-575-leadership-event
         <div class="row">
 
           <div class="col-lg-12 col-12">
-            <h2 class="mb-5">Here you go <u class="text-info">Venue</u></h2>
+            <h2 class="mb-5" style="font-weight: 900; text-align: center;">Alamat Ponpes Al-Hasan</h2>
           </div>
 
           <div class="col-lg-6 col-12">
-            <iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1511.091461689997!2d-73.9866630916883!3d40.758001294831736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855a96da09d%3A0x860bf5a5e1a00a68!2sTimes%20Square%2C%20New%20York%2C%20NY%2010036%2C%20USA!5e0!3m2!1sen!2ssg!4v1643035529098!5m2!1sen!2ssg" width="100%" height="371.59" allowfullscreen="" loading="lazy"></iframe>
+            <iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.125850690586!2d108.05904191450759!3d-7.669616778035082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e65e1d893518695%3A0x4a5a77e43737e5e8!2sAL%20HASAN!5e0!3m2!1sid!2sid!4v1674722370580!5m2!1sid!2sid" width="100%" height="371.59" allowfullscreen="" loading="lazy"></iframe>
           </div>
 
           <div class="col-lg-6 col-12  mt-lg-0">
@@ -444,14 +422,14 @@ https://templatemo.com/tm-575-leadership-event
       </div>
     </section>
 
-    <section class="contact section-padding" id="kontak">
+    <section class="contact section-padding" id="pendaftaran">
       <div class="container">
         <div class="row">
 
           <div class="col-lg-8 col-12 mx-auto">
-            <form class="custom-form contact-form bg-white shadow-lg" action="#" method="post" role="form">
-              <h2>Silahkan isi formulir Dibawah Untuk mendaftar</h2>
 
+            <form class="custom-form contact-form bg-white shadow-lg" action="#" method="post" role="form">
+              <h2 style="text-align: center; font-weight: bold;">Silahkan isi formulir Dibawah Untuk mendaftar</h2>
               <div class="row">
                 <div class="col-lg-4 col-md-4 col-12">
                   <label>Nama
@@ -483,8 +461,8 @@ https://templatemo.com/tm-575-leadership-event
                 <div class="col-12">
                   <label>Alamat
                   </label>
-                  <textarea class="form-control" name="alamat" id="alamat" rows="5" id="message" name="message" placeholder="Message"></textarea>
-                  <button type="submit" id="form-submit" name="submit" class="form-control">Simpan</button>
+                  <textarea class="form-control" name="alamat" id="alamat" rows="5" placeholder="tulis alamat"></textarea>
+                  <button type="submit" id="form-submit" onclick="myFunction()" name="submit" class="form-control">Simpan</button>
                 </div>
               </div>
             </form>
@@ -502,9 +480,9 @@ https://templatemo.com/tm-575-leadership-event
 
         <div class="col-lg-12 col-12 border-bottom pb-5 mb-5">
           <div class="d-flex">
-            <a href="index.html" class="navbar-brand">
-              <i class="bi-bullseye brand-logo"></i>
-              <span class="brand-text">Leadership <br> Event</span>
+            <a href="index.php" class="navbar-brand">
+              <img src="./public/assets/img/apple-touch-icon.png" alt="Sarinah Otomotif Solution" class="img-fluid" style="width: 40px; height: 40px; ">
+              <span class="brand-text" style="color: green;">PONDOK PESANTREN <br> AL-HASAN</span>
             </a>
 
             <ul class="social-icon ms-auto">
@@ -517,24 +495,24 @@ https://templatemo.com/tm-575-leadership-event
 
         <div class="col-lg-7 col-12">
           <ul class="footer-menu d-flex flex-wrap">
-            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Our Story</a></li>
+            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Tentang Al-Hasan</a></li>
 
-            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Code of Conduct</a></li>
+            <li class="footer-menu-item"><a href="#kegiatan" class="footer-menu-link">Kegiatan Al-Hasan</a></li>
 
-            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Privacy and Terms</a></li>
+            <li class="footer-menu-item"><a href="#galeri" class="footer-menu-link">Galeri Santri Al-Hasan</a></li>
 
-            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Contact</a></li>
+            <li class="footer-menu-item"><a href="#alamat" class="footer-menu-link">Alamat</a></li>
           </ul>
         </div>
 
 
         <div class="col-lg-5 col-12 ms-lg-auto">
           <div class="copyright-text-wrap d-flex align-items-center">
-            <p class="copyright-text ms-lg-auto me-4 mb-0">Copyright © 2022 Leadership Event Co., Ltd.
+            <p class="copyright-text ms-lg-auto me-4 mb-0">Copyright © Pondok Pesantren Al-Hasan Co., Ltd.
 
               <br>All Rights Reserved.
 
-              <br><br>Design: <a title="CSS Templates" rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
+              <br><br>Design: <a title="CSS Templates" rel="sponsored" href="https://templatemo.com" target="_blank">pondok pesantren al-hasan</a>
             </p>
 
             <a href="#section_1" class="bi-arrow-up arrow-icon custom-link"></a>
@@ -576,9 +554,16 @@ https://templatemo.com/tm-575-leadership-event
         })
       }
 
+      var myAlert = document.getElementById('myAlert');
+
+      myAlert.style.display = 'none';
+
+      function myFuntion() {
+        myAlert.style.display
+      }
 
     }
-  </script>s
+  </script>
 
 </body>
 

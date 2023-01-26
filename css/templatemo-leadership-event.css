@@ -196,7 +196,7 @@ strong {
 
 .custom-icon::before,
 .custom-icon::after {
-  box-sizing: inherit;
+  box-sizing: border-box;
   content: "";
   position: absolute;
   width: 100%;
@@ -585,7 +585,7 @@ strong {
 }
 
 .speakers-text-info {
-  padding: 100px;
+  padding: 3px;
 }
 
 .speakers-title,
