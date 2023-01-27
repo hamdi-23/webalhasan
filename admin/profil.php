@@ -111,6 +111,18 @@ $title = "Dunia Kita Resto Admin Panel";
 										<input type="text" id="hp" name="hp" class="form-control" value="<?= $data['hp']; ?> " />
 									</div>
 									<div>
+										<label for="nama" class="mt-3">Nama Pesantren</label>
+										<input type="text" id="nama" name="nama" class="form-control" value="<?= $data['nama']; ?> " />
+									</div>
+									<div>
+										<label for="nama" class="mt-3">Nama Pesantren</label>
+										<input type="text" id="nama" name="nama" class="form-control" value="<?= $data['nama']; ?> " />
+									</div>
+									<div>
+										<label for="nama" class="mt-3">Nama Pesantren</label>
+										<input type="text" id="nama" name="nama" class="form-control" value="<?= $data['nama']; ?> " />
+									</div>
+									<div>
 										<label for="link_video1" class="mt-3">Link Video 1</label>
 										<input type="text" id="link_video1" name="link_video1" class="form-control" value="<?= $data['link_video1']; ?> " />
 									</div>
