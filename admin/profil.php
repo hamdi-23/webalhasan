@@ -110,10 +110,6 @@ $title = "Dunia Kita Resto Admin Panel";
 										<label for="hp" class="mt-3">hp</label>
 										<input type="text" id="hp" name="hp" class="form-control" value="<?= $data['hp']; ?> " />
 									</div>
-									<!-- <div>
-										<label for="tagline" class="mt-3">tagline</label>
-										<input type="text" id="tagline" name="tagline" class="form-control" value="<?= $data['tagline']; ?> " />
-									</div> -->
 									<div>
 										<label for="link_video1" class="mt-3">Link Video 1</label>
 										<input type="text" id="link_video1" name="link_video1" class="form-control" value="<?= $data['link_video1']; ?> " />

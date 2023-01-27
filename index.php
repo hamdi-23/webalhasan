@@ -99,49 +99,39 @@ https://templatemo.com/tm-575-leadership-event
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <a href="index.php" class="navbar-brand mx-auto mx-lg-0">
-        <img src="./public/assets/img/apple-touch-icon.png" alt="Sarinah Otomotif Solution" class="img-fluid" style="width: 40px; height: 40px; ">
-        <span class="brand-text" style="color: greenyellow;">PONDOK PESANTREN <br> AL-HASAN</span>
+        <?php foreach ($dataProfil as $dp) : ?>
+          <img src="./public/assets/images/profil/<?= $dp['foto_profil'] ?>" alt="Sarinah Otomotif Solution" class="img-fluid" style="width: 40px; height: 40px; ">
+          <span class="brand-text" style="color: greenyellow;">PONDOK PESANTREN <br><?= $dp['nama'] ?></span>
+        <?php endforeach; ?>
       </a>
-
-      <a class="nav-link custom-btn btn d-lg-none" href="#pendaftaran">Daftar</a>
+      <a class="nav-link custom-btn btn d-lg-none" href="#section_6">Daftar</a>
 
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a class="nav-link click-scroll" href="#section_1">Home</a>
           </li>
-
-          <!-- <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_2">About</a>
-                    </li> -->
-
           <li class="nav-item">
-            <a class="nav-link click-scroll" href="#tentang"> Tentang Al-Hasan</a>
+            <a class="nav-link click-scroll" href="#section_2"> Tentang Al-Hasan</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link click-scroll" href="#kegiatan">Kegiatan</a>
+            <a class="nav-link click-scroll" href="#section_3">Kegiatan</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link click-scroll" href="#galeri">Galeri Al-Hasan</a>
-          </li>
-
-
-          <li class="nav-item">
-            <a class="nav-link click-scroll" href="#alamat">Alamat</a>
+            <a class="nav-link click-scroll" href="#section_4">Galeri Al-Hasan</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link click-scroll" href="#pendaftaran">Pendaftaran</a>
+            <a class="nav-link click-scroll" href="#section_5">Alamat</a>
           </li>
 
-
+          <li class="nav-item">
+            <a class="nav-link click-scroll" href="#section_6">Pendaftaran</a>
+          </li>
         </ul>
-        <div>
-
-        </div>
+      </div>
   </nav>
   <main>
     <?php foreach ($dataProfil as $dp) : ?>
@@ -179,7 +169,7 @@ https://templatemo.com/tm-575-leadership-event
 
           <div class="col-lg-4 col-md-6 col-12">
             <div class="highlight-thumb">
-              <img src="images/highlight/alexandre-pellaes-6vAjp0pscX0-unsplash.jpg" class="highlight-image img-fluid" alt="">
+              <img src="images/avatar/happy-asian-man-standing-with-arms-crossed-grey-wall.jpg" class="highlight-image img-fluid" alt="">
               <div class="highlight-info">
                 <h3 class="highlight-title">Acara Pidato Santri</h3>
                 <a href=" <?= $dp['link_video1']; ?>" class=" bi-youtube highlight-icon" data-vbtype="video" data-autoplay="true" target="_blank"></a>
@@ -211,13 +201,13 @@ https://templatemo.com/tm-575-leadership-event
     </section>
 
     <?php foreach ($dataSejarah as $ds) : ?>
-      <section class="speakers section-padding" id="tentang">
+      <section class="speakers section-padding" id="section_2">
         <div class="container">
           <div class="row">
 
             <div class="col-lg-6 col-12 d-flex flex-column justify-content-center align-items-center" style="padding: 3px; box-sizing: inherit;">
               <div class="speakers-text-info" style="padding: 0px; ">
-                <h2 class="mb-2" style="padding: 0px; font-weight: 900; font-size: 35px; text-align: center; ">Pondok Pesantren <br> Al-Hasan</u></h2>
+                <h2 class="mb-2" style="padding: 0px; font-weight: 900; font-size: 35px; text-align: center; ">Pondok Pesantren <br><?= $dp['nama'] ?></u></h2>
                 <hr>
                 <p style="padding: 3px; text-align: justify;"><?= $ds['deskripsi'] ?></p>
               </div>
@@ -231,7 +221,7 @@ https://templatemo.com/tm-575-leadership-event
 
                   <h5 class="speakers-title mb-0"><?= $ds['deskripsi1'] ?></h5>
 
-                  <p class="speakers-text mb-0">Pimpinan Pondok Pesantren Al-Hasan</p>
+                  <p class="speakers-text mb-0">Pimpinan Pondok Pesantren <?= $dp['nama'] ?></p>
 
                   <ul class="social-icon">
                     <li><a href="#" class="social-icon-link bi-facebook"></a></li>
@@ -306,11 +296,11 @@ https://templatemo.com/tm-575-leadership-event
       </section>
     <?php endforeach; ?>
 
-    <section class="schedule section-padding" id="kegiatan" style="padding-bottom: 12px; ">
+    <section class="schedule section-padding" id="section_3" style="padding-bottom: 12px; ">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 col-12">
-            <h2 class=" text-center">KEGIATAN PONDOK PESANTREN AL-HASAN</h2>
+            <h2 class=" text-center">KEGIATAN PONDOK PESANTREN <?= $dp['nama'] ?></h2>
             <div class="tab-content mt-5" id="nav-tabContent">
               <div class="tab-pane fade show active" id="nav-DayOne" role="tabpanel" aria-labelledby="nav-DayOne-tab">
                 <?php foreach ($dataKegiatan as $dg) : ?>
@@ -359,8 +349,8 @@ https://templatemo.com/tm-575-leadership-event
       </div>
     </section>
 
-    <section class="pricing section-padding" id="galeri">
-      <h1 class="" style="font-weight: 900; text-align: center;">Galeri Pondok Pesantren <br> Al-Hasan</h1>
+    <section class="pricing section-padding" id="section_4">
+      <h1 class="" style="font-weight: 900; text-align: center;">Galeri Pondok Pesantren <br> <?= $dp['nama'] ?></h1>
       <div class="container-img">
         <hr>
         <div class="box-img">
@@ -376,12 +366,12 @@ https://templatemo.com/tm-575-leadership-event
 
     </section>
 
-    <section class="venue section-padding" id="alamat">
+    <section class="venue section-padding" id="section_5">
       <div class="container">
         <div class="row">
 
           <div class="col-lg-12 col-12">
-            <h2 class="mb-5" style="font-weight: 900; text-align: center;">Alamat Ponpes Al-Hasan</h2>
+            <h2 class="mb-5" style="font-weight: 900; text-align: center;">Alamat Ponpes <?= $dp['nama'] ?></h2>
           </div>
 
           <div class="col-lg-6 col-12">
@@ -392,7 +382,7 @@ https://templatemo.com/tm-575-leadership-event
             <div class="venue-thumb bg-white shadow-lg">
 
               <div class="venue-info-title">
-                <h2 class="text-white">Pondok Pesantren Al-Hasan</h2>
+                <h2 class="text-white">Pondok Pesantren <?= $dp['nama'] ?></h2>
               </div>
 
               <div class="venue-info-body">
@@ -422,7 +412,7 @@ https://templatemo.com/tm-575-leadership-event
       </div>
     </section>
 
-    <section class="contact section-padding" id="pendaftaran">
+    <section class="contact section-padding" id="section_6" style="background-image: url('./public/assets/images/background/<?= $dp['foto_bg'] ?>');">
       <div class="container">
         <div class="row">
 
@@ -481,8 +471,8 @@ https://templatemo.com/tm-575-leadership-event
         <div class="col-lg-12 col-12 border-bottom pb-5 mb-5">
           <div class="d-flex">
             <a href="index.php" class="navbar-brand">
-              <img src="./public/assets/img/apple-touch-icon.png" alt="Sarinah Otomotif Solution" class="img-fluid" style="width: 40px; height: 40px; ">
-              <span class="brand-text" style="color: green;">PONDOK PESANTREN <br> AL-HASAN</span>
+              <img src="./public/assets/images/profil/<?= $dp['foto_profil'] ?>" alt="Sarinah Otomotif Solution" class="img-fluid" style="width: 40px; height: 40px; ">
+              <span class="brand-text" style="color: green; font-size: 12px;">PONDOK PESANTREN <br> <?= $dp['nama'] ?></span>
             </a>
 
             <ul class="social-icon ms-auto">

@@ -22,7 +22,7 @@ $title = "Pondok Pesantren Al-Hasan";
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Leadership Event HTML5 Bootstrap v5 Template</title>
+	<title><?= $title; ?></title>
 
 	<!-- CSS FILES -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,20 +50,18 @@ https://templatemo.com/tm-575-leadership-event
 
 	<nav class="navbar navbar-expand-lg">
 		<div class="container">
-
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
 			<a href="index.php" class="navbar-brand mx-auto mx-lg-0">
-				<img src="./public/assets/img/apple-touch-icon.png" alt="Sarinah Otomotif Solution" class="img-fluid" style="width: 40px; height: 40px; ">
-				<span class="brand-text" style="color: greenyellow;">PONDOK PESANTREN <br> AL-HASAN</span>
+				<?php foreach ($dataProfil as $dp) : ?>
+					<img src="./public/assets/images/profil/<?= $dp['foto_profil'] ?>" alt="Sarinah Otomotif Solution" class="img-fluid" style="width: 40px; height: 40px; ">
+					<span class="brand-text" style="color: greenyellow;">PONDOK PESANTREN <br> <?= $dp['nama'] ?></span>
+				<?php endforeach; ?>
 			</a>
 	</nav>
 
 	<main>
 
 
-		<section class="contact section-padding" id="kegiatan">
+		<section class="contact section-padding" id="kegiatan" style="background-image: url('./public/assets/img/kegiatan/<?= $row['foto']; ?>');">
 			<div class="container">
 				<div class="row">
 
@@ -84,7 +82,7 @@ https://templatemo.com/tm-575-leadership-event
 								</div>
 
 								<div class="col-12">
-									<p><?= $row['deskripsi']; ?></p>
+									<p style="text-align: justify;"><?= $row['deskripsi']; ?></p>
 								</div>
 
 								<div>
@@ -111,8 +109,8 @@ https://templatemo.com/tm-575-leadership-event
 				<div class="col-lg-12 col-12 border-bottom pb-5 mb-5">
 					<div class="d-flex">
 						<a href="index.html" class="navbar-brand">
-							<i class="bi-bullseye brand-logo"></i>
-							<span class="brand-text">Leadership <br> Event</span>
+							<img src="./public/assets/images/profil/<?= $dp['foto_profil'] ?>" alt="Sarinah Otomotif Solution" class="img-fluid" style="width: 40px; height: 40px; ">
+							<span class="brand-text" style="color: green; font-size: 12PX;">PONDOK PESANTREN <br> <?= $dp['nama'] ?></span>
 						</a>
 
 						<ul class="social-icon ms-auto">
