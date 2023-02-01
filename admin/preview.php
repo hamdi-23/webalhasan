@@ -10,9 +10,12 @@ if (!isset($_SESSION["login"])) {
 
 // koneksi database
 include "../koneksi.php";
-$data = query("SELECT resto.`nama` as r_nama , login.`nama` as l_nama FROM login JOIN resto WHERE resto.`id` = login.`id_resto`; 
-");
+
 // end koneksi
+$title = "Ponpes Al-Hasan Admin Panel";
+$dataProfil = query("SELECT * FROM profil");
+
+
 ?>
 
 <!DOCTYPE html>
@@ -27,9 +30,11 @@ $data = query("SELECT resto.`nama` as r_nama , login.`nama` as l_nama FROM login
 	<meta name="keywords" content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Matrix lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Matrix admin lite design, Matrix admin lite dashboard bootstrap 5 dashboard template" />
 	<meta name="description" content="Matrix Admin Lite Free Version is powerful and clean admin dashboard template, inpired from Bootstrap Framework" />
 	<meta name="robots" content="noindex,nofollow" />
-	<title>Matrix Admin Lite Free Versions Template by WrapPixel</title>
+	<title><?= $title; ?></title>
 	<!-- Favicon icon -->
-	<link rel="icon" type="image/png" sizes="16x16" href="../public/assets/images/favicon.png" />
+	<?php foreach ($dataProfil as $dp) : ?>
+		<link rel="icon" type="image/png" sizes="16x16" href="../public/assets/images/profil/<?= $dp['foto_profil'] ?>" />
+	<?php endforeach; ?>
 	<link rel="stylesheet" type="text/css" href="../public/assets/extra-libs/multicheck/multicheck.css" />
 	<link href="../public/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
 	<link href="../public/assets/dist/css/style.min.css" rel="stylesheet" />
@@ -69,20 +74,13 @@ $data = query("SELECT resto.`nama` as r_nama , login.`nama` as l_nama FROM login
 		<div class="page-wrapper">
 			<div class="page-breadcrumb">
 				<div class="row">
-					<div class="col-12 d-flex no-block align-items-center">
-
-						<!-- <div class="ms-auto text-end">
-              <nav aria-label="breadcrumb">
-                <a class="dropdown-item" href="logout.php"><i class="fa fa-power-off me-1 ms-1"></i><b></b> Logout</a>
-              </nav>
-            </div> -->
+					<div class="container-fluid mt-5">
+						<iframe src="https://www.duniakitacaferesto.com" name="iframe_a" height="500px" width="100%" title="Iframe Example"></iframe>
 					</div>
 				</div>
 			</div>
 			<!-- Container fluid  -->
-			<div class="container-fluid mt-5">
-				<iframe src="https://www.duniakitacaferesto.com" name="iframe_a" height="500px" width="100%" title="Iframe Example"></iframe>
-			</div>
+
 		</div>
 		<!-- End Container fluid  -->
 

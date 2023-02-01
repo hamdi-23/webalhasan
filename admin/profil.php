@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
 		  ";
 	}
 }
-$title = "Dunia Kita Resto Admin Panel";
+$title = "Ponpes Al-Hasan Admin Panel";
 
 ?>
 <!DOCTYPE html>
@@ -44,7 +44,9 @@ $title = "Dunia Kita Resto Admin Panel";
 	<meta name="robots" content="noindex,nofollow" />
 	<title> <?= $title ?></title>
 	<!-- Favicon icon -->
-	<link rel="icon" type="image/png" sizes="16x16" href="../public/assets/images/logodk.png" />
+	<?php foreach ($data as $dp) : ?>
+		<link rel="icon" type="image/png" sizes="16x16" href="../public/assets/images/profil/<?= $dp['foto_profil'] ?>" />
+	<?php endforeach; ?>
 	<link rel="stylesheet" type="text/css" href="../public/assets/extra-libs/multicheck/multicheck.css" />
 	<link href="../public/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
 	<link href="../public/assets/dist/css/style.min.css" rel="stylesheet" />
@@ -91,13 +93,15 @@ $title = "Dunia Kita Resto Admin Panel";
 				<form action="" method="POST" enctype="multipart/form-data">
 					<div class="card">
 						<div class="card-body">
+							<h4 align="center">DATA PROFIL</h4>
+							<hr>
 							<input type="hidden" id="id" name="id" class="form-control" value="<?= $data['id']; ?> " required />
 							<input type="hidden" id="bg_lama" name="bg_lama" class="form-control" value="<?= $data['foto_bg']; ?> " />
 							<input type="hidden" id="profil_lama" name="profil_lama" class="form-control" value="<?= $data['foto_profil']; ?> " />
 							<div class="row">
 								<div class="col-md-6">
 									<div>
-										<label for="nama" class="mt-3">Nama Pesantren</label>
+										<label for="nama">Nama Pesantren</label>
 										<input type="text" id="nama" name="nama" class="form-control" value="<?= $data['nama']; ?> " />
 									</div>
 									<div>
@@ -107,42 +111,34 @@ $title = "Dunia Kita Resto Admin Panel";
 									</div>
 
 									<div>
-										<label for="hp" class="mt-3">hp</label>
+										<label for="hp">hp</label>
 										<input type="text" id="hp" name="hp" class="form-control" value="<?= $data['hp']; ?> " />
 									</div>
 									<div>
-										<label for="nama" class="mt-3">Nama Pesantren</label>
+										<label for="nama">Nama Pesantren</label>
 										<input type="text" id="nama" name="nama" class="form-control" value="<?= $data['nama']; ?> " />
 									</div>
 									<div>
-										<label for="nama" class="mt-3">Nama Pesantren</label>
-										<input type="text" id="nama" name="nama" class="form-control" value="<?= $data['nama']; ?> " />
-									</div>
-									<div>
-										<label for="nama" class="mt-3">Nama Pesantren</label>
-										<input type="text" id="nama" name="nama" class="form-control" value="<?= $data['nama']; ?> " />
-									</div>
-									<div>
-										<label for="link_video1" class="mt-3">Link Video 1</label>
+										<label for="link_video1">Link Video 1</label>
 										<input type="text" id="link_video1" name="link_video1" class="form-control" value="<?= $data['link_video1']; ?> " />
 									</div>
 									<div>
-										<label for="link_video2" class="mt-3">Link Video 2</label>
+										<label for="link_video2">Link Video 2</label>
 										<input type="text" id="link_video2" name="link_video2" class="form-control" value="<?= $data['link_video2']; ?> " />
 									</div>
 									<div>
-										<label for="link_video3" class="mt-3">Link Video 3</label>
+										<label for="link_video3">Link Video 3</label>
 										<input type="text" id="link_video3" name="link_video3" class="form-control" value="<?= $data['link_video3']; ?> " />
 									</div>
 
 									<div>
-										<label for="alamat" class="mt-3">alamat</label>
+										<label for="alamat">alamat</label>
 										<input type="text" id="alamat" name="alamat" class="form-control" value="<?= $data['alamat']; ?> " />
 									</div>
-									<div>
-										<label for="google_map" class="mt-3">google map</label>
+									<!-- <div>
+										<label for="google_map" >google map</label>
 										<input type="text" id="google_map" name="google_map" class="form-control" value="<?= $data['google_map']; ?> " />
-									</div>
+									</div> -->
 
 								</div>
 
@@ -153,7 +149,7 @@ $title = "Dunia Kita Resto Admin Panel";
 										<img align="right" alt="" width="450" height="220" id="output">
 									</div>
 									<div>
-										<label for="foto_profil" class="mt-3">Sejarah Singkat</label>
+										<label for="foto_profil">Sejarah Singkat</label>
 										<textarea class="form-control" name="deskripsi" id="deskripsi" class="form-control" style="height: 160px;"><?= $data['deskripsi']; ?></textarea>
 									</div>
 								</div>

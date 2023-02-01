@@ -9,6 +9,8 @@ if (!isset($_SESSION["login"])) {
 include "../koneksi.php";
 
 $dataKegiatan = query("SELECT * FROM kegiatan");
+$dataProfil = query("SELECT * FROM profil");
+
 
 
 // var_dump($data["alamat"]);
@@ -61,7 +63,7 @@ if (isset($_POST['update'])) {
 	}
 }
 
-$title = "Al-Hasan Admin Panel";
+$title = "Ponpes Al-Hasan Admin Panel";
 
 
 ?>
@@ -78,7 +80,9 @@ $title = "Al-Hasan Admin Panel";
 	<meta name="robots" content="noindex,nofollow" />
 	<title><?= $title ?></title>
 	<!-- Favicon icon -->
-	<link rel="icon" type="image/png" sizes="16x16" href="../public/assets/images/logodk.png" />
+	<?php foreach ($dataProfil as $dp) : ?>
+		<link rel="icon" type="image/png" sizes="16x16" href="../public/assets/images/profil/<?= $dp['foto_profil'] ?>" />
+	<?php endforeach; ?>
 	<link rel="stylesheet" type="text/css" href="../public/assets/extra-libs/multicheck/multicheck.css" />
 	<link href="../public/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
 	<link href="../public/assets/dist/css/style.min.css" rel="stylesheet" />
@@ -128,8 +132,9 @@ $title = "Al-Hasan Admin Panel";
 
 				<div class="card">
 					<form action="" method="POST" enctype="multipart/form-data">
-						<h4 align="center">FORM TAMBAH DATA MENU</h4>
 						<div class="card-body">
+							<h4 align="center">FORM TAMBAH DATA MENU</h4>
+							<hr>
 							<div class="row">
 								<div class="col-md-6">
 									<div>
@@ -248,7 +253,7 @@ $title = "Al-Hasan Admin Panel";
 																			<label>Foto
 																			</label>
 																			<input type="file" name="foto_kegiatan" id="foto_kegiatan" class="form-control mb-2" />
-																			<img src="../public/assets/img/kegiatan/<?= $dm['foto']; ?>" width='70' height='90' alt="">
+																			<img src="../public/assets/img/kegiatan/<?= $dm['foto']; ?>" width='200' height='140' alt="">
 																		</div>
 
 																		<div class="mb-1">

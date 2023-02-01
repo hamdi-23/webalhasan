@@ -69,7 +69,9 @@ if (isset($_POST['update'])) {
 	}
 }
 
-$title = "ponpes AL - Hasan";
+$title = "Ponpes Al-Hasan Admin Panel";
+$dataProfil = query("SELECT * FROM profil");
+
 
 ?>
 <!DOCTYPE html>
@@ -85,7 +87,9 @@ $title = "ponpes AL - Hasan";
 	<meta name="robots" content="noindex,nofollow" />
 	<title><?= $title ?></title>
 	<!-- Favicon icon -->
-	<link rel="icon" type="image/png" sizes="16x16" href="../public/assets/images/logodk.png" />
+	<?php foreach ($dataProfil as $dp) : ?>
+		<link rel="icon" type="image/png" sizes="16x16" href="../public/assets/images/profil/<?= $dp['foto_profil'] ?>" />
+	<?php endforeach; ?>
 	<link rel="stylesheet" type="text/css" href="../public/assets/extra-libs/multicheck/multicheck.css" />
 	<link href="../public/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
 	<link href="../public/assets/dist/css/style.min.css" rel="stylesheet" />

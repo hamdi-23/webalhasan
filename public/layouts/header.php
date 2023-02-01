@@ -9,7 +9,7 @@
         <b class="logo-icon ps-2">
           <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
           <!-- Dark Logo icon -->
-          <img src="../public/assets/images/logodk.png" alt="homepage" class="light-logo" width="25" />
+          <img src="../public/assets/images/profil/apple-touch-icon.png" alt="homepage" class="light-logo" width="25" />
         </b>
         <!--End Logo icon -->
         <!-- Logo text -->

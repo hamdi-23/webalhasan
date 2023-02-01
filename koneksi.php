@@ -539,7 +539,7 @@ function upload_foto_santri()
   $namaFotoBaru .= '.';
   $namaFotoBaru .= $ektensiGambar;
 
-  move_uploaded_file($tmpFoto, '../assets/images/' . $namaFotoBaru);
+  move_uploaded_file($tmpFoto, '../public/assets/img/santri/' . $namaFotoBaru);
   return $namaFotoBaru;
 }
 

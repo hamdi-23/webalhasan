@@ -8,7 +8,7 @@ if (!isset($_SESSION["login"])) {
 
 include "../koneksi.php";
 
-
+$dataProfil = query("SELECT * FROM profil");
 $dataGalery = query("SELECT * FROM gallery");
 
 if (isset($_POST['submit'])) {
@@ -60,7 +60,7 @@ if (isset($_POST['update'])) {
 		echo mysqli_error($con);
 	}
 }
-$title = "Dunia Kita Resto Admin Panel";
+$title = "Ponpes Al-Hasan Admin Panel";
 
 
 ?>
@@ -77,7 +77,9 @@ $title = "Dunia Kita Resto Admin Panel";
 	<meta name="robots" content="noindex,nofollow" />
 	<title><?= $title ?></title>
 	<!-- Favicon icon -->
-	<link rel="icon" type="image/png" sizes="16x16" href="../public/assets/images/logodk.png" />
+	<?php foreach ($dataProfil as $dp) : ?>
+		<link rel="icon" type="image/png" sizes="16x16" href="../public/assets/images/profil/<?= $dp['foto_profil'] ?>" />
+	<?php endforeach; ?>
 	<link rel="stylesheet" type="text/css" href="../public/assets/extra-libs/multicheck/multicheck.css" />
 	<link href="../public/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
 	<link href="../public/assets/dist/css/style.min.css" rel="stylesheet" />
@@ -128,6 +130,7 @@ $title = "Dunia Kita Resto Admin Panel";
 
 						<div class="card-body">
 							<h4 align="center">FORM TAMBAH DATA GALLERY</h4>
+							<hr>
 							<div class="row">
 								<div class="col-lg-6">
 									<div></div>
@@ -158,6 +161,7 @@ $title = "Dunia Kita Resto Admin Panel";
 				<div class="card">
 					<div class="card-body">
 						<h5 class="card-title">Data Galery</h5>
+						<hr>
 						<div class="table-responsive">
 							<table id="zero_config" class="table table-bordered">
 								<thead align="center">

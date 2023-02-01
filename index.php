@@ -222,14 +222,6 @@ https://templatemo.com/tm-575-leadership-event
                   <h5 class="speakers-title mb-0"><?= $ds['deskripsi1'] ?></h5>
 
                   <p class="speakers-text mb-0">Pimpinan Pondok Pesantren <?= $dp['nama'] ?></p>
-
-                  <ul class="social-icon">
-                    <li><a href="#" class="social-icon-link bi-facebook"></a></li>
-
-                    <li><a href="#" class="social-icon-link bi-instagram"></a></li>
-
-                    <li><a href="#" class="social-icon-link bi-google"></a></li>
-                  </ul>
                 </div>
               </div>
               <hr>
@@ -243,11 +235,11 @@ https://templatemo.com/tm-575-leadership-event
 
                     <div class="speakers-info">
                       <p class="speakers-text mb-0"><?= $ds['deskripsi2'] ?></p>
-                      <ul class="social-icon">
+                      <!-- <ul class="social-icon">
                         <li><a href="#" class="social-icon-link bi-facebook"></a></li>
 
                         <li><a href="#" class="social-icon-link bi-instagram"></a></li>
-                      </ul>
+                      </ul> -->
                     </div>
                   </div>
                 </div>
@@ -259,11 +251,11 @@ https://templatemo.com/tm-575-leadership-event
                     <div class="speakers-info">
                       <p class="speakers-text mb-0"><?= $ds['deskripsi3'] ?></p>
 
-                      <ul class="social-icon">
+                      <!-- <ul class="social-icon">
                         <li><a href="#" class="social-icon-link bi-instagram"></a></li>
 
                         <li><a href="#" class="social-icon-link bi-whatsapp"></a></li>
-                      </ul>
+                      </ul> -->
                     </div>
                   </div>
                 </div>
@@ -276,13 +268,13 @@ https://templatemo.com/tm-575-leadership-event
 
                       <p class="speakers-text mb-0"><?= $ds['deskripsi4'] ?></p>
 
-                      <ul class="social-icon">
+                      <!-- <ul class="social-icon">
                         <li><a href="#" class="social-icon-link bi-facebook"></a></li>
 
                         <li><a href="#" class="social-icon-link bi-instagram"></a></li>
 
                         <li><a href="#" class="social-icon-link bi-whatsapp"></a></li>
-                      </ul>
+                      </ul> -->
                     </div>
                   </div>
                 </div>

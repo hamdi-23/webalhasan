@@ -10,6 +10,7 @@ include "../koneksi.php";
 
 // query menampilkan data
 $data = query("SELECT * FROM `katasantri`");
+$dataProfil = query("SELECT * FROM profil");
 
 
 if (isset($_POST['submit'])) {
@@ -74,7 +75,7 @@ if (isset($_GET['id'])) {
 	}
 }
 
-$title = "Al-Hasan Admin Panel";
+$title = "Ponpes Al-Hasan Admin Panel";
 
 ?>
 <!DOCTYPE html>
@@ -90,7 +91,9 @@ $title = "Al-Hasan Admin Panel";
 	<meta name="robots" content="noindex,nofollow" />
 	<title><?= $title; ?></title>
 	<!-- Favicon icon -->
-	<link rel="icon" type="image/png" sizes="16x16" href="../public/assets/images/logodk.png" />
+	<?php foreach ($dataProfil as $dp) : ?>
+		<link rel="icon" type="image/png" sizes="16x16" href="../public/assets/images/profil/<?= $dp['foto_profil'] ?>" />
+	<?php endforeach; ?>
 	<link rel="stylesheet" type="text/css" href="../public/assets/extra-libs/multicheck/multicheck.css" />
 	<link href="../public/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
 	<link href="../public/assets/dist/css/style.min.css" rel="stylesheet" />
@@ -141,6 +144,7 @@ $title = "Al-Hasan Admin Panel";
 
 						<div class="card-body">
 							<h4 align="center">FORM TAMBAH DATA KATA SANTRI</h4>
+							<hr>
 							<div class="row">
 								<div class="col-lg-6">
 									<div>
@@ -176,6 +180,7 @@ $title = "Al-Hasan Admin Panel";
 				<div class="card">
 					<div class="card-body">
 						<h5 class="card-title">Data Jenis Menu</h5>
+						<hr>
 						<div class="table-responsive">
 							<table id="zero_config" class="table table-striped table-bordered">
 								<thead align="center">
@@ -194,7 +199,7 @@ $title = "Al-Hasan Admin Panel";
 											<td><?= $no++ ?></td>
 											<td><?= $d['nama'] ?></td>
 											<td><?= $d['testimoni'] ?></td>
-											<td> <img src="../assets/images/<?= $d['foto']; ?>" width='180' height='120' alt="">
+											<td> <img src="../public/assets/img/santri/<?= $d['foto']; ?>" width='180' height='120' alt="">
 											</td>
 											<td>
 												<a href='?id=<?= $d['id'] ?>' type="button" class="btn btn-danger btn-sm">
@@ -230,7 +235,7 @@ $title = "Al-Hasan Admin Panel";
 																				<label>Foto
 																				</label>
 																				<input type="file" name="foto" id="foto" class="form-control mb-2" />
-																				<img src="../assets/images/<?= $d['foto']; ?>" width='200' height='140' alt="">
+																				<img src="../public/assets/img/santri/<?= $d['foto']; ?>" width='200' height='140' alt="">
 																			</div>
 																			<div class="mb-1">
 																				<label>Testimoni

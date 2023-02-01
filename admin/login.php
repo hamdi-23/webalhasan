@@ -28,6 +28,9 @@ if (isset($_POST["login"])) {
 
   $error = true;
 }
+$title = "Ponpes Al-Hasan Admin Panel";
+$dataProfil = query("SELECT * FROM profil");
+
 ?>
 
 <!DOCTYPE html>
@@ -41,10 +44,11 @@ if (isset($_POST["login"])) {
   <meta name="keywords" content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Matrix lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Matrix admin lite design, Matrix admin lite dashboard bootstrap 5 dashboard template" />
   <meta name="description" content="Matrix Admin Lite Free Version is powerful and clean admin dashboard template, inpired from Bootstrap Framework" />
   <meta name="robots" content="noindex,nofollow" />
-  <title>Matrix Admin Lite Free Versions Template by WrapPixel</title>
+  <title><?= $title; ?></title>
   <!-- Favicon icon -->
-  <link rel="icon" type="image/png" sizes="16x16" href="../public/assets/images/logodk.png" />
-  <!-- Custom CSS -->
+  <?php foreach ($dataProfil as $dp) : ?>
+    <link rel="icon" type="image/png" sizes="16x16" href="../public/assets/images/profil/<?= $dp['foto_profil'] ?>" />
+  <?php endforeach; ?> <!-- Custom CSS -->
   <link href="../public/assets/dist/css/style.min.css" rel="stylesheet" />
   <link href="../public/assets/css/custom.css" rel="stylesheet" />
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

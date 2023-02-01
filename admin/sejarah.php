@@ -36,7 +36,9 @@ if (isset($_POST['submit'])) {
 		  ";
 	}
 }
-$title = "Dunia Kita Resto Admin Panel";
+$title = "Ponpes Al-Hasan Admin Panel";
+$dataProfil = query("SELECT * FROM profil");
+
 
 ?>
 <!DOCTYPE html>
@@ -52,7 +54,9 @@ $title = "Dunia Kita Resto Admin Panel";
 	<meta name="robots" content="noindex,nofollow" />
 	<title> <?= $title ?></title>
 	<!-- Favicon icon -->
-	<link rel="icon" type="image/png" sizes="16x16" href="../public/assets/images/logodk.png" />
+	<?php foreach ($dataProfil as $dp) : ?>
+		<link rel="icon" type="image/png" sizes="16x16" href="../public/assets/images/profil/<?= $dp['foto_profil'] ?>" />
+	<?php endforeach; ?>
 	<link rel="stylesheet" type="text/css" href="../public/assets/extra-libs/multicheck/multicheck.css" />
 	<link href="../public/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
 	<link href="../public/assets/dist/css/style.min.css" rel="stylesheet" />
@@ -99,6 +103,8 @@ $title = "Dunia Kita Resto Admin Panel";
 				<form action="" method="POST" enctype="multipart/form-data">
 					<div class="card">
 						<div class="card-body">
+							<h4 align="center">DATA SEJARAH </h4>
+							<hr>
 							<input type="hidden" id="id" name="id" class="form-control" value="<?= $dataSejarah['id']; ?> " required />
 							<input type="hidden" id="foto1_lama" name="foto1_lama" class="form-control" value="<?= $dataSejarah['foto1']; ?> " />
 							<input type="hidden" id="foto2_lama" name="foto2_lama" class="form-control" value="<?= $dataSejarah['foto2']; ?> " />
@@ -113,21 +119,21 @@ $title = "Dunia Kita Resto Admin Panel";
 										</label>
 										<textarea name="deskripsi" id="deskripsi" class="form-control" style="height: 160px;"><?= $dataSejarah['deskripsi']; ?></textarea>
 									</div>
-									<hr>
+
 									<div>
 										<label>
 											Visi & Misi
 										</label>
 										<textarea name="visi" id="visi" class="form-control" style="height: 160px;"><?= $dataSejarah['visi']; ?></textarea>
 									</div>
-									<hr>
+
 									<div>
-										<label for="foto1" class="mt-3 ">Foto Pimpinan</label>
+										<label for="foto1">Foto Pimpinan</label>
 										<input type="file" id="foto1" name="foto1" class="form-control mb-2 " onchange="loadFile1(event)" />
 										<img alt="" width="150px" height="200px" id="output1">
 									</div>
 									<div>
-										<label for="deskripsi1" class="mt-3">Keterangan </label>
+										<label for="deskripsi1">Keterangan </label>
 										<input type="text" id="deskripsi1" name="deskripsi1" class="form-control" value="<?= $dataSejarah['deskripsi1']; ?> " />
 									</div>
 
@@ -135,32 +141,32 @@ $title = "Dunia Kita Resto Admin Panel";
 
 								<div class="col-md-6">
 									<div>
-										<label for="foto2" class="mt-3">Foto Fasilitas 1</label>
+										<label for="foto2">Foto Fasilitas 1</label>
 										<input type="file" id="foto2" name="foto2" class="form-control mb-1" onchange="loadFile2(event)" />
-										<img alt="" width="450" height="220" id="output2">
+										<img alt="" width="100%" height="220" id="output2">
 									</div>
 									<div>
-										<label for="deskripsi2" class="mt-3">Keterangan 1</label>
+										<label for="deskripsi2">Keterangan 1</label>
 										<input type="text" id="deskripsi2" name="deskripsi2" class="form-control" value="<?= $dataSejarah['deskripsi2']; ?> " />
 									</div>
-									<hr>
+
 									<div class=" mt-2">
 										<label for="foto3">Foto Fasilitas 2</label>
 										<input type="file" id="foto3" name="foto3" class="form-control mb-1" onchange="loadFile3(event)" />
-										<img align="right" alt="" width="450" height="220" id="output3">
+										<img alt="" width="100%" height="220" id="output3">
 									</div>
 									<div>
-										<label for="deskripsi3" class="mt-3">Keterangan 2</label>
+										<label for="deskripsi3">Keterangan 2</label>
 										<input type="text" id="deskripsi3" name="deskripsi3" class="form-control" value="<?= $dataSejarah['deskripsi3']; ?> " />
 									</div>
-									<hr>
+
 									<div>
-										<label for="foto4" class="mt-3">Foto Fasilitas 3</label>
+										<label for="foto4">Foto Fasilitas 3</label>
 										<input type="file" id="foto4" name="foto4" class="form-control mb-1" onchange="loadFile4(event)" />
-										<img align="right" alt="" width="450" height="220" id="output4">
+										<img alt="" width="100%" height="220" id="output4">
 									</div>
 									<div>
-										<label for="deskripsi4" class="mt-3">Keterangan 3</label>
+										<label for="deskripsi4">Keterangan 3</label>
 										<input type="text" id="deskripsi4" name="deskripsi4" class="form-control" value="<?= $dataSejarah['deskripsi4']; ?> " />
 									</div>
 								</div>
