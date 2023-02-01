@@ -52,7 +52,7 @@ https://templatemo.com/tm-575-leadership-event
 		<div class="container">
 			<a href="index.php" class="navbar-brand mx-auto mx-lg-0">
 				<?php foreach ($dataProfil as $dp) : ?>
-					<img src="./public/assets/images/profil/<?= $dp['foto_profil'] ?>" alt="Sarinah Otomotif Solution" class="img-fluid" style="width: 40px; height: 40px; ">
+					<img src="./public/assets/images/profil/<?= $dp['foto_profil'] ?>" alt="Pondok pesantren Al-Hasan" class="img-fluid" style="width: 40px; height: 40px; ">
 					<span class="brand-text" style="color: greenyellow;">PONDOK PESANTREN <br> <?= $dp['nama'] ?></span>
 				<?php endforeach; ?>
 			</a>
@@ -109,7 +109,7 @@ https://templatemo.com/tm-575-leadership-event
 				<div class="col-lg-12 col-12 border-bottom pb-5 mb-5">
 					<div class="d-flex">
 						<a href="index.html" class="navbar-brand">
-							<img src="./public/assets/images/profil/<?= $dp['foto_profil'] ?>" alt="Sarinah Otomotif Solution" class="img-fluid" style="width: 40px; height: 40px; ">
+							<img src="./public/assets/images/profil/<?= $dp['foto_profil'] ?>" alt="Pondok pesantren Al-Hasan" class="img-fluid" style="width: 40px; height: 40px; ">
 							<span class="brand-text" style="color: green; font-size: 12PX;">PONDOK PESANTREN <br> <?= $dp['nama'] ?></span>
 						</a>
 

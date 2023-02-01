@@ -101,7 +101,7 @@ https://templatemo.com/tm-575-leadership-event
       </button>
       <a href="index.php" class="navbar-brand mx-auto mx-lg-0">
         <?php foreach ($dataProfil as $dp) : ?>
-          <img src="./public/assets/images/profil/<?= $dp['foto_profil'] ?>" alt="Sarinah Otomotif Solution" class="img-fluid" style="width: 40px; height: 40px; ">
+          <img src="./public/assets/images/profil/<?= $dp['foto_profil'] ?>" alt="Pondok pesantren Al-Hasan" class="img-fluid" style="width: 40px; height: 40px; ">
           <span class="brand-text" style="color: greenyellow;">PONDOK PESANTREN <br><?= $dp['nama'] ?></span>
         <?php endforeach; ?>
       </a>
@@ -146,7 +146,7 @@ https://templatemo.com/tm-575-leadership-event
 
                 <h1 class="text-white mb-2">PONDOK PESANTREN <br><?= $dp['nama']; ?></h1>
                 <p style="color: white; font-size: 14px; margin-bottom: 0px;"><?= $dp['deskripsi']; ?></p>
-                <a href="#tentang" class="custom-link bi-arrow-down arrow-icon"></a>
+                <a href="#section_2" class="custom-link bi-arrow-down arrow-icon"></a>
               </div>
             </div>
           </div>
@@ -169,9 +169,9 @@ https://templatemo.com/tm-575-leadership-event
 
           <div class="col-lg-4 col-md-6 col-12">
             <div class="highlight-thumb">
-              <img src="images/avatar/happy-asian-man-standing-with-arms-crossed-grey-wall.jpg" class="highlight-image img-fluid" alt="">
+              <img src="images/highlight/santri.jpg" class="highlight-image img-fluid" alt="Pondok pesantren Al-Hasan">
               <div class="highlight-info">
-                <h3 class="highlight-title">Acara Pidato Santri</h3>
+                <h3 class="highlight-title">Kegiatan Santri & santriah</h3>
                 <a href=" <?= $dp['link_video1']; ?>" class=" bi-youtube highlight-icon" data-vbtype="video" data-autoplay="true" target="_blank"></a>
               </div>
             </div>
@@ -179,9 +179,9 @@ https://templatemo.com/tm-575-leadership-event
 
           <div class="col-lg-4 col-md-6 col-12">
             <div class="highlight-thumb">
-              <img src="images/highlight/alexandre-pellaes-6vAjp0pscX0-unsplash.jpg" class="highlight-image img-fluid" alt="">
+              <img src="images/highlight/santriah.jpg" class="highlight-image img-fluid" alt="Pondok pesantren Al-Hasan">
               <div class="highlight-info">
-                <h3 class="highlight-title">Acara Pidato Santri</h3>
+                <h3 class="highlight-title">Kegiatan Santri & santriah</h3>
                 <a href=" <?= $dp['link_video2']; ?>" class=" bi-youtube highlight-icon" data-vbtype="video" data-autoplay="true" target="_blank"></a>
               </div>
             </div>
@@ -189,9 +189,9 @@ https://templatemo.com/tm-575-leadership-event
 
           <div class="col-lg-4 col-md-6 col-12">
             <div class="highlight-thumb">
-              <img src="images/highlight/alexandre-pellaes-6vAjp0pscX0-unsplash.jpg" class="highlight-image img-fluid" alt="">
+              <img src="images/highlight/pidato.jpg" class="highlight-image img-fluid" alt="Pondok pesantren Al-Hasan">
               <div class="highlight-info">
-                <h3 class="highlight-title">Acara Pidato Santri</h3>
+                <h3 class="highlight-title">Kegiatan Santri & santriah</h3>
                 <a href=" <?= $dp['link_video3']; ?>" class=" bi-youtube highlight-icon" data-vbtype="video" data-autoplay="true" target="_blank"></a>
               </div>
             </div>
@@ -214,7 +214,7 @@ https://templatemo.com/tm-575-leadership-event
             </div>
             <div class="col-lg-6 col-12">
               <div class="speakers-thumb">
-                <img src="./public/assets/images/sejarah/<?= $ds['foto1'] ?>" class="img-fluid speakers-image" alt="" style="margin-top: 118px;">
+                <img src="./public/assets/images/sejarah/<?= $ds['foto1'] ?>" class="img-fluid speakers-image" alt="Pondok pesantren Al-Hasan" style="margin-top: 118px;">
                 <!-- <small class="speakers-featured-text">Featured</small> -->
 
                 <div class="speakers-info">
@@ -239,7 +239,7 @@ https://templatemo.com/tm-575-leadership-event
               <div class="row">
                 <div class="col-lg-4 col-md-6 col-12">
                   <div class="speakers-thumb speakers-thumb-small">
-                    <img src="./public/assets/images/sejarah/<?= $ds['foto2'] ?>" class="img-fluid speakers-image" alt="">
+                    <img src="./public/assets/images/sejarah/<?= $ds['foto2'] ?>" class="img-fluid speakers-image" alt="Pondok pesantren Al-Hasan">
 
                     <div class="speakers-info">
                       <p class="speakers-text mb-0"><?= $ds['deskripsi2'] ?></p>
@@ -254,7 +254,7 @@ https://templatemo.com/tm-575-leadership-event
 
                 <div class="col-lg-4 col-md-6 col-12">
                   <div class="speakers-thumb speakers-thumb-small">
-                    <img src="./public/assets/images/sejarah/<?= $ds['foto3'] ?>" class="img-fluid speakers-image" alt="">
+                    <img src="./public/assets/images/sejarah/<?= $ds['foto3'] ?>" class="img-fluid speakers-image" alt="Pondok pesantren Al-Hasan">
 
                     <div class="speakers-info">
                       <p class="speakers-text mb-0"><?= $ds['deskripsi3'] ?></p>
@@ -270,7 +270,7 @@ https://templatemo.com/tm-575-leadership-event
 
                 <div class="col-lg-4 col-md-6 col-12">
                   <div class="speakers-thumb speakers-thumb-small">
-                    <img src="./public/assets/images/sejarah/<?= $ds['foto4'] ?>" class="img-fluid speakers-image" alt="">
+                    <img src="./public/assets/images/sejarah/<?= $ds['foto4'] ?>" class="img-fluid speakers-image" alt="Pondok pesantren Al-Hasan">
 
                     <div class="speakers-info">
 
@@ -306,7 +306,7 @@ https://templatemo.com/tm-575-leadership-event
                 <?php foreach ($dataKegiatan as $dg) : ?>
                   <div class="row border-bottom pb-5 mb-5">
                     <div class="col-lg-4 col-12">
-                      <a href="detailKegiatan.php?id=<?= $dg['id']; ?>"><img src="./public/assets/img/kegiatan/<?= $dg['foto']; ?>" class="schedule-image img-fluid" alt=""></a>
+                      <a href="detailKegiatan.php?id=<?= $dg['id']; ?>"><img src="./public/assets/img/kegiatan/<?= $dg['foto']; ?>" class="schedule-image img-fluid" alt="Pondok pesantren Al-Hasan"></a>
                     </div>
 
                     <div class="col-lg-8 col-12 mt-3 mt-lg-0">
@@ -320,11 +320,11 @@ https://templatemo.com/tm-575-leadership-event
 
                       <div class="d-flex align-items-center mt-4">
                         <div class="avatar-group d-flex">
-                          <img src="images/avatar/happy-asian-man-standing-with-arms-crossed-grey-wall.jpg" class="img-fluid avatar-image" alt="">
+                          <img src="./public/assets/images/profil/<?= $dp['foto_profil'] ?>" class="img-fluid avatar-image" alt="Pondok pesantren Al-Hasan">
 
                           <div class="ms-3">
-                            Logan Wilson
-                            <p class="speakers-text mb-0">CEO / Founder</p>
+                            Pondok Pesantren
+                            <p class="speakers-text mb-0"><?= $dp['nama']; ?></p>
                           </div>
                         </div>
 
@@ -412,7 +412,7 @@ https://templatemo.com/tm-575-leadership-event
       </div>
     </section>
 
-    <section class="contact section-padding" id="section_6" style="background-image: url('./public/assets/images/background/<?= $dp['foto_bg'] ?>');">
+    <section class="contact section-padding" id="section_6" style="background-image: url('./public/assets/images/background/<?= $dp['foto_bg'] ?>');" alt="Pondok pesantren Al-Hasan">
       <div class="container">
         <div class="row">
 
@@ -471,7 +471,7 @@ https://templatemo.com/tm-575-leadership-event
         <div class="col-lg-12 col-12 border-bottom pb-5 mb-5">
           <div class="d-flex">
             <a href="index.php" class="navbar-brand">
-              <img src="./public/assets/images/profil/<?= $dp['foto_profil'] ?>" alt="Sarinah Otomotif Solution" class="img-fluid" style="width: 40px; height: 40px; ">
+              <img src="./public/assets/images/profil/<?= $dp['foto_profil'] ?>" alt="Pondok pesantren Al-Hasan" class="img-fluid" style="width: 40px; height: 40px; ">
               <span class="brand-text" style="color: green; font-size: 12px;">PONDOK PESANTREN <br> <?= $dp['nama'] ?></span>
             </a>
 
