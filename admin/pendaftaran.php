@@ -8,9 +8,9 @@ if (!isset($_SESSION["login"])) {
 include "../koneksi.php";
 
 
-$dataPendaftaran = query("SELECT sekolah.`tingkat` AS sekolah, pendaftaran.`foto`,pendaftaran.`nama`,pendaftaran.`alamat`,pendaftaran.`id_sekolah`
+$dataPendaftaran = query("SELECT sekolah.`tingkat` AS sekolah, pendaftaran.`foto`,pendaftaran.`nama`,pendaftaran.`hp`,pendaftaran.`alamat`,pendaftaran.`id_sekolah`
 ,pendaftaran.`tgl_masuk`,pendaftaran.`jenis_kelamin`,pendaftaran.`id` FROM pendaftaran INNER JOIN `sekolah` ON
- sekolah.`id`=pendaftaran.`id_sekolah`");
+ sekolah.`id`=pendaftaran.`id_sekolah` ORDER BY id DESC ");
 
 $sekolah = query("SELECT * FROM sekolah ");
 
@@ -212,9 +212,9 @@ $dataProfil = query("SELECT * FROM profil");
 										<th>Nama</th>
 										<th>Foto</th>
 										<th>Jenis Kelamin</th>
+										<th>Nomor Telpn/WA</th>
 										<th>Alamat</th>
-										<th>Tanggal Masuk</th>
-										<th width="10%">Aksi</th>
+										<th width="20%">Aksi</th>
 									</tr>
 								</thead>
 								<tbody align="center">
@@ -228,8 +228,11 @@ $dataProfil = query("SELECT * FROM profil");
 												<img src="../public/assets/img/promo/<?= $d['foto']; ?>" width='70' height='90' alt="">
 											</td>
 											<td><?= $d['jenis_kelamin'] ?></td>
+											<td>
+												<a href="https://wa.me/62<?= $d['hp'] ?>">0<?= $d['hp'] ?>
+												</a>
+											</td>
 											<td><?= $d['alamat'] ?></td>
-											<td><?= $d['tgl_masuk'] ?></td>
 											<td>
 												<a href='?id=<?= $d['id'] ?>' type="button" class="btn btn-danger btn-sm">
 													<i class="fas fa-trash"></i>
@@ -286,6 +289,11 @@ $dataProfil = query("SELECT * FROM profil");
 
 																					</select>
 																				</div>
+																			</div>
+																			<div class="mb-1">
+																				<label>No Telpon/Wa
+																				</label>
+																				<input type="number" class="form-control " id="hp" name="hp" value="<?= $d['hp'] ?>" />
 																			</div>
 																			<div class="mb-1">
 																				<label>Alamat

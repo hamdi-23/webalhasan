@@ -413,13 +413,13 @@ https://templatemo.com/tm-575-leadership-event
             <form class="custom-form contact-form bg-white shadow-lg" action="#" method="post" role="form">
               <h2 style="text-align: center; font-weight: bold;">Silahkan isi formulir Dibawah Untuk mendaftar</h2>
               <div class="row">
-                <div class="col-lg-4 col-md-4 col-12">
+                <div class="col-lg-6 col-md-4 col-12">
                   <label>Nama
                   </label>
                   <input type="text" name="nama" id="nama" class="form-control" required />
                 </div>
 
-                <div class="col-lg-4 col-md-4 col-12">
+                <div class="col-lg-6 col-md-4 col-12">
                   <label>Tingkat Pendidikan
                   </label>
                   <select class="select2 form-select shadow-none" name="id_sekolah" id="id_sekolah" style="width: 100%; height: 36px">
@@ -430,7 +430,14 @@ https://templatemo.com/tm-575-leadership-event
                   </select>
                 </div>
 
-                <div class="col-lg-4 col-md-4 col-12">
+
+                <div class="col-lg-6 col-md-4 col-12">
+                  <label>No telpon/(WA)
+                  </label>
+                  <input type="number" name="hp" id="hp" class="form-control" required />
+                </div>
+
+                <div class="col-lg-6 col-md-4 col-12">
                   <label>Jenis Kelamin
                   </label>
                   <select name="jenis_kelamin" id="jenis_kelamin" class="select2 form-select shadow-none">
@@ -439,7 +446,6 @@ https://templatemo.com/tm-575-leadership-event
                     <option value="Perempuan">Perempuan</option>
                   </select>
                 </div>
-
                 <div class="col-12">
                   <label>Alamat
                   </label>

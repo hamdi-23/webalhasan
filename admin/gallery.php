@@ -9,7 +9,7 @@ if (!isset($_SESSION["login"])) {
 include "../koneksi.php";
 
 $dataProfil = query("SELECT * FROM profil");
-$dataGalery = query("SELECT * FROM gallery");
+$dataGalery = query("SELECT * FROM gallery ORDER BY id DESC ");
 
 if (isset($_POST['submit'])) {
 

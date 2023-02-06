@@ -8,7 +8,7 @@ if (!isset($_SESSION["login"])) {
 }
 include "../koneksi.php";
 
-$dataKegiatan = query("SELECT * FROM kegiatan");
+$dataKegiatan = query("SELECT * FROM kegiatan ORDER BY id DESC ");
 $dataProfil = query("SELECT * FROM profil");
 
 

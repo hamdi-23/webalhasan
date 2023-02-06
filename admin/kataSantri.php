@@ -9,7 +9,7 @@ if (!isset($_SESSION["login"])) {
 include "../koneksi.php";
 
 // query menampilkan data
-$data = query("SELECT * FROM `katasantri`");
+$data = query("SELECT * FROM `katasantri` ORDER BY id DESC ");
 $dataProfil = query("SELECT * FROM profil");
 
 

@@ -126,6 +126,7 @@ function tambah_pendaftaran()
   $nama = $_POST['nama'];
   $alamat = $_POST['alamat'];
   $tgl_masuk = $_POST['tgl_masuk'];
+  $hp = $_POST['hp'];
   $jenis_kelamin = $_POST['jenis_kelamin'];
   $id_sekolah = $_POST['id_sekolah'];
 
@@ -136,7 +137,7 @@ function tambah_pendaftaran()
   }
 
   // insert data ke database
-  mysqli_query($con, "INSERT INTO pendaftaran VALUES ('','$foto', '$nama','$jenis_kelamin', '$alamat', '$tgl_masuk','$id_sekolah')");
+  mysqli_query($con, "INSERT INTO pendaftaran VALUES ('','$foto', '$nama','$jenis_kelamin','$hp', '$alamat', '$tgl_masuk','$id_sekolah')");
   return mysqli_affected_rows($con);
 }
 
@@ -207,6 +208,7 @@ function edit_pendaftaran($dataPendaftaran)
   $id_sekolah = $_POST['id_sekolah'];
   $nama = htmlspecialchars($dataPendaftaran['nama']);
   $alamat = htmlspecialchars($dataPendaftaran['alamat']);
+  $hp = htmlspecialchars($dataPendaftaran['hp']);
   $jenis_kelamin = htmlspecialchars($dataPendaftaran['jenis_kelamin']);
   $tgl_masuk = htmlspecialchars($dataPendaftaran['tgl_masuk']);
   $foto_lama = $dataPendaftaran['foto_lama'];
@@ -219,7 +221,7 @@ function edit_pendaftaran($dataPendaftaran)
     $foto = upload_foto();
   }
   mysqli_query($con, "UPDATE pendaftaran 
-  SET foto='$foto', nama ='$nama', jenis_kelamin='$jenis_kelamin',alamat='$alamat',tgl_masuk='$tgl_masuk',id_sekolah='$id_sekolah'
+  SET foto='$foto', nama ='$nama', jenis_kelamin='$jenis_kelamin',hp='$hp',alamat='$alamat',tgl_masuk='$tgl_masuk',id_sekolah='$id_sekolah'
    WHERE id='$id'");
   return mysqli_affected_rows($con);
 }
@@ -702,14 +704,14 @@ function pendaftar_baru()
   global $con;
   $nama = $_POST['nama'];
   $alamat = $_POST['alamat'];
-  // $tgl_masuk = $_POST['tgl_masuk'];
   $jenis_kelamin = $_POST['jenis_kelamin'];
+  $hp = $_POST['hp'];
   $id_sekolah = $_POST['id_sekolah'];
 
 
 
 
   // insert data ke database
-  mysqli_query($con, "INSERT INTO pendaftaran VALUES ('','', '$nama','$jenis_kelamin', '$alamat', '','$id_sekolah')");
+  mysqli_query($con, "INSERT INTO pendaftaran VALUES ('','', '$nama','$jenis_kelamin','$hp', '$alamat', '','$id_sekolah')");
   return mysqli_affected_rows($con);
 }
