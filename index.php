@@ -207,7 +207,7 @@ https://templatemo.com/tm-575-leadership-event
 
             <div class="col-lg-6 col-12 d-flex flex-column justify-content-center align-items-center" style="padding: 3px; box-sizing: inherit;">
               <div class="speakers-text-info" style="padding: 0px; ">
-                <h2 class="mb-2" style="padding: 0px; font-weight: 900; font-size: 35px; text-align: center; ">Pondok Pesantren <br><?= $dp['nama'] ?></u></h2>
+                <h2 class="mb-2" style="padding: 0px; font-weight: 900; font-size: 35px; text-align: center; color:#54B435 ">Pondok Pesantren <br><?= $dp['nama'] ?></u></h2>
                 <hr>
                 <p style="padding: 3px; text-align: justify;"><?= $ds['deskripsi'] ?></p>
               </div>
@@ -342,7 +342,7 @@ https://templatemo.com/tm-575-leadership-event
     </section>
 
     <section class="pricing section-padding" id="section_4">
-      <h1 class="" style="font-weight: 900; text-align: center;">Galeri Pondok Pesantren <br> <?= $dp['nama'] ?></h1>
+      <h1 class="" style="font-weight: 900; text-align: center; color:#54B435">Galeri Pondok Pesantren <br> <?= $dp['nama'] ?></h1>
       <div class="container-img">
         <hr>
         <div class="box-img">
@@ -363,7 +363,7 @@ https://templatemo.com/tm-575-leadership-event
         <div class="row">
 
           <div class="col-lg-12 col-12">
-            <h2 class="mb-5" style="font-weight: 900; text-align: center;">Alamat Ponpes <?= $dp['nama'] ?></h2>
+            <h2 class="mb-5" style="font-weight: 900; text-align: center; color:#54B435">Alamat Ponpes <?= $dp['nama'] ?></h2>
           </div>
 
           <div class="col-lg-6 col-12">
